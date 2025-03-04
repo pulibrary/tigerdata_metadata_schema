@@ -1,7 +1,7 @@
 # TigerData Metadata Schema
 ![image](https://github.com/user-attachments/assets/533c0637-14c7-4a07-b02c-d8b095ed2f23)
 
-This is the public home for all standard and supported TigerData metadata schemas, including technical documentation.
+This is the public home for all standard and supported TigerData metadata schemas, including technical documentation and examples.
 
 [TigerData](https://tigerdata.princeton.edu/) is a data management service for the Princeton University research community that includes a suite of software tools and scalable, tiered storage to enable the organization, description, storage, sharing, and long-term sustainability of research and administrative data.
 

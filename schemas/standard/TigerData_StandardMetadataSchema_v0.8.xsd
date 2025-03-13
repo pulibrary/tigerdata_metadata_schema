@@ -2,7 +2,7 @@
 
 <!-- Version Notes:
         - Draft of version 0.8 of the TigerData Standard Metadata Schema
-        - Updated on 2025-03-12 by Matt Chandler
+        - Updated on 2025-03-13 by Matt Chandler
 -->
 <!-- References:
         - As noted in documentation fields below, several elements are derived from DataCite:
@@ -41,49 +41,18 @@
             - Could (or should) we use either the built-in "citeable-id" or "hierarchical-id" type?
 -->
 <!-- Version 0.8 Change Log:
-        2025-03-12:
-          - Added protocolType to set controlled vocabulary for the protocol attribute in pathType (includes Globus)
+        2025-03-13:
+          - Revised accessPoints
+            - Documentation
+            - Revised globusEndpoint (not quite complete though: still wavering on subfields vs. attributes)
+       
+       2025-03-12:
+          - Added protocolType to set controlled vocabulary for the protocol attribute in pathType
           - Revised pathType to use protocolType, with more documentation
           - Revised pathSafeType to restrict to 18 - 128 characters
           - Added limitedTitleType and titleType to restrict title lengths below the standard text limits
             - Set the practical limit for titles to 200 characters
           - Added accessPoints
-        
-          - Updated to DataCite Schema version 4.6
-          - Added fields for large data special requests and 
-          - Revised projectDirectory to account for Globus
-          - 
-
--->
-
-<!-- Version 0.7 Change Log:
-        2024-09-20:
-          - Revised documentation for projectIDValueType
-          - Added note under primitives note about where to find the payload definition
-          - Revised the open questions
-        2024-09-17:
-          - Revised the documentation for itemID to align better with mediafluxAssetIDType
-        2024-09-13:
-          - Adjusted the request-approval framework, as follows:
-            - Changed "approved" to "approvedValue" and "requested" to "requestedValue"
-            - The setting subfield and the approvedValue subfield are now both optional, so they are omitted prior to approval (rather than always required and left empty before approval)
-            - Added the "approved" attribute to the relevant fields to indicate (Boolean) whether the field has any approved value yet
-            - Deleted the empty string option in storagePerformanceType
-            - Adjusted the pattern in pathSafeType so empty strings are not permitted
-            - Revised the documentation for all affected fields and types
-          - Created mediafluxAssetIDType to be used in itemID, restricting to the real limits Mediaflux imposes on asset IDs
-          - Added some open questions about Mediaflux implementation
-        2024-08-28:
-          - Added the xmlns:xsi attribute to the schema element, so we can use xsi:nil
-          - Tweaked the pathSafeType pattern to allow for empty strings (for pre-approval)
-          - Tweaked the sequence requirement for storageQuantityType to allow for empty elements (for pre-approval)
-          - Tweaked the storagePerformance element to be required, but also tweaked the controlled vocabulary for storagePerformanceType to allow empty values (for pre-approval)
-        2024-08-27:
-          - Filled in more documentation, with some revisions here and there
-          - Minor fixes to element names, controlled vocabularies, and value patterns discovered during validation tests
-        2024-08-23:
-          - Created a projectProvenance container element, instead of just a group
-          - Added some more documentation on sections
 -->
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
@@ -2245,7 +2214,7 @@
                             <xs:annotation>
                                 <xs:documentation xml:lang="en">Whether a project has a Globus endpoint enabled</xs:documentation>
                                 <xs:documentation xml:lang="en">By default, projects do not get a Globus endpoint</xs:documentation>
-                                <xs:documentation xml:lang="en">If a Globus is approved and set, then the details should be given in globusEndpoint</xs:documentation>
+                                <xs:documentation xml:lang="en">If a Globus endpoint is approved and set, then the details should be given in globusEndpoint</xs:documentation>
                             </xs:annotation>
                             <xs:complexType>
                                 <xs:sequence>
@@ -2272,6 +2241,7 @@
                             <xs:annotation>
                                 <xs:documentation xml:lang="en">Details for any enabled Globus endpoints for the project</xs:documentation>
                                 <xs:documentation xml:lang="en">If globusEnableSetting is true, then at least one globusEndpoint value set should be given</xs:documentation>
+                                <xs:documentation xml:lang="en">If no Globus endpoint is approved, then this field should be omitted</xs:documentation>
                             </xs:annotation>
                             <xs:complexType>
                                 <xs:sequence>
@@ -2281,9 +2251,13 @@
                                             <xs:documentation xml:lang="en">The naming convention is "Princeton TigerData - [projectDirectory suffix]"</xs:documentation>
                                         </xs:annotation>
                                     </xs:element>
-                                    <xs:element name="UUID" minOccurs="1" maxOccurs="1"></xs:element>
-                                    <xs:element name="owner" minOccurs="1" maxOccurs="1"></xs:element>
-                                    <xs:element name="URL" minOccurs="0" maxOccurs="1"></xs:element>
+                                    <xs:element name="UUID" minOccurs="1" maxOccurs="1">
+                                        
+                                    </xs:element>
+                                    <xs:element name="owner" minOccurs="1" maxOccurs="1">
+                                        
+                                    </xs:element>
+                                    <xs:element name="URL" type="xs:anyURI" minOccurs="0" maxOccurs="1"/>
                                 </xs:sequence>
                             </xs:complexType>
                         </xs:element>

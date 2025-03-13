@@ -24,8 +24,8 @@
         - Elements and attributes are defined individually only when needed
             - If a given element is intended to be used in only one place, then it is defined in that place (e.g., within a group)
             - If a given attribute is intended to be used only in one element, then it is defined within that element
-            - If a given element or attribute has multiple applications, then it is called out earlier in the primitives and then referenced where needed
-        - camelCase is used for all custom names for types, attributes, elements, and groups
+            - If a given element or attribute can have multiple applications, then it is called out earlier in the primitives and then referenced where needed
+        - camelCase is used for all custom names for types, attributes, elements, and groups (acronyms are lowercase when beginning a name)
         - The name of every simple and complex type ends with "Type" (if the semantic part of the name ends in "Type" then "Type" is still appended, e.g. "relationTypeType")
         - Acronyms and abbreviations are avoided in names and annotations to prevent confusion, but unlike DataCite, some acronyms are used
         - Repeatable elements are typically placed within container elements, and container elements have names that are the plural form of the repeatable element they contain
@@ -44,10 +44,12 @@
         2025-03-13:
           - Revised accessPoints
             - Documentation
-            - Revised globusEndpoint (not quite complete though: still wavering on naming, e.g. collection vs. endpoint)
+            - Changed globusEndpoint to globusCollection
+            - Revised sub-elements in globusCollection to be more specific
           - Revised documentation for path values
           - Added approved attribute to smbEnable and globusEnable
           - Added uuidType
+          - Revised style notes
        
        2025-03-12:
           - Added protocolType to set controlled vocabulary for the protocol attribute in pathType
@@ -2218,7 +2220,7 @@
                                     <xs:element name="approvedValue" type="xs:boolean" maxOccurs="1" default="false">
                                         <xs:annotation>
                                             <xs:documentation xml:lang="en">The approved value for smbEnable (false by default)</xs:documentation>
-                                            <xs:documentation xml:lang="en">If the approved value is true, then the smbEnableSetting should also be set to true</xs:documentation>
+                                            <xs:documentation xml:lang="en">If approvedValue is true, then smbEnableSetting and the approved attribute should also be set to true</xs:documentation>
                                         </xs:annotation>
                                     </xs:element>
                                 </xs:sequence>
@@ -2227,9 +2229,9 @@
                         </xs:element>
                         <xs:element name="globusEnable" minOccurs="1" maxOccurs="1">
                             <xs:annotation>
-                                <xs:documentation xml:lang="en">Whether a project has a Globus endpoint enabled</xs:documentation>
-                                <xs:documentation xml:lang="en">By default, projects do not get a Globus endpoint</xs:documentation>
-                                <xs:documentation xml:lang="en">If a Globus endpoint is approved and set, then the details should be given in globusEndpoint</xs:documentation>
+                                <xs:documentation xml:lang="en">Whether a project has a Globus collection enabled</xs:documentation>
+                                <xs:documentation xml:lang="en">By default, projects do not get a Globus collection</xs:documentation>
+                                <xs:documentation xml:lang="en">If a Globus collection is approved and set, then the details should be given in globusCollection</xs:documentation>
                             </xs:annotation>
                             <xs:complexType>
                                 <xs:sequence>
@@ -2246,40 +2248,40 @@
                                     <xs:element name="approvedValue" type="xs:boolean" maxOccurs="1" default="false">
                                         <xs:annotation>
                                             <xs:documentation xml:lang="en">The approved value for globusEnable (false by default)</xs:documentation>
-                                            <xs:documentation xml:lang="en">If the approved value is true, then the globusEnableSetting should also be set to true</xs:documentation>
+                                            <xs:documentation xml:lang="en">If approvedValue is true, then globusEnableSetting and the approved attribute should also be set to true</xs:documentation>
                                         </xs:annotation>
                                     </xs:element>
                                 </xs:sequence>
                                 <xs:attribute ref="approved" default="false"/>
                             </xs:complexType>
                         </xs:element>
-                        <xs:element name="globusEndpoint" minOccurs="0" maxOccurs="100">
+                        <xs:element name="globusCollection" minOccurs="0" maxOccurs="100">
                             <xs:annotation>
-                                <xs:documentation xml:lang="en">Details for any enabled Globus endpoints for the project</xs:documentation>
-                                <xs:documentation xml:lang="en">If globusEnableSetting is true, then at least one globusEndpoint value set should be given</xs:documentation>
-                                <xs:documentation xml:lang="en">If no Globus endpoint is approved, then this field should be omitted</xs:documentation>
+                                <xs:documentation xml:lang="en">Details for any enabled Globus collections for the project</xs:documentation>
+                                <xs:documentation xml:lang="en">If globusEnableSetting is true, then at least one globusCollection value set should be given</xs:documentation>
+                                <xs:documentation xml:lang="en">If no Globus collection is approved, then this field should be omitted</xs:documentation>
                             </xs:annotation>
                             <xs:complexType>
                                 <xs:sequence>
-                                    <xs:element name="collectionName" type="textType" minOccurs="1" maxOccurs="1">
+                                    <xs:element name="globusName" type="textType" minOccurs="1" maxOccurs="1">
                                         <xs:annotation>
                                             <xs:documentation xml:lang="en">The Globus collection name (required)</xs:documentation>
                                             <xs:documentation xml:lang="en">The naming convention is "Princeton TigerData - parent-folder/project-folder"</xs:documentation>
                                         </xs:annotation>
                                     </xs:element>
-                                    <xs:element name="UUID" type="uuidType" minOccurs="1" maxOccurs="1">
+                                    <xs:element name="globusUUID" type="uuidType" minOccurs="1" maxOccurs="1">
                                         <xs:annotation>
                                             <xs:documentation xml:lang="en">The Globus collection universally unique identifier (required)</xs:documentation>
                                             <xs:documentation xml:lang="en">The value is expected to be 32 hexadecimal digits in 8-4-4-4-12 format</xs:documentation>
                                         </xs:annotation>
                                     </xs:element>
-                                    <xs:element name="owner" type="userType" minOccurs="1" maxOccurs="1">
+                                    <xs:element name="globusOwner" type="userType" minOccurs="1" maxOccurs="1">
                                         <xs:annotation>
                                             <xs:documentation xml:lang="en">The Globus collection owner, given as a TigerData userType (required)</xs:documentation>
                                             <xs:documentation xml:lang="en">The owner is typically the project's Data Manager</xs:documentation>
                                         </xs:annotation>
                                     </xs:element>
-                                    <xs:element name="URL" type="xs:anyURI" minOccurs="0" maxOccurs="1">
+                                    <xs:element name="globusURL" type="xs:anyURI" minOccurs="0" maxOccurs="1">
                                         <xs:annotation>
                                             <xs:documentation xml:lang="en">The Globus collection URL (optional)</xs:documentation>
                                             <xs:documentation xml:lang="en">The expected format for a Globus collection URL is https://app.globus.org/file-manager?origin_id=[uuid]</xs:documentation>

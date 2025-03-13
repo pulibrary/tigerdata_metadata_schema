@@ -44,7 +44,10 @@
         2025-03-13:
           - Revised accessPoints
             - Documentation
-            - Revised globusEndpoint (not quite complete though: still wavering on subfields vs. attributes)
+            - Revised globusEndpoint (not quite complete though: still wavering on naming, e.g. collection vs. endpoint)
+          - Revised documentation for path values
+          - Added approved attribute to smbEnable and globusEnable
+          - Added uuidType
        
        2025-03-12:
           - Added protocolType to set controlled vocabulary for the protocol attribute in pathType
@@ -154,6 +157,17 @@
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:pattern value="[\w\\/-]{18,128}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="uuidType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Primitive type used for values meant to be Universally Unique Identifiers</xs:documentation>
+            <xs:documentation xml:lang="en">Restricts to alphanumeric characters and minus-dashes, with a length ranging from 32 to 36</xs:documentation>
+            <xs:documentation xml:lang="en">The most common value is expected to be hexadecimal in 8-4-4-4-12 format, but this type specification is simplified for XML, and therefore more permissive</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[\w-]{32,36}"/>
         </xs:restriction>
     </xs:simpleType>
     
@@ -1036,9 +1050,6 @@
                 <xs:attribute name="protocol" type="protocolType" default="NFS">
                     <xs:annotation>
                         <xs:documentation xml:lang="en">The storage connection protocol that defines how the path is written</xs:documentation>
-                        <xs:documentation xml:lang="en">Example NFS path: /tigerdata/parent-folder/project-folder</xs:documentation>
-                        <xs:documentation xml:lang="en">Example SMB path: \\tigerdata-smb\parent-folder\project-folder</xs:documentation>
-                        <xs:documentation xml:lang="en">Example S3 path: S3://princeton/tigerdata/parent-folder/project-folder</xs:documentation>
                     </xs:annotation>
                 </xs:attribute>
             </xs:extension>
@@ -2030,7 +2041,7 @@
             <xs:element name="projectDirectory" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The locally unique name for the project’s directory</xs:documentation>
-                    <xs:documentation xml:lang="en">The typical value is expected to be in NFS protocol with the structure "/tigerdata/parent-folder/project-folder"</xs:documentation>
+                    <xs:documentation xml:lang="en">The typical value is expected to be in NFS protocol</xs:documentation>
                     <xs:documentation xml:lang="en">A parent folder is recommended to organize projects by groups (e.g., lab or principal investigator)</xs:documentation>
                     <xs:documentation xml:lang="en">If no user request was received and no value has yet been approved, then this field may be empty</xs:documentation>
                 </xs:annotation>
@@ -2041,6 +2052,9 @@
                                 <xs:documentation xml:lang="en">A current setting for projectDirectory (omitted until approved)</xs:documentation>
                                 <xs:documentation xml:lang="en">After approval, this value should be updated to match the approved value (in rare cases, the current setting may later deviate from the approved value)</xs:documentation>
                                 <xs:documentation xml:lang="en">Multiple elements are allowed to specify paths in alternative protocols, using the protocol attribute</xs:documentation>
+                                <xs:documentation xml:lang="en">Example NFS path: /tigerdata/parent-folder/project-folder</xs:documentation>
+                                <xs:documentation xml:lang="en">Example SMB path: \\tigerdata-smb\parent-folder\project-folder</xs:documentation>
+                                <xs:documentation xml:lang="en">Example S3 path: S3://princeton/tigerdata/parent-folder/project-folder</xs:documentation>
                             </xs:annotation>
                         </xs:element>
                         <xs:element name="requestedValue" type="pathType" minOccurs="0" maxOccurs="1">
@@ -2208,6 +2222,7 @@
                                         </xs:annotation>
                                     </xs:element>
                                 </xs:sequence>
+                                <xs:attribute ref="approved" default="false"/>
                             </xs:complexType>
                         </xs:element>
                         <xs:element name="globusEnable" minOccurs="1" maxOccurs="1">
@@ -2235,6 +2250,7 @@
                                         </xs:annotation>
                                     </xs:element>
                                 </xs:sequence>
+                                <xs:attribute ref="approved" default="false"/>
                             </xs:complexType>
                         </xs:element>
                         <xs:element name="globusEndpoint" minOccurs="0" maxOccurs="100">
@@ -2247,17 +2263,28 @@
                                 <xs:sequence>
                                     <xs:element name="collectionName" type="textType" minOccurs="1" maxOccurs="1">
                                         <xs:annotation>
-                                            <xs:documentation xml:lang="en">The Globus collection name</xs:documentation>
-                                            <xs:documentation xml:lang="en">The naming convention is "Princeton TigerData - [projectDirectory suffix]"</xs:documentation>
+                                            <xs:documentation xml:lang="en">The Globus collection name (required)</xs:documentation>
+                                            <xs:documentation xml:lang="en">The naming convention is "Princeton TigerData - parent-folder/project-folder"</xs:documentation>
                                         </xs:annotation>
                                     </xs:element>
-                                    <xs:element name="UUID" minOccurs="1" maxOccurs="1">
-                                        
+                                    <xs:element name="UUID" type="uuidType" minOccurs="1" maxOccurs="1">
+                                        <xs:annotation>
+                                            <xs:documentation xml:lang="en">The Globus collection universally unique identifier (required)</xs:documentation>
+                                            <xs:documentation xml:lang="en">The value is expected to be 32 hexadecimal digits in 8-4-4-4-12 format</xs:documentation>
+                                        </xs:annotation>
                                     </xs:element>
-                                    <xs:element name="owner" minOccurs="1" maxOccurs="1">
-                                        
+                                    <xs:element name="owner" type="userType" minOccurs="1" maxOccurs="1">
+                                        <xs:annotation>
+                                            <xs:documentation xml:lang="en">The Globus collection owner, given as a TigerData userType (required)</xs:documentation>
+                                            <xs:documentation xml:lang="en">The owner is typically the project's Data Manager</xs:documentation>
+                                        </xs:annotation>
                                     </xs:element>
-                                    <xs:element name="URL" type="xs:anyURI" minOccurs="0" maxOccurs="1"/>
+                                    <xs:element name="URL" type="xs:anyURI" minOccurs="0" maxOccurs="1">
+                                        <xs:annotation>
+                                            <xs:documentation xml:lang="en">The Globus collection URL (optional)</xs:documentation>
+                                            <xs:documentation xml:lang="en">The expected format for a Globus collection URL is https://app.globus.org/file-manager?origin_id=[uuid]</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
                                 </xs:sequence>
                             </xs:complexType>
                         </xs:element>

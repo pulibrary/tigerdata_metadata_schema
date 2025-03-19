@@ -7,7 +7,7 @@
 <!-- References:
         - As noted in documentation fields below, several elements are derived from DataCite:
             DataCite Metadata Working Group. (2024). DataCite Metadata Schema for the Publication and Citation of Research Data and Other Research Outputs. 
-            Version 4.5. DataCite e.V. https://doi.org/10.14454/g8e5-6293
+            Version 4.6. DataCite e.V. https://doi.org/10.14454/mzv1-5b55
 -->
 <!-- Key Concepts:
         - Resource: a digital object in TigerData systems, falling into two classes, projects and items
@@ -49,6 +49,7 @@
             - Added documentation to Project to indicate that it should be applied to TigerData projects
             - Added new values README and DataDocumentation, with documentation on usage
           - Revised relatedIDTypeType to align with DataCite 4.6
+          - Revised dateTypeType to align with DataCite 4.6
         
         2025-03-13:
           - Revised accessPoints
@@ -944,10 +945,20 @@
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard type that defines the controlled vocabulary for the dateType attribute</xs:documentation>
             <xs:documentation xml:lang="en">Applies to both Projects and Items</xs:documentation>
-            <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for dateType (v4.5+)</xs:documentation>
-            <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.5/appendices/appendix-1/dateType/</xs:documentation>
+            <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for dateType (v4.6+)</xs:documentation>
+            <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.6/appendices/appendix-1/dateType/</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
+            <xs:enumeration value="Accepted" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">The date that the publisher accepted the resource into their system.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Available" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">The date the resource is made publicly available. May be a range.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
             <xs:enumeration value="Copyrighted" xml:lang="en">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The specific, documented date at which the resource receives a copyrighted status, if applicable.</xs:documentation>
@@ -963,6 +974,16 @@
                     <xs:documentation xml:lang="en">The date the resource itself was put together; this could refer to a timeframe in ancient history, a date range, or a single date for a final component, e.g., the finalised file with all the data.</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
+            <xs:enumeration value="Issued" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">The date that the resource is published or distributed, e.g., to a data centre.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Submitted" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">The date the creator submits the resource to the publisher. This could be different from Accepted if the publisher then applies a selection process.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
             <xs:enumeration value="Updated" xml:lang="en">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The date of the last update to the resource, when the resource is being added to. May be a range.</xs:documentation>
@@ -971,6 +992,11 @@
             <xs:enumeration value="Valid" xml:lang="en">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The date or date range during which the dataset or resource is accurate.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Withdrawn" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">The date the resource is removed.</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="Other" xml:lang="en">

@@ -2,7 +2,7 @@
 
 <!-- Version Notes:
         - Draft of version 0.8 of the TigerData Standard Metadata Schema
-        - Updated on 2025-03-13 by Matt Chandler
+        - Updated on 2025-03-19 by Matt Chandler
 -->
 <!-- References:
         - As noted in documentation fields below, several elements are derived from DataCite:
@@ -41,6 +41,9 @@
             - Could (or should) we use either the built-in "citeable-id" or "hierarchical-id" type?
 -->
 <!-- Version 0.8 Change Log:
+        2025-03-19:
+          - Revised relationTypeType to align with DataCite 4.6
+        
         2025-03-13:
           - Revised accessPoints
             - Documentation
@@ -665,8 +668,8 @@
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard type that defines the controlled vocabulary for the relationType attribute</xs:documentation>
             <xs:documentation xml:lang="en">Applies to both Projects and Items</xs:documentation>
-            <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for relationType (v4.5+)</xs:documentation>
-            <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.5/appendices/appendix-1/relationType/</xs:documentation>
+            <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for relationType (v4.6+)</xs:documentation>
+            <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.6/appendices/appendix-1/relationType/</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="IsCitedBy" xml:lang="en">
@@ -849,6 +852,16 @@
             <xs:enumeration value="Collects" xml:lang="en">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">A collects B</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="IsTranslationOf" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">A is a translation of B</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="HasTranslation" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">A has a translation B</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="HasSubproject" xml:lang="en">

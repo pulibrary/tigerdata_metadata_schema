@@ -43,10 +43,12 @@
 <!-- Version 0.8 Change Log:
         2025-03-19:
           - Revised relationTypeType to align with DataCite 4.6
-          - Revised resourceTypeGeneralType to align with DataCite 4.6
+          - Revised resourceTypeGeneralType
+            - Aligned controlled vocabulary with DataCite 4.6
             - Added documentation to OutputManagementPlan to indicate that it should be applied to items serving as a DMP for TigerData projects
             - Added documentation to Project to indicate that it should be applied to TigerData projects
             - Added new values README and DataDocumentation, with documentation on usage
+          - Revised relatedIDTypeType to align with DataCite 4.6
         
         2025-03-13:
           - Revised accessPoints
@@ -575,18 +577,19 @@
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard type that defines the controlled vocabulary for the relatedIDType attribute</xs:documentation>
             <xs:documentation xml:lang="en">Applies to both Projects and Items</xs:documentation>
-            <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for relatedIdentifierType (v4.5+)</xs:documentation>
-            <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.5/appendices/appendix-1/relatedIdentifierType/</xs:documentation>
+            <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for relatedIdentifierType (v4.6+)</xs:documentation>
+            <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.6/appendices/appendix-1/relatedIdentifierType/</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="ARK" xml:lang="en">
                 <xs:annotation>
+                    <xs:documentation xml:lang="en">Archival Resource Key</xs:documentation>
                     <xs:documentation xml:lang="en">A URI designed to support long-term access to information objects.</xs:documentation>
-                    <xs:documentation xml:lang="en">ARK is short for Archival Resource Key</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="arXiv" xml:lang="en">
                 <xs:annotation>
+                    <xs:documentation xml:lang="en">arXiv identifier</xs:documentation>
                     <xs:documentation xml:lang="en">arXiv.org is a repository of preprints of scientific papers in the fields of mathematics, physics, astronomy, computer science, quantitative biology, statistics, and quantitative finance.</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
@@ -595,8 +598,15 @@
                     <xs:documentation xml:lang="en">Astrophysics Data System bibliographic codes</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
+            <xs:enumeration value="CSTR" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Common Science and Technology Resources Identifier</xs:documentation>
+                    <xs:documentation xml:lang="en">CSTR is an identifier based on the Chinese National Standard GB/T 32843—2016 “Science and technology resource identification”, providing a unique identification service for scientific data, papers, scientific institutions, researchers, scientific instruments, patents and other scientific and technological resources.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
             <xs:enumeration value="DOI" xml:lang="en">
                 <xs:annotation>
+                    <xs:documentation xml:lang="en">Digital Object Identifier</xs:documentation>
                     <xs:documentation xml:lang="en">A character string used to uniquely identify an object. A DOI name is divided into two parts, a prefix and a suffix, separated by a slash.</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
@@ -608,6 +618,7 @@
             </xs:enumeration>
             <xs:enumeration value="EISSN" xml:lang="en">
                 <xs:annotation>
+                    <xs:documentation xml:lang="en">Electronic International Standard Serial Number</xs:documentation>
                     <xs:documentation xml:lang="en">ISSN used to identify periodicals in electronic form (eISSN or e-ISSN).</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
@@ -618,26 +629,26 @@
             </xs:enumeration>
             <xs:enumeration value="IGSN" xml:lang="en">
                 <xs:annotation>
+                    <xs:documentation xml:lang="en">International Generic Sample Number</xs:documentation>
                     <xs:documentation xml:lang="en">A code that uniquely identifies samples from our natural environment and related features-of-interest.</xs:documentation>
-                    <xs:documentation xml:lang="en">IGSN is short for International Generic Sample Number</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="ISBN" xml:lang="en">
                 <xs:annotation>
+                    <xs:documentation xml:lang="en">International Standard Book Number</xs:documentation>
                     <xs:documentation xml:lang="en">A unique numeric book identifier. There are 2 formats: a 10-digit ISBN format and a 13-digit ISBN.</xs:documentation>
-                    <xs:documentation xml:lang="en">ISBN is short for International Standard Book Number</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="ISSN" xml:lang="en">
                 <xs:annotation>
+                    <xs:documentation xml:lang="en">International Standard Serial Number</xs:documentation>
                     <xs:documentation xml:lang="en">A unique 8-digit number used to identify a print or electronic periodical publication.</xs:documentation>
-                    <xs:documentation xml:lang="en">ISSN is short for International Standard Serial Number</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="ISTC" xml:lang="en">
                 <xs:annotation>
+                    <xs:documentation xml:lang="en">International Standard Text Code</xs:documentation>
                     <xs:documentation xml:lang="en">A unique “number” assigned to a textual work. An ISTC consists of 16 numbers and/or letters.</xs:documentation>
-                    <xs:documentation xml:lang="en">ISTC is short for International Standard Text Code</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="LISSN" xml:lang="en">
@@ -647,46 +658,56 @@
             </xs:enumeration>
             <xs:enumeration value="LSID" xml:lang="en">
                 <xs:annotation>
+                    <xs:documentation xml:lang="en">Life Science Identifiers</xs:documentation>
                     <xs:documentation xml:lang="en">A unique identifier for data in the Life Science domain.</xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="MFAID" xml:lang="en">
-                <xs:annotation>
-                    <xs:documentation xml:lang="en">A Mediaflux Asset ID number</xs:documentation>
-                    <xs:documentation xml:lang="en">Include the domain and namespace to make the ID as persistent as possible</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="PMID" xml:lang="en">
                 <xs:annotation>
+                    <xs:documentation xml:lang="en">PubMed identifier</xs:documentation>
                     <xs:documentation xml:lang="en">A unique number assigned to each PubMed record.</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="PURL" xml:lang="en">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">Persistent Uniform Resource Locator</xs:documentation>
+                    <xs:documentation xml:lang="en">A PURL has three parts: (1) a protocol, (2) a resolver address, and (3) a name.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RRID" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Research Resource IDentifier</xs:documentation>
+                    <xs:documentation xml:lang="en">A character string used to uniquely identify key inputs to an experiment including the so-called “key biological resources” as defined by the National Institutes of Health, and related tools such as core facilities and databases. An RRID name is divided into two parts, the authority and a local identifier, separated by an underscore.</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="UPC" xml:lang="en">
                 <xs:annotation>
+                    <xs:documentation xml:lang="en">Universal Product Code</xs:documentation>
                     <xs:documentation xml:lang="en">A barcode symbology used for tracking trade items in stores. Its most common form, the UPC-A, consists of 12 numerical digits.</xs:documentation>
-                    <xs:documentation xml:lang="en">UPC is short for Universal Product Code</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="URL" xml:lang="en">
                 <xs:annotation>
+                    <xs:documentation xml:lang="en">Uniform Resource Locator</xs:documentation>
                     <xs:documentation xml:lang="en">Also known as web address, a URL is a specific character string that constitutes a reference to a resource.</xs:documentation>
-                    <xs:documentation xml:lang="en">URL is short for Universal Resource Locator</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="URN" xml:lang="en">
                 <xs:annotation>
+                    <xs:documentation xml:lang="en">Uniform Resource Name</xs:documentation>
                     <xs:documentation xml:lang="en">A unique and persistent identifier of an electronic document.</xs:documentation>
-                    <xs:documentation xml:lang="en">URN is short for Universal Resource Name</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="w3id" xml:lang="en">
                 <xs:annotation>
+                    <xs:documentation xml:lang="en">Permanent identifier for Web applications</xs:documentation>
                     <xs:documentation xml:lang="en">Mostly used to publish vocabularies and ontologies. The letters ‘w3’ stand for “World Wide Web”.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="MFAID" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">A Mediaflux Asset ID number</xs:documentation>
+                    <xs:documentation xml:lang="en">Include the domain and namespace to make the ID as persistent as possible</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
         </xs:restriction>

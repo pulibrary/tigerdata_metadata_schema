@@ -50,6 +50,7 @@
             - Added new values README and DataDocumentation, with documentation on usage
           - Revised relatedIDTypeType to align with DataCite 4.6
           - Revised dateTypeType to align with DataCite 4.6
+          - Updated other references to DataCite
         
         2025-03-13:
           - Revised accessPoints
@@ -1032,7 +1033,7 @@
     <xs:attribute name="resourceTypeGeneral" type="resourceTypeGeneralType">
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard attribute to specify the general type for a resource, following the controlled vocabulary in resourceTypeGeneralType</xs:documentation>
-            <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for resourceTypeGeneral (v4.5+)</xs:documentation>
+            <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for resourceTypeGeneral (v4.6+)</xs:documentation>
         </xs:annotation>
     </xs:attribute>
     
@@ -1619,8 +1620,8 @@
         <xs:annotation>
             <xs:documentation xml:lang="en">Information about financial support (funding) for the resource being registered</xs:documentation>
             <xs:documentation xml:lang="en">May apply to either Projects or Items</xs:documentation>
-            <xs:documentation xml:lang="en">Derived from the DataCite definitions for FundingReference (v4.5+)</xs:documentation>
-            <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/fundingreference/</xs:documentation>
+            <xs:documentation xml:lang="en">Derived from the DataCite definitions for FundingReference (v4.6+)</xs:documentation>
+            <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.6/properties/fundingreference/</xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
@@ -1704,7 +1705,7 @@
         <xs:annotation>
             <xs:documentation xml:lang="en">A simple description of the resource, using controlled terms for TigerData resources</xs:documentation>
             <xs:documentation xml:lang="en">May apply to either Projects or Items</xs:documentation>
-            <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for resourceTypeGeneral (v4.5+)</xs:documentation>
+            <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for resourceTypeGeneral (v4.6+)</xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:simpleContent>
@@ -2478,6 +2479,8 @@
                             <xs:annotation>
                                 <xs:documentation xml:lang="en">Tags for subject headings, content types, or other keywords</xs:documentation>
                                 <xs:documentation xml:lang="en">May apply to either Projects and Items</xs:documentation>
+                                <xs:documentation xml:lang="en">Derived from the DataCite definitions for Subject (v4.6+)</xs:documentation>
+                                <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.6/properties/subject/</xs:documentation>
                             </xs:annotation>
                             <xs:complexType>
                                 <xs:simpleContent>
@@ -2531,6 +2534,8 @@
                             <xs:annotation>
                                 <xs:documentation xml:lang="en">Specifies a related TigerData project or item, a published paper, or any other digital object</xs:documentation>
                                 <xs:documentation xml:lang="en">May apply to either Projects or Items</xs:documentation>
+                                <xs:documentation xml:lang="en">Derived from the DataCite definitions for RelatedIdentifier (v4.6+)</xs:documentation>
+                                <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.6/properties/relatedidentifier/</xs:documentation>
                             </xs:annotation>
                             <xs:complexType>
                                 <xs:simpleContent>

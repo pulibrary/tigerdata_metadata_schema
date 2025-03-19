@@ -2,12 +2,12 @@
 
 <!-- Version Notes:
         - Draft of version 0.8 of the TigerData Standard Metadata Schema
-        - Updated on 2025-03-13 by Matt Chandler
+        - Updated on 2025-03-19 by Matt Chandler
 -->
 <!-- References:
         - As noted in documentation fields below, several elements are derived from DataCite:
             DataCite Metadata Working Group. (2024). DataCite Metadata Schema for the Publication and Citation of Research Data and Other Research Outputs. 
-            Version 4.5. DataCite e.V. https://doi.org/10.14454/g8e5-6293
+            Version 4.6. DataCite e.V. https://doi.org/10.14454/mzv1-5b55
 -->
 <!-- Key Concepts:
         - Resource: a digital object in TigerData systems, falling into two classes, projects and items
@@ -41,6 +41,17 @@
             - Could (or should) we use either the built-in "citeable-id" or "hierarchical-id" type?
 -->
 <!-- Version 0.8 Change Log:
+        2025-03-19:
+          - Revised relationTypeType to align with DataCite 4.6
+          - Revised resourceTypeGeneralType
+            - Aligned controlled vocabulary with DataCite 4.6
+            - Added documentation to OutputManagementPlan to indicate that it should be applied to items serving as a DMP for TigerData projects
+            - Added documentation to Project to indicate that it should be applied to TigerData projects
+            - Added new values README and DataDocumentation, with documentation on usage
+          - Revised relatedIDTypeType to align with DataCite 4.6
+          - Revised dateTypeType to align with DataCite 4.6
+          - Updated other references to DataCite
+        
         2025-03-13:
           - Revised accessPoints
             - Documentation
@@ -271,13 +282,18 @@
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard type that defines the controlled vocabulary for resourceTypeGeneral values</xs:documentation>
             <xs:documentation xml:lang="en">Applies to both Projects and Items</xs:documentation>
-            <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for resourceTypeGeneral (v4.5+)</xs:documentation>
-            <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.5/appendices/appendix-1/resourceTypeGeneral/</xs:documentation>
+            <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for resourceTypeGeneral (v4.6+)</xs:documentation>
+            <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.6/appendices/appendix-1/resourceTypeGeneral/</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="Audiovisual" xml:lang="en">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">A series of visual representations imparting an impression of motion when shown in succession. May or may not include sound.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Award" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">An umbrella term for resources provided to individual(s) or organization(s) in support of research, academic output, or training, such as a specific instance of funding, grant, investment, sponsorship, scholarship, recognition, or non-monetary materials.</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="Book" xml:lang="en">
@@ -360,6 +376,12 @@
                     <xs:documentation xml:lang="en">An abstract, conceptual, graphical, mathematical or visualization model that represents empirical objects, phenomena, or physical processes.</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
+            <xs:enumeration value="OutputManagementPlan" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">A formal document that outlines how research outputs are to be handled both during a research project and after the project is completed.</xs:documentation>
+                    <xs:documentation xml:lang="en">Use this resource type for items that serve as the Data Management Plan for a TigerData project.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
             <xs:enumeration value="PeerReview" xml:lang="en">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">Evaluation of scientific, academic, or professional work by others working in the same field.</xs:documentation>
@@ -378,6 +400,7 @@
             <xs:enumeration value="Project" xml:lang="en">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">A planned endeavor or activity, frequently collaborative, intended to achieve a particular aim using allocated resources such as budget, time, and expertise.</xs:documentation>
+                    <xs:documentation xml:lang="en">Use this resource type for all TigerData projects.</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="Report" xml:lang="en">
@@ -423,6 +446,18 @@
             <xs:enumeration value="Other" xml:lang="en">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">A type of resource not otherwise described by defined types.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="README" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">A simple text file used to document important information about a containing resource.</xs:documentation>
+                    <xs:documentation xml:lang="en">Use this resource type for all items serving as README files for TigerData projects.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="DataDocumentation" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">A resource used to document detailed information about data in a containing resource (e.g., a codebook or data dictionary).</xs:documentation>
+                    <xs:documentation xml:lang="en">Use this resource type for items serving as supplemental documentation to the README for a TigerData project.</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
         </xs:restriction>
@@ -544,18 +579,19 @@
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard type that defines the controlled vocabulary for the relatedIDType attribute</xs:documentation>
             <xs:documentation xml:lang="en">Applies to both Projects and Items</xs:documentation>
-            <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for relatedIdentifierType (v4.5+)</xs:documentation>
-            <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.5/appendices/appendix-1/relatedIdentifierType/</xs:documentation>
+            <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for relatedIdentifierType (v4.6+)</xs:documentation>
+            <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.6/appendices/appendix-1/relatedIdentifierType/</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="ARK" xml:lang="en">
                 <xs:annotation>
+                    <xs:documentation xml:lang="en">Archival Resource Key</xs:documentation>
                     <xs:documentation xml:lang="en">A URI designed to support long-term access to information objects.</xs:documentation>
-                    <xs:documentation xml:lang="en">ARK is short for Archival Resource Key</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="arXiv" xml:lang="en">
                 <xs:annotation>
+                    <xs:documentation xml:lang="en">arXiv identifier</xs:documentation>
                     <xs:documentation xml:lang="en">arXiv.org is a repository of preprints of scientific papers in the fields of mathematics, physics, astronomy, computer science, quantitative biology, statistics, and quantitative finance.</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
@@ -564,8 +600,15 @@
                     <xs:documentation xml:lang="en">Astrophysics Data System bibliographic codes</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
+            <xs:enumeration value="CSTR" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Common Science and Technology Resources Identifier</xs:documentation>
+                    <xs:documentation xml:lang="en">CSTR is an identifier based on the Chinese National Standard GB/T 32843—2016 “Science and technology resource identification”, providing a unique identification service for scientific data, papers, scientific institutions, researchers, scientific instruments, patents and other scientific and technological resources.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
             <xs:enumeration value="DOI" xml:lang="en">
                 <xs:annotation>
+                    <xs:documentation xml:lang="en">Digital Object Identifier</xs:documentation>
                     <xs:documentation xml:lang="en">A character string used to uniquely identify an object. A DOI name is divided into two parts, a prefix and a suffix, separated by a slash.</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
@@ -577,6 +620,7 @@
             </xs:enumeration>
             <xs:enumeration value="EISSN" xml:lang="en">
                 <xs:annotation>
+                    <xs:documentation xml:lang="en">Electronic International Standard Serial Number</xs:documentation>
                     <xs:documentation xml:lang="en">ISSN used to identify periodicals in electronic form (eISSN or e-ISSN).</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
@@ -587,26 +631,26 @@
             </xs:enumeration>
             <xs:enumeration value="IGSN" xml:lang="en">
                 <xs:annotation>
+                    <xs:documentation xml:lang="en">International Generic Sample Number</xs:documentation>
                     <xs:documentation xml:lang="en">A code that uniquely identifies samples from our natural environment and related features-of-interest.</xs:documentation>
-                    <xs:documentation xml:lang="en">IGSN is short for International Generic Sample Number</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="ISBN" xml:lang="en">
                 <xs:annotation>
+                    <xs:documentation xml:lang="en">International Standard Book Number</xs:documentation>
                     <xs:documentation xml:lang="en">A unique numeric book identifier. There are 2 formats: a 10-digit ISBN format and a 13-digit ISBN.</xs:documentation>
-                    <xs:documentation xml:lang="en">ISBN is short for International Standard Book Number</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="ISSN" xml:lang="en">
                 <xs:annotation>
+                    <xs:documentation xml:lang="en">International Standard Serial Number</xs:documentation>
                     <xs:documentation xml:lang="en">A unique 8-digit number used to identify a print or electronic periodical publication.</xs:documentation>
-                    <xs:documentation xml:lang="en">ISSN is short for International Standard Serial Number</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="ISTC" xml:lang="en">
                 <xs:annotation>
+                    <xs:documentation xml:lang="en">International Standard Text Code</xs:documentation>
                     <xs:documentation xml:lang="en">A unique “number” assigned to a textual work. An ISTC consists of 16 numbers and/or letters.</xs:documentation>
-                    <xs:documentation xml:lang="en">ISTC is short for International Standard Text Code</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="LISSN" xml:lang="en">
@@ -616,46 +660,56 @@
             </xs:enumeration>
             <xs:enumeration value="LSID" xml:lang="en">
                 <xs:annotation>
+                    <xs:documentation xml:lang="en">Life Science Identifiers</xs:documentation>
                     <xs:documentation xml:lang="en">A unique identifier for data in the Life Science domain.</xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="MFAID" xml:lang="en">
-                <xs:annotation>
-                    <xs:documentation xml:lang="en">A Mediaflux Asset ID number</xs:documentation>
-                    <xs:documentation xml:lang="en">Include the domain and namespace to make the ID as persistent as possible</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="PMID" xml:lang="en">
                 <xs:annotation>
+                    <xs:documentation xml:lang="en">PubMed identifier</xs:documentation>
                     <xs:documentation xml:lang="en">A unique number assigned to each PubMed record.</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="PURL" xml:lang="en">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">Persistent Uniform Resource Locator</xs:documentation>
+                    <xs:documentation xml:lang="en">A PURL has three parts: (1) a protocol, (2) a resolver address, and (3) a name.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RRID" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Research Resource IDentifier</xs:documentation>
+                    <xs:documentation xml:lang="en">A character string used to uniquely identify key inputs to an experiment including the so-called “key biological resources” as defined by the National Institutes of Health, and related tools such as core facilities and databases. An RRID name is divided into two parts, the authority and a local identifier, separated by an underscore.</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="UPC" xml:lang="en">
                 <xs:annotation>
+                    <xs:documentation xml:lang="en">Universal Product Code</xs:documentation>
                     <xs:documentation xml:lang="en">A barcode symbology used for tracking trade items in stores. Its most common form, the UPC-A, consists of 12 numerical digits.</xs:documentation>
-                    <xs:documentation xml:lang="en">UPC is short for Universal Product Code</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="URL" xml:lang="en">
                 <xs:annotation>
+                    <xs:documentation xml:lang="en">Uniform Resource Locator</xs:documentation>
                     <xs:documentation xml:lang="en">Also known as web address, a URL is a specific character string that constitutes a reference to a resource.</xs:documentation>
-                    <xs:documentation xml:lang="en">URL is short for Universal Resource Locator</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="URN" xml:lang="en">
                 <xs:annotation>
+                    <xs:documentation xml:lang="en">Uniform Resource Name</xs:documentation>
                     <xs:documentation xml:lang="en">A unique and persistent identifier of an electronic document.</xs:documentation>
-                    <xs:documentation xml:lang="en">URN is short for Universal Resource Name</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="w3id" xml:lang="en">
                 <xs:annotation>
+                    <xs:documentation xml:lang="en">Permanent identifier for Web applications</xs:documentation>
                     <xs:documentation xml:lang="en">Mostly used to publish vocabularies and ontologies. The letters ‘w3’ stand for “World Wide Web”.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="MFAID" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">A Mediaflux Asset ID number</xs:documentation>
+                    <xs:documentation xml:lang="en">Include the domain and namespace to make the ID as persistent as possible</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
         </xs:restriction>
@@ -665,8 +719,8 @@
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard type that defines the controlled vocabulary for the relationType attribute</xs:documentation>
             <xs:documentation xml:lang="en">Applies to both Projects and Items</xs:documentation>
-            <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for relationType (v4.5+)</xs:documentation>
-            <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.5/appendices/appendix-1/relationType/</xs:documentation>
+            <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for relationType (v4.6+)</xs:documentation>
+            <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.6/appendices/appendix-1/relationType/</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="IsCitedBy" xml:lang="en">
@@ -851,6 +905,16 @@
                     <xs:documentation xml:lang="en">A collects B</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
+            <xs:enumeration value="IsTranslationOf" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">A is a translation of B</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="HasTranslation" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">A has a translation B</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
             <xs:enumeration value="HasSubproject" xml:lang="en">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">A and B are both projects, and A includes B as a subproject</xs:documentation>
@@ -882,10 +946,20 @@
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard type that defines the controlled vocabulary for the dateType attribute</xs:documentation>
             <xs:documentation xml:lang="en">Applies to both Projects and Items</xs:documentation>
-            <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for dateType (v4.5+)</xs:documentation>
-            <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.5/appendices/appendix-1/dateType/</xs:documentation>
+            <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for dateType (v4.6+)</xs:documentation>
+            <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.6/appendices/appendix-1/dateType/</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
+            <xs:enumeration value="Accepted" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">The date that the publisher accepted the resource into their system.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Available" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">The date the resource is made publicly available. May be a range.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
             <xs:enumeration value="Copyrighted" xml:lang="en">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The specific, documented date at which the resource receives a copyrighted status, if applicable.</xs:documentation>
@@ -901,6 +975,16 @@
                     <xs:documentation xml:lang="en">The date the resource itself was put together; this could refer to a timeframe in ancient history, a date range, or a single date for a final component, e.g., the finalised file with all the data.</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
+            <xs:enumeration value="Issued" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">The date that the resource is published or distributed, e.g., to a data centre.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Submitted" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">The date the creator submits the resource to the publisher. This could be different from Accepted if the publisher then applies a selection process.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
             <xs:enumeration value="Updated" xml:lang="en">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The date of the last update to the resource, when the resource is being added to. May be a range.</xs:documentation>
@@ -909,6 +993,11 @@
             <xs:enumeration value="Valid" xml:lang="en">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The date or date range during which the dataset or resource is accurate.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Withdrawn" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">The date the resource is removed.</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="Other" xml:lang="en">
@@ -944,7 +1033,7 @@
     <xs:attribute name="resourceTypeGeneral" type="resourceTypeGeneralType">
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard attribute to specify the general type for a resource, following the controlled vocabulary in resourceTypeGeneralType</xs:documentation>
-            <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for resourceTypeGeneral (v4.5+)</xs:documentation>
+            <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for resourceTypeGeneral (v4.6+)</xs:documentation>
         </xs:annotation>
     </xs:attribute>
     
@@ -1531,8 +1620,8 @@
         <xs:annotation>
             <xs:documentation xml:lang="en">Information about financial support (funding) for the resource being registered</xs:documentation>
             <xs:documentation xml:lang="en">May apply to either Projects or Items</xs:documentation>
-            <xs:documentation xml:lang="en">Derived from the DataCite definitions for FundingReference (v4.5+)</xs:documentation>
-            <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/fundingreference/</xs:documentation>
+            <xs:documentation xml:lang="en">Derived from the DataCite definitions for FundingReference (v4.6+)</xs:documentation>
+            <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.6/properties/fundingreference/</xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
@@ -1616,7 +1705,7 @@
         <xs:annotation>
             <xs:documentation xml:lang="en">A simple description of the resource, using controlled terms for TigerData resources</xs:documentation>
             <xs:documentation xml:lang="en">May apply to either Projects or Items</xs:documentation>
-            <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for resourceTypeGeneral (v4.5+)</xs:documentation>
+            <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for resourceTypeGeneral (v4.6+)</xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:simpleContent>
@@ -2390,6 +2479,8 @@
                             <xs:annotation>
                                 <xs:documentation xml:lang="en">Tags for subject headings, content types, or other keywords</xs:documentation>
                                 <xs:documentation xml:lang="en">May apply to either Projects and Items</xs:documentation>
+                                <xs:documentation xml:lang="en">Derived from the DataCite definitions for Subject (v4.6+)</xs:documentation>
+                                <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.6/properties/subject/</xs:documentation>
                             </xs:annotation>
                             <xs:complexType>
                                 <xs:simpleContent>
@@ -2443,6 +2534,8 @@
                             <xs:annotation>
                                 <xs:documentation xml:lang="en">Specifies a related TigerData project or item, a published paper, or any other digital object</xs:documentation>
                                 <xs:documentation xml:lang="en">May apply to either Projects or Items</xs:documentation>
+                                <xs:documentation xml:lang="en">Derived from the DataCite definitions for RelatedIdentifier (v4.6+)</xs:documentation>
+                                <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.6/properties/relatedidentifier/</xs:documentation>
                             </xs:annotation>
                             <xs:complexType>
                                 <xs:simpleContent>

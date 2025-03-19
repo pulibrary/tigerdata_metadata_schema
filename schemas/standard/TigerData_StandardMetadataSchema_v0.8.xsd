@@ -43,6 +43,10 @@
 <!-- Version 0.8 Change Log:
         2025-03-19:
           - Revised relationTypeType to align with DataCite 4.6
+          - Revised resourceTypeGeneralType to align with DataCite 4.6
+            - Added documentation to OutputManagementPlan to indicate that it should be applied to items serving as a DMP for TigerData projects
+            - Added documentation to Project to indicate that it should be applied to TigerData projects
+            - Added new values README and DataDocumentation, with documentation on usage
         
         2025-03-13:
           - Revised accessPoints
@@ -274,13 +278,18 @@
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard type that defines the controlled vocabulary for resourceTypeGeneral values</xs:documentation>
             <xs:documentation xml:lang="en">Applies to both Projects and Items</xs:documentation>
-            <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for resourceTypeGeneral (v4.5+)</xs:documentation>
-            <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.5/appendices/appendix-1/resourceTypeGeneral/</xs:documentation>
+            <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for resourceTypeGeneral (v4.6+)</xs:documentation>
+            <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.6/appendices/appendix-1/resourceTypeGeneral/</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="Audiovisual" xml:lang="en">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">A series of visual representations imparting an impression of motion when shown in succession. May or may not include sound.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Award" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">An umbrella term for resources provided to individual(s) or organization(s) in support of research, academic output, or training, such as a specific instance of funding, grant, investment, sponsorship, scholarship, recognition, or non-monetary materials.</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="Book" xml:lang="en">
@@ -363,6 +372,12 @@
                     <xs:documentation xml:lang="en">An abstract, conceptual, graphical, mathematical or visualization model that represents empirical objects, phenomena, or physical processes.</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
+            <xs:enumeration value="OutputManagementPlan" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">A formal document that outlines how research outputs are to be handled both during a research project and after the project is completed.</xs:documentation>
+                    <xs:documentation xml:lang="en">Use this resource type for items that serve as the Data Management Plan for a TigerData project.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
             <xs:enumeration value="PeerReview" xml:lang="en">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">Evaluation of scientific, academic, or professional work by others working in the same field.</xs:documentation>
@@ -381,6 +396,7 @@
             <xs:enumeration value="Project" xml:lang="en">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">A planned endeavor or activity, frequently collaborative, intended to achieve a particular aim using allocated resources such as budget, time, and expertise.</xs:documentation>
+                    <xs:documentation xml:lang="en">Use this resource type for all TigerData projects.</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="Report" xml:lang="en">
@@ -426,6 +442,18 @@
             <xs:enumeration value="Other" xml:lang="en">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">A type of resource not otherwise described by defined types.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="README" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">A simple text file used to document important information about a containing resource.</xs:documentation>
+                    <xs:documentation xml:lang="en">Use this resource type for all items serving as README files for TigerData projects.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="DataDocumentation" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">A resource used to document detailed information about data in a containing resource (e.g., a codebook or data dictionary).</xs:documentation>
+                    <xs:documentation xml:lang="en">Use this resource type for items serving as supplemental documentation to the README for a TigerData project.</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
         </xs:restriction>

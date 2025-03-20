@@ -2,7 +2,7 @@
 
 <!-- Version Notes:
         - Draft of version 0.8 of the TigerData Standard Metadata Schema
-        - Updated on 2025-03-19 by Matt Chandler
+        - Updated on 2025-03-20 by Matt Chandler
 -->
 <!-- References:
         - As noted in documentation fields below, several elements are derived from DataCite:
@@ -41,6 +41,13 @@
             - Could (or should) we use either the built-in "citeable-id" or "hierarchical-id" type?
 -->
 <!-- Version 0.8 Change Log:
+        2025-03-20:
+          - Revised documentation for researchDomain
+          - Adjusted departments
+            - Removed department abbreviation attribute
+            - Created and applied departmentCodeType
+            - Created and applied departmentType
+        
         2025-03-19:
           - Revised relationTypeType to align with DataCite 4.6
           - Revised resourceTypeGeneralType
@@ -251,6 +258,16 @@
                     <xs:documentation xml:lang="en">The field is intended for internal (Princeton) use only</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="departmentCodeType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Standard type that defines the allowable values for the departmentCode attribute in department</xs:documentation>
+            <xs:documentation xml:lang="en">Princeton departments always have a 5-digit numerical code</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{5}"/>
         </xs:restriction>
     </xs:simpleType>
     
@@ -1132,6 +1149,18 @@
         </xs:restriction>
     </xs:simpleType>
     
+    <xs:simpleType name="departmentType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Standard type that defines the allowable values for department</xs:documentation>
+            <xs:documentation xml:lang="en">Princeton department names typically start with a 2- or 3-character abbreviation, followed by a minus-dash, and then a short description; however, several exceptions exist</xs:documentation>
+            <xs:documentation xml:lang="en">The enforceable pattern is a string length from 6 to 30</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="6"/>
+            <xs:maxLength value="30"/>
+        </xs:restriction>
+    </xs:simpleType>
+       
     <xs:complexType name="pathType">
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard type used for file path values</xs:documentation>
@@ -2073,6 +2102,7 @@
             <xs:element name="researchDomains" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The container element for all research domains for a project</xs:documentation>
+                    <xs:documentation xml:lang="en">If projectPurpose is Research, then at least one researchDomain element should be given</xs:documentation>
                     <xs:documentation xml:lang="en">No duplicate domains; no more than 4 total</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
@@ -2104,19 +2134,15 @@
                         <xs:element name="department" minOccurs="1" maxOccurs="100">
                             <xs:annotation>
                                 <xs:documentation xml:lang="en">The primary Princeton University department(s) affiliated with the project</xs:documentation>
-                                <xs:documentation xml:lang="en">Use the full canonical name for each recorded department</xs:documentation>
+                                <xs:documentation xml:lang="en">Use the canonical name for each recorded department</xs:documentation>
+                                <xs:documentation xml:lang="en">Princeton department names typically start with a 2- or 3-character abbreviation, followed by a minus-dash, and then a short description</xs:documentation>
                             </xs:annotation>
                             <xs:complexType>
                                 <xs:simpleContent>
-                                    <xs:extension base="xs:string">
-                                        <xs:attribute name="departmentCode" type="xs:positiveInteger" use="optional">
+                                    <xs:extension base="departmentType">
+                                        <xs:attribute name="departmentCode" type="departmentCodeType" use="required">
                                             <xs:annotation>
-                                                <xs:documentation xml:lang="en">Records the numerical code for the department, if available</xs:documentation>
-                                            </xs:annotation>
-                                        </xs:attribute>
-                                        <xs:attribute name="departmentAbbreviation" type="xs:string" use="optional">
-                                            <xs:annotation>
-                                                <xs:documentation xml:lang="en">Records the common abbreviation for the department, if available</xs:documentation>
+                                                <xs:documentation xml:lang="en">Records the numerical code for the department (required)</xs:documentation>
                                             </xs:annotation>
                                         </xs:attribute>
                                         <xs:attribute ref="inherited" default="true"/>

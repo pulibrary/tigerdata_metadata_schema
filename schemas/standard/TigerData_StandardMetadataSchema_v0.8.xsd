@@ -47,6 +47,7 @@
             - Removed department abbreviation attribute
             - Created and applied departmentCodeType
             - Created and applied departmentType
+          - Revised projectPurposeType
         
         2025-03-19:
           - Revised relationTypeType to align with DataCite 4.6
@@ -1326,16 +1327,18 @@
             <xs:enumeration value="Research" xml:lang="en">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The project is intended to contain research data</xs:documentation>
+                    <xs:documentation xml:lang="en">This includes projects for labs and research groups; it is not restricted to one specific research project</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="Administrative" xml:lang="en">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The project is intended to contain administrative data</xs:documentation>
+                    <xs:documentation xml:lang="en">This includes library and other staff-managed archive use-cases</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
-            <xs:enumeration value="Library Archive" xml:lang="en">
+            <xs:enumeration value="Teaching" xml:lang="en">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The project is intended to contain library archive data</xs:documentation>
+                    <xs:documentation xml:lang="en">The project is intended to contain data stemming from teaching and learning use-cases</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
         </xs:restriction>

@@ -30,16 +30,6 @@
         - Acronyms and abbreviations are avoided in names and annotations to prevent confusion, but unlike DataCite, some acronyms are used
         - Repeatable elements are typically placed within container elements, and container elements have names that are the plural form of the repeatable element they contain
 -->
-<!-- Open Questions:
-        - Documenting guidance for how to implement in Mediaflux:
-            - How to handle imported namespaces?
-            - Can all of our custom types be implemented as-is?
-                - Or might we have to strip them down (e.g. to strings with no explicit restrictions, like DataCite does)?
-                - Or create "dictionaries" in Mediaflux for controlled vocabularies?
-            - Will all of our default and fixed values apply?
-            - Could (or should) we use the built-in "keyword" type?
-            - Could (or should) we use either the built-in "citeable-id" or "hierarchical-id" type?
--->
 <!-- Version 0.8 Change Log:
         2025-03-20:
           - Revised documentation for researchDomain

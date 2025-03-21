@@ -2853,7 +2853,7 @@
         <xs:sequence>
             <xs:element name="itemID" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The unique identifier for the item</xs:documentation>
+                    <xs:documentation xml:lang="en">The unique identifier for the item (required)</xs:documentation>
                     <xs:documentation xml:lang="en">TigerData items use Mediaflux Asset IDs as their primary identifiers</xs:documentation>
                     <xs:documentation xml:lang="en">If an item also has any other IDs, they all should be included under alternativeIDs</xs:documentation>
                 </xs:annotation>
@@ -2904,7 +2904,7 @@
             </xs:sequence>
             <xs:attribute name="resourceClass" use="required">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">Specifies the class of a given resource: either Project or Item.</xs:documentation>
+                    <xs:documentation xml:lang="en">Specifies the class of a given resource: either Project or Item (required)</xs:documentation>
                 </xs:annotation>
                 <xs:simpleType>
                     <xs:restriction base="xs:string">
@@ -2915,7 +2915,7 @@
             </xs:attribute>
             <xs:attribute name="resourceID" type="limitedTextType" use="required">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The unique identifier for the resource within TigerData systems</xs:documentation>
+                    <xs:documentation xml:lang="en">The unique identifier for the resource within TigerData systems (required)</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="resourceIDType" use="required">

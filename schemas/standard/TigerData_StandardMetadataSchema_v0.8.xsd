@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- Version Notes:
-        - Draft of version 0.8 of the TigerData Standard Metadata Schema
-        - Updated on 2025-03-20 by Matt Chandler
+        - Version 0.8 of the TigerData Standard Metadata Schema
+        - Updated on 2025-03-21 by Matt Chandler
 -->
 <!-- References:
         - As noted in documentation fields below, several elements are derived from DataCite:
@@ -26,11 +26,14 @@
             - If a given attribute is intended to be used only in one element, then it is defined within that element
             - If a given element or attribute can have multiple applications, then it is called out earlier in the primitives and then referenced where needed
         - camelCase is used for all custom names for types, attributes, elements, and groups (acronyms are lowercase when beginning a name)
-        - The name of every simple and complex type ends with "Type" (if the semantic part of the name ends in "Type" then "Type" is still appended, e.g. "relationTypeType")
-        - Acronyms and abbreviations are avoided in names and annotations to prevent confusion, but unlike DataCite, some acronyms are used
+        - The name of every simple and complex type ends with "Type" (if the semantic part of the name ends in "Type" then "Type" is still appended to the XML type name, e.g. "relationTypeType")
+        - Acronyms and abbreviations are avoided in names and annotations to prevent confusion, but unlike DataCite, some acronyms are used (e.g., ID for identifier)
         - Repeatable elements are typically placed within container elements, and container elements have names that are the plural form of the repeatable element they contain
 -->
 <!-- Version 0.8 Change Log:
+        2025-03-21:
+          - Revised header comments
+        
         2025-03-20:
           - Revised documentation for researchDomain
           - Adjusted departments

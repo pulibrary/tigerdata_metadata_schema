@@ -56,6 +56,8 @@
           - Set the projectVisibility default to Limited
           - Removed the default for projectPurpose
           - Changed grantFunded to funded (to not bias toward research purposes)
+          - Applied shortDescriptionType to keyword
+             - Repaired shortDescriptionType to use shortDescriptionLimitType
         
         2025-03-20:
           - Revised documentation for researchDomain
@@ -197,10 +199,10 @@
     
     <xs:complexType name="shortDescriptionType">
         <xs:annotation>
-            <xs:documentation xml:lang="en">Standard type uesed for short descriptive values (e.g., itemResourceType)</xs:documentation>
+            <xs:documentation xml:lang="en">Standard type uesed for short descriptive values (e.g., itemResourceType and keyword)</xs:documentation>
         </xs:annotation>
         <xs:simpleContent>
-            <xs:extension base="limitedTitleType">
+            <xs:extension base="shortDescriptionLimitType">
                 <xs:attribute ref="xml:lang" default="en"/>
             </xs:extension>
         </xs:simpleContent>
@@ -2587,7 +2589,7 @@
             <xs:element ref="duaReferences" minOccurs="0" maxOccurs="1"/>
         </xs:sequence>
     </xs:group>
-
+    
     <xs:group name="supplementalMetadata">
         <xs:annotation>
             <xs:documentation xml:lang="en">A group of all elements included in TigerData supplemental metadata fields</xs:documentation>
@@ -2604,40 +2606,32 @@
                     <xs:sequence>
                         <xs:element name="keyword" minOccurs="1" maxOccurs="100">
                             <xs:annotation>
-                                <xs:documentation xml:lang="en">Tags for subject headings, content types, or other keywords</xs:documentation>
+                                <xs:documentation xml:lang="en">Tags for subject headings, content types, or other keywords (given as a string)</xs:documentation>
                                 <xs:documentation xml:lang="en">May apply to either Projects and Items</xs:documentation>
                                 <xs:documentation xml:lang="en">Derived from the DataCite definitions for Subject (v4.6+)</xs:documentation>
                                 <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.6/properties/subject/</xs:documentation>
                             </xs:annotation>
                             <xs:complexType>
                                 <xs:simpleContent>
-                                    <xs:extension base="textType">
+                                    <xs:extension base="shortDescriptionType">
                                         <xs:attribute name="subjectScheme" type="limitedTextType" use="optional">
                                             <xs:annotation>
-                                                <xs:documentation xml:lang="en">The name of the subject scheme or classification code or authority if one is used.</xs:documentation>
-                                                <xs:documentation xml:lang="en">Derived from DataCite Subject attribute definitions (v4.5)</xs:documentation>
-                                                <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/subject/</xs:documentation>
+                                                <xs:documentation xml:lang="en">The name of the subject scheme or classification code or authority, if applicable</xs:documentation>
                                             </xs:annotation>
                                         </xs:attribute>
                                         <xs:attribute name="subjectSchemeURI" type="xs:anyURI" use="optional">
                                             <xs:annotation>
-                                                <xs:documentation xml:lang="en">The URI of the subject identifier scheme.</xs:documentation>
-                                                <xs:documentation xml:lang="en">Derived from DataCite Subject attribute definitions (v4.5)</xs:documentation>
-                                                <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/subject/</xs:documentation>
+                                                <xs:documentation xml:lang="en">The URI of the subject identifier scheme, if applicable</xs:documentation>
                                             </xs:annotation>
                                         </xs:attribute>
                                         <xs:attribute name="valueURI" type="xs:anyURI" use="optional">
                                             <xs:annotation>
-                                                <xs:documentation xml:lang="en">The URI of the subject term.</xs:documentation>
-                                                <xs:documentation xml:lang="en">Derived from DataCite Subject attribute definitions (v4.5)</xs:documentation>
-                                                <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/subject/</xs:documentation>
+                                                <xs:documentation xml:lang="en">The URI of the subject term, if applicable</xs:documentation>
                                             </xs:annotation>
                                         </xs:attribute>
                                         <xs:attribute name="classificationCode" type="limitedTextType" use="optional">
                                             <xs:annotation>
-                                                <xs:documentation xml:lang="en">The classification code used for the subject term in the subject scheme.</xs:documentation>
-                                                <xs:documentation xml:lang="en">Derived from DataCite Subject attribute definitions (v4.5)</xs:documentation>
-                                                <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/subject/</xs:documentation>
+                                                <xs:documentation xml:lang="en">The classification code used for the subject term in the subject scheme, if applicable</xs:documentation>
                                             </xs:annotation>
                                         </xs:attribute>
                                         <xs:attribute ref="inherited" default="true"/>

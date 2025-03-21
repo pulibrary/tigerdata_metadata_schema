@@ -53,6 +53,7 @@
           - Updated fundingReference
             - Added the federalFunder attribute
             - Set the default funderIDType to ROR and the default funderIDSchema to https://ror.org/
+          - Set the projectVisibility default to Limited
         
         2025-03-20:
           - Revised documentation for researchDomain
@@ -1771,7 +1772,6 @@
             <xs:documentation xml:lang="en">The container element for all funding references for a resource</xs:documentation>
             <xs:documentation xml:lang="en">May apply to either Projects or Items</xs:documentation>
             <xs:documentation xml:lang="en">If this element is present, then it should contain at least one sub-element</xs:documentation>
-            <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for resourceTypeGeneral (v4.5+)</xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
@@ -1822,6 +1822,7 @@
         <xs:annotation>
             <xs:documentation xml:lang="en">Specific rights granted for copying and reusing the resource</xs:documentation>
             <xs:documentation xml:lang="en">May apply to either Projects or Items</xs:documentation>
+            <xs:documentation xml:lang="en">Modeled after the DataCite definitions for Rights (v4.6+)</xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:simpleContent>
@@ -1869,7 +1870,7 @@
     
     <xs:element name="duaReference">
         <xs:annotation>
-            <xs:documentation xml:lang="en">Information about formal agreements governing data use pertaining to the resource</xs:documentation>
+            <xs:documentation xml:lang="en">Information about a formal agreement governing data use pertaining to the resource (at minimum, a name for the agreement grantor)</xs:documentation>
             <xs:documentation xml:lang="en">DUA is short for Data Use Agreement</xs:documentation>
             <xs:documentation xml:lang="en">May apply to either Projects or Items</xs:documentation>
         </xs:annotation>
@@ -1882,7 +1883,7 @@
                 </xs:element>
                 <xs:element name="duaID" minOccurs="0" maxOccurs="1">
                     <xs:annotation>
-                        <xs:documentation xml:lang="en">Records the identifier for the DUA</xs:documentation>
+                        <xs:documentation xml:lang="en">Records the identifier for the DUA, if applicable (given as a string)</xs:documentation>
                     </xs:annotation>
                     <xs:complexType>
                         <xs:simpleContent>
@@ -1898,7 +1899,7 @@
                 </xs:element>
                 <xs:element name="duaTitle" type="textType" minOccurs="0" maxOccurs="1">
                     <xs:annotation>
-                        <xs:documentation xml:lang="en">Records the title for the DUA</xs:documentation>
+                        <xs:documentation xml:lang="en">Records the title for the DUA, if applicable</xs:documentation>
                     </xs:annotation>
                 </xs:element>
             </xs:sequence>
@@ -2178,6 +2179,7 @@
     <xs:group name="projectRoles">
         <xs:annotation>
             <xs:documentation xml:lang="en">A group of all elements included in TigerData project roles</xs:documentation>
+            <xs:documentation xml:lang="en">Requires 1 Data Sponsor and 1 Data Manager; Data Users are optional and repeatable</xs:documentation>
             <xs:documentation xml:lang="en">Does not apply to Items</xs:documentation>
         </xs:annotation>
         <xs:sequence>
@@ -2292,7 +2294,7 @@
             <xs:element ref="languages" minOccurs="0" maxOccurs="1"/>
         </xs:sequence>
     </xs:group>
-
+    
     <xs:group name="storageAndAccess">
         <xs:annotation>
             <xs:documentation xml:lang="en">A group of all elements included in TigerData project storage and access needs</xs:documentation>
@@ -2301,7 +2303,7 @@
         <xs:sequence>
             <xs:element name="storageCapacity" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The amount of storage allotted for the project (in logical byte units)</xs:documentation>
+                    <xs:documentation xml:lang="en">The amount of storage allotted for the project (in logical byte units, base-10)</xs:documentation>
                     <xs:documentation xml:lang="en">If no user request was received and no value has yet been approved, then this field may be empty</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
@@ -2332,7 +2334,7 @@
             </xs:element>
             <xs:element name="projectVisibility" minOccurs="1" maxOccurs="1" default="Limited">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The level of openness to allow for the project record</xs:documentation>
+                    <xs:documentation xml:lang="en">The level of openness to allow for the project record (default is Limited)</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                     <xs:simpleContent>

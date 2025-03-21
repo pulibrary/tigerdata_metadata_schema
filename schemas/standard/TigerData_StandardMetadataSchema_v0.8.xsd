@@ -55,6 +55,7 @@
             - Set the default funderIDType to ROR and the default funderIDSchema to https://ror.org/
           - Set the projectVisibility default to Limited
           - Removed the default for projectPurpose
+          - Changed grantFunded to funded (to not bias toward research purposes)
         
         2025-03-20:
           - Revised documentation for researchDomain
@@ -2547,9 +2548,9 @@
                     </xs:simpleContent>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="grantFunded" minOccurs="0" maxOccurs="1">
+            <xs:element name="funded" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">Whether a resource is grant funded</xs:documentation>
+                    <xs:documentation xml:lang="en">Whether a resource is funded</xs:documentation>
                     <xs:documentation xml:lang="en">If the value is true, then at least one fundingReference field must be filled</xs:documentation>
                     <xs:documentation xml:lang="en">If any subproject or item contained in a project has a fundingReference, then this field should be set to true</xs:documentation>
                 </xs:annotation>

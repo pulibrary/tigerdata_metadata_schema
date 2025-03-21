@@ -50,7 +50,9 @@
             - nameDate in userType to allow a range
             - Range options given to allow estimation by users
           - Split the dates group into projectDates and itemDates
-          - Added the federalFunder attribute to fundingReference
+          - Updated fundingReference
+            - Added the federalFunder attribute
+            - Set the default funderIDType to ROR and the default funderIDSchema to https://ror.org/
         
         2025-03-20:
           - Revised documentation for researchDomain
@@ -1710,7 +1712,7 @@
                     <xs:complexType>
                         <xs:simpleContent>
                             <xs:extension base="xs:string">
-                                <xs:attribute name="funderIDType" use="required">
+                                <xs:attribute name="funderIDType" default="ROR">
                                     <xs:annotation>
                                         <xs:documentation xml:lang="en">Records the type of identifier used for funderID</xs:documentation>
                                     </xs:annotation>
@@ -1724,7 +1726,7 @@
                                         </xs:restriction>
                                     </xs:simpleType>
                                 </xs:attribute>
-                                <xs:attribute name="funderIDSchema" type="xs:anyURI" use="optional">
+                                <xs:attribute name="funderIDSchema" type="xs:anyURI" default="https://ror.org/">
                                     <xs:annotation>
                                         <xs:documentation xml:lang="en">Records the schema that defines funderIDType</xs:documentation>
                                     </xs:annotation>

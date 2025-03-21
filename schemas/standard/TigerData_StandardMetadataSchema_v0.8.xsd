@@ -2606,7 +2606,7 @@
                     <xs:sequence>
                         <xs:element name="keyword" minOccurs="1" maxOccurs="100">
                             <xs:annotation>
-                                <xs:documentation xml:lang="en">Tags for subject headings, content types, or other keywords (given as a string)</xs:documentation>
+                                <xs:documentation xml:lang="en">Tag for a subject heading, content type, or other keyword (given as a string)</xs:documentation>
                                 <xs:documentation xml:lang="en">May apply to either Projects and Items</xs:documentation>
                                 <xs:documentation xml:lang="en">Derived from the DataCite definitions for Subject (v4.6+)</xs:documentation>
                                 <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.6/properties/subject/</xs:documentation>
@@ -2666,26 +2666,20 @@
                                         <xs:attribute name="relationType" type="relationTypeType" use="required"/>
                                         <xs:attribute name="relatedMetadataScheme" type="limitedTextType" use="optional">
                                             <xs:annotation>
-                                                <xs:documentation xml:lang="en">The name of the related metadata scheme</xs:documentation>
+                                                <xs:documentation xml:lang="en">The name of the related metadata scheme, if applicable</xs:documentation>
                                                 <xs:documentation xml:lang="en">Use only with HasMetadata and IsMetadataFor relation types</xs:documentation>
-                                                <xs:documentation xml:lang="en">Derived from DataCite RelatedIdentifier attribute definitions (v4.5)</xs:documentation>
-                                                <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/relatedidentifier/</xs:documentation>
                                             </xs:annotation>
                                         </xs:attribute>
                                         <xs:attribute name="relatedMetadataSchemeURI" type="xs:anyURI" use="optional">
                                             <xs:annotation>
-                                                <xs:documentation xml:lang="en">The URI of the related metadata scheme</xs:documentation>
+                                                <xs:documentation xml:lang="en">The URI of the related metadata scheme, if applicable</xs:documentation>
                                                 <xs:documentation xml:lang="en">Use only with HasMetadata and IsMetadataFor relation types</xs:documentation>
-                                                <xs:documentation xml:lang="en">Derived from DataCite RelatedIdentifier attribute definitions (v4.5)</xs:documentation>
-                                                <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/relatedidentifier/</xs:documentation>
                                             </xs:annotation>
                                         </xs:attribute>
                                         <xs:attribute name="relatedMetadataSchemeType" type="limitedTextType" use="optional">
                                             <xs:annotation>
-                                                <xs:documentation xml:lang="en">The type of the related metadata scheme (e.g. XSD, DDT, Turtle)</xs:documentation>
+                                                <xs:documentation xml:lang="en">The type of the related metadata scheme, if applicable (e.g. XSD, DDT, Turtle)</xs:documentation>
                                                 <xs:documentation xml:lang="en">Use only with HasMetadata and IsMetadataFor relation types</xs:documentation>
-                                                <xs:documentation xml:lang="en">Derived from DataCite RelatedIdentifier attribute definitions (v4.5)</xs:documentation>
-                                                <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.5/properties/relatedidentifier/</xs:documentation>
                                             </xs:annotation>
                                         </xs:attribute>
                                         <xs:attribute ref="resourceTypeGeneral" use="optional"/>
@@ -2701,7 +2695,7 @@
             </xs:element>
             <xs:element name="extendedMetadataSchemas" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The container element for all extended metadata schemas for a resource</xs:documentation>
+                    <xs:documentation xml:lang="en">The container element for all extended metadata schemas for a resource, if applicable</xs:documentation>
                     <xs:documentation xml:lang="en">May apply to either Projects or Items</xs:documentation>
                     <xs:documentation xml:lang="en">If this element is present, then it should contain at least one sub-element</xs:documentation>
                 </xs:annotation>
@@ -2709,7 +2703,7 @@
                     <xs:sequence>
                         <xs:element name="extendedMetadataSchema" minOccurs="1" maxOccurs="100">
                             <xs:annotation>
-                                <xs:documentation xml:lang="en">An indication of which TigerData supported metadata schemas should apply to a resource</xs:documentation>
+                                <xs:documentation xml:lang="en">An indication of which TigerData supported metadata schemas should apply to a resource (given as a string)</xs:documentation>
                                 <xs:documentation xml:lang="en">May apply to either Projects or Items</xs:documentation>
                             </xs:annotation>
                             <xs:complexType>
@@ -2739,7 +2733,7 @@
         <xs:sequence>
             <xs:element name="projectID" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The universally unique identifier for the project</xs:documentation>
+                    <xs:documentation xml:lang="en">The universally unique identifier for the project (required)</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                     <xs:simpleContent>
@@ -2760,13 +2754,13 @@
             <xs:group ref="supplementalMetadata"/>
             <xs:element name="projectProvenance" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The container element for all TigerData project provenance fields</xs:documentation>
+                    <xs:documentation xml:lang="en">The container element for all TigerData project provenance fields (required)</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element name="submission" minOccurs="1" maxOccurs="1">
                             <xs:annotation>
-                                <xs:documentation xml:lang="en">A record of a project’s initial submission</xs:documentation>
+                                <xs:documentation xml:lang="en">A record of a project’s initial submission (required)</xs:documentation>
                             </xs:annotation>
                             <xs:complexType>
                                 <xs:group ref="provenanceSubfields"/>
@@ -2777,7 +2771,7 @@
                         </xs:element>
                         <xs:element name="revisions" minOccurs="0" maxOccurs="1">
                             <xs:annotation>
-                                <xs:documentation xml:lang="en">The container element for all revision records</xs:documentation>
+                                <xs:documentation xml:lang="en">The container element for all revision records, if applicable</xs:documentation>
                             </xs:annotation>
                             <xs:complexType>
                                 <xs:sequence>
@@ -2797,7 +2791,7 @@
                         </xs:element>
                         <xs:element name="retirement" minOccurs="0" maxOccurs="1">
                             <xs:annotation>
-                                <xs:documentation xml:lang="en">A record of a project’s retirement</xs:documentation>
+                                <xs:documentation xml:lang="en">A record of a project’s retirement, if applicable</xs:documentation>
                             </xs:annotation>
                             <xs:complexType>
                                 <xs:group ref="provenanceSubfields"/>
@@ -2808,7 +2802,7 @@
                         </xs:element>
                         <xs:element name="publication" minOccurs="0" maxOccurs="1">
                             <xs:annotation>
-                                <xs:documentation xml:lang="en">A record of a project’s publication</xs:documentation>
+                                <xs:documentation xml:lang="en">A record of a project’s publication, if applicable</xs:documentation>
                             </xs:annotation>
                             <xs:complexType>
                                 <xs:group ref="provenanceSubfields"/>
@@ -2819,7 +2813,7 @@
                         </xs:element>
                         <xs:element name="status" minOccurs="1" maxOccurs="1" default="AdminReview">
                             <xs:annotation>
-                                <xs:documentation xml:lang="en">The current status of the project</xs:documentation>
+                                <xs:documentation xml:lang="en">The current status of the project (required)</xs:documentation>
                             </xs:annotation>
                             <xs:complexType>
                                 <xs:simpleContent>
@@ -2833,7 +2827,7 @@
                         </xs:element>
                         <xs:element name="schemaVersion" maxOccurs="1" minOccurs="1">
                             <xs:annotation>
-                                <xs:documentation xml:lang="en">The version of the TigerData Standard Metadata Schema used</xs:documentation>
+                                <xs:documentation xml:lang="en">The version of the TigerData Standard Metadata Schema used (required)</xs:documentation>
                             </xs:annotation>
                             <xs:complexType>
                                 <xs:simpleContent>
@@ -2850,7 +2844,7 @@
             </xs:element>
         </xs:sequence>
     </xs:group>
-
+    
     <xs:group name="itemFields">
         <xs:annotation>
             <xs:documentation xml:lang="en">A group of all elements/groups included in the TigerData standard metadata for items</xs:documentation>

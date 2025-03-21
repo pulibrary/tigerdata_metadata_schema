@@ -33,6 +33,7 @@
 <!-- Version 0.8 Change Log:
         2025-03-21:
           - Revised header comments
+          - Revised comments within body
         
         2025-03-20:
           - Revised documentation for researchDomain
@@ -76,7 +77,7 @@
     <xs:import schemaLocation="http://www.w3.org/2001/xml.xsd" namespace="http://www.w3.org/XML/1998/namespace"/>
     
 <!-- PRIMITIVES -->
-    <!-- All of the types, attributes, elements, and groups that are combined to make up a standard metadata payload (defined below, lines 2527-2567) -->
+    <!-- All of the types, attributes, elements, and groups that are combined to make up a standard metadata payload, which is defined last -->
     
     <!-- Common Types -->
         <!-- Simple and complex types that are either necessary building blocks for further types or that have application in various places (e.g., both elements and attributes) -->

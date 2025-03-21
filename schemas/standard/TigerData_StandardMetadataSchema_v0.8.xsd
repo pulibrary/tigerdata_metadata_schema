@@ -50,6 +50,7 @@
             - nameDate in userType to allow a range
             - Range options given to allow estimation by users
           - Split the dates group into projectDates and itemDates
+          - Added the federalFunder attribute to fundingReference
         
         2025-03-20:
           - Revised documentation for researchDomain
@@ -1508,8 +1509,9 @@
     
     <xs:element name="alternativeID">
         <xs:annotation>
-            <xs:documentation xml:lang="en">An alternative identifier for the resource (not the standard TigerData projectID or itemID)</xs:documentation>
+            <xs:documentation xml:lang="en">An alternative identifier for the resource (not the standard TigerData projectID or itemID), given as a string</xs:documentation>
             <xs:documentation xml:lang="en">May apply to either Projects or Items</xs:documentation>
+            <xs:documentation xml:lang="en">Modeled after the DataCite definition for RelatedIdentifier (v4.6+)</xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:simpleContent>
@@ -1529,6 +1531,7 @@
         <xs:annotation>
             <xs:documentation xml:lang="en">The container element for all alternative IDs for a resource</xs:documentation>
             <xs:documentation xml:lang="en">May apply to either Projects or Items</xs:documentation>
+            <xs:documentation xml:lang="en">If this element is present, then it should contain at least one sub-element</xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
@@ -1612,6 +1615,7 @@
         <xs:annotation>
             <xs:documentation xml:lang="en">The container element for all data users of a resource</xs:documentation>
             <xs:documentation xml:lang="en">May apply to either Projects or Items</xs:documentation>
+            <xs:documentation xml:lang="en">If this element is present, then it should contain at least one sub-element</xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
@@ -1672,6 +1676,7 @@
         <xs:annotation>
             <xs:documentation xml:lang="en">The container element for all languages for a resource</xs:documentation>
             <xs:documentation xml:lang="en">May apply to either Projects or Items</xs:documentation>
+            <xs:documentation xml:lang="en">If this element is present, then it should contain at least one sub-element</xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
@@ -1684,7 +1689,8 @@
     
     <xs:element name="fundingReference">
         <xs:annotation>
-            <xs:documentation xml:lang="en">Information about financial support (funding) for the resource being registered</xs:documentation>
+            <xs:documentation xml:lang="en">Information about financial support for the resource (at minimum, a name for the funding provider)</xs:documentation>
+            <xs:documentation xml:lang="en">This is most often used to acknowledge grant funding for research projects, but it may also be used to specify any other funding sources for any type of resource</xs:documentation>
             <xs:documentation xml:lang="en">May apply to either Projects or Items</xs:documentation>
             <xs:documentation xml:lang="en">Derived from the DataCite definitions for FundingReference (v4.6+)</xs:documentation>
             <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.6/properties/fundingreference/</xs:documentation>
@@ -1694,11 +1700,12 @@
                 <xs:element name="funderName" type="textType" minOccurs="1" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation xml:lang="en">Records the name of the funding provider</xs:documentation>
+                        <xs:documentation xml:lang="en">If the funding provider is part of the U.S. federal government, then the federalFunder attribute should be set to true</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="funderID" minOccurs="0" maxOccurs="1">
                     <xs:annotation>
-                        <xs:documentation xml:lang="en">Records the unique identifier for the funding provider</xs:documentation>
+                        <xs:documentation xml:lang="en">Records the unique identifier for the funding provider, if applicable</xs:documentation>
                     </xs:annotation>
                     <xs:complexType>
                         <xs:simpleContent>
@@ -1728,7 +1735,7 @@
                 </xs:element>
                 <xs:element name="awardNumber" minOccurs="0" maxOccurs="1">
                     <xs:annotation>
-                        <xs:documentation xml:lang="en">Records the award number for the fundingReference</xs:documentation>
+                        <xs:documentation xml:lang="en">Records the award number for the fundingReference, if applicable</xs:documentation>
                     </xs:annotation>
                     <xs:complexType>
                         <xs:simpleContent>
@@ -1744,10 +1751,15 @@
                 </xs:element>
                 <xs:element name="awardTitle" type="textType" minOccurs="0" maxOccurs="1">
                     <xs:annotation>
-                        <xs:documentation xml:lang="en">Records the title for the fundingReference</xs:documentation>
+                        <xs:documentation xml:lang="en">Records the title for the fundingReference, if applicable</xs:documentation>
                     </xs:annotation>
                 </xs:element>
             </xs:sequence>
+            <xs:attribute name="federalFunder" type="xs:boolean" default="false">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Whether the funder is part of the U.S. federal government (default false)</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
             <xs:attribute ref="inherited" default="true"/>
         </xs:complexType>
     </xs:element>
@@ -1756,6 +1768,7 @@
         <xs:annotation>
             <xs:documentation xml:lang="en">The container element for all funding references for a resource</xs:documentation>
             <xs:documentation xml:lang="en">May apply to either Projects or Items</xs:documentation>
+            <xs:documentation xml:lang="en">If this element is present, then it should contain at least one sub-element</xs:documentation>
             <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for resourceTypeGeneral (v4.5+)</xs:documentation>
         </xs:annotation>
         <xs:complexType>
@@ -1771,7 +1784,7 @@
         <xs:annotation>
             <xs:documentation xml:lang="en">A short description of the type of item, used in conjunction with a standard value for the resourceTypeGeneral attribute</xs:documentation>
             <xs:documentation xml:lang="en">Does not apply to Projects</xs:documentation>
-            <xs:documentation xml:lang="en">Modeled after the DataCite definition for resourceType (v4.6+)</xs:documentation>
+            <xs:documentation xml:lang="en">Modeled after the DataCite definition for ResourceType (v4.6+)</xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:simpleContent>
@@ -1841,6 +1854,7 @@
         <xs:annotation>
             <xs:documentation xml:lang="en">The container element for all licenses for a resource</xs:documentation>
             <xs:documentation xml:lang="en">May apply to either Projects or Items</xs:documentation>
+            <xs:documentation xml:lang="en">If this element is present, then it should contain at least one sub-element</xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
@@ -1895,6 +1909,7 @@
             <xs:documentation xml:lang="en">The container element for all DUA references for a resource</xs:documentation>
             <xs:documentation xml:lang="en">DUA is short for Data Use Agreement</xs:documentation>
             <xs:documentation xml:lang="en">May apply to either Projects or Items</xs:documentation>
+            <xs:documentation xml:lang="en">If this element is present, then it should contain at least one sub-element</xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
@@ -2180,6 +2195,7 @@
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The container element for all research domains for a project</xs:documentation>
                     <xs:documentation xml:lang="en">If projectPurpose is Research, then at least one researchDomain element should be given</xs:documentation>
+                    <xs:documentation xml:lang="en">If this element is present, then it should contain at least one sub-element</xs:documentation>
                     <xs:documentation xml:lang="en">No duplicate domains; no more than 4 total</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
@@ -2388,6 +2404,7 @@
             <xs:element name="accessPoints" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">Records requests/approvals and settings for SMB shares and Globus endpoints</xs:documentation>
+                    <xs:documentation xml:lang="en">If this element is present, then it should contain at least one sub-element</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                     <xs:sequence>
@@ -2575,6 +2592,7 @@
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The container element for all keywords for a resource</xs:documentation>
                     <xs:documentation xml:lang="en">May apply to either Projects or Items</xs:documentation>
+                    <xs:documentation xml:lang="en">If this element is present, then it should contain at least one sub-element</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                     <xs:sequence>
@@ -2630,12 +2648,13 @@
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The container element for all relations for a resource</xs:documentation>
                     <xs:documentation xml:lang="en">May apply to either Projects or Items</xs:documentation>
+                    <xs:documentation xml:lang="en">If this element is present, then it should contain at least one sub-element</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element name="relation" minOccurs="1" maxOccurs="100">
                             <xs:annotation>
-                                <xs:documentation xml:lang="en">Specifies a related TigerData project or item, a published paper, or any other digital object</xs:documentation>
+                                <xs:documentation xml:lang="en">Specifies a related TigerData project or item, a published paper, or any other digital object, given as a string</xs:documentation>
                                 <xs:documentation xml:lang="en">May apply to either Projects or Items</xs:documentation>
                                 <xs:documentation xml:lang="en">Derived from the DataCite definitions for RelatedIdentifier (v4.6+)</xs:documentation>
                                 <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.6/properties/relatedidentifier/</xs:documentation>
@@ -2684,6 +2703,7 @@
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The container element for all extended metadata schemas for a resource</xs:documentation>
                     <xs:documentation xml:lang="en">May apply to either Projects or Items</xs:documentation>
+                    <xs:documentation xml:lang="en">If this element is present, then it should contain at least one sub-element</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                     <xs:sequence>

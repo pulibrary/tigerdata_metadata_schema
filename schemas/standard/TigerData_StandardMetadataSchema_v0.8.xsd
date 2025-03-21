@@ -41,6 +41,15 @@
             - Added projectResourceType and made its values fixed
             - Created shortDescriptionType and shortDescriptionLimitType to manage values for itemResourceType
             - Updated references in project and Item groups
+          - Revised statusType
+            - Replaced Pending with AdminReview
+            - Reorganized status listing
+            - Updated documentation for status and date-related types
+          - Added Revision as an eventType under the provenanceSubfields
+          - Updated date fields to use dateOrRangeType
+            - nameDate in userType to allow a range
+            - Range options given to allow estimation by users
+          - Split the dates group into projectDates and itemDates
         
         2025-03-20:
           - Revised documentation for researchDomain
@@ -510,6 +519,7 @@
     <xs:simpleType name="licenseURIType">
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard type that defines the controlled vocabulary for the licenseURI attribute</xs:documentation>
+            <xs:documentation xml:lang="en">All standard specifications for licenses are drawn from https://spdx.org/licenses/</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:anyURI">
             <xs:enumeration value="https://creativecommons.org/publicdomain/zero/1.0/">
@@ -566,6 +576,7 @@
     <xs:simpleType name="licenseIDType">
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard type that defines the controlled vocabulary for the licenseID attribute</xs:documentation>
+            <xs:documentation xml:lang="en">All standard specifications for licenses are drawn from https://spdx.org/licenses/</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="CC0 1.0" xml:lang="en">
@@ -1084,7 +1095,7 @@
     <xs:attribute name="resourceTypeGeneral" type="resourceTypeGeneralType">
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard attribute to specify the general type for a resource, following the controlled vocabulary in resourceTypeGeneralType</xs:documentation>
-            <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for resourceTypeGeneral (v4.6+)</xs:documentation>
+            <xs:documentation xml:lang="en">Derived from the DataCite definition for resourceTypeGeneral (v4.6+)</xs:documentation>
         </xs:annotation>
     </xs:attribute>
     
@@ -1130,9 +1141,9 @@
                     <xs:documentation xml:lang="en">The family name(s) of the person in a given role. If the person has multiple family names, then all should be included in this field.</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="nameDate" type="xs:date" minOccurs="0" maxOccurs="1">
+            <xs:element name="nameDate" type="dateOrRangeType" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The date at which the name metadata was recorded, using the ISO 8601 date format (YYYY-MM-DD).</xs:documentation>
+                    <xs:documentation xml:lang="en">The date at which the name metadata was recorded.</xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="alternativeNameIdentifier" minOccurs="0" maxOccurs="100">
@@ -1385,6 +1396,7 @@
     <xs:simpleType name="licenseType">
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard type that defines the controlled vocabulary for the license field</xs:documentation>
+            <xs:documentation xml:lang="en">All standard specifications for licenses are drawn from https://spdx.org/licenses/</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="Creative Commons Public Domain Dedication 1.0 Universal" xml:lang="en">
@@ -1441,36 +1453,40 @@
     <xs:simpleType name="statusType">
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard type that defines the controlled vocabulary for the status field</xs:documentation>
+            <xs:documentation xml:lang="en">Applies only to Projects</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
+            <xs:enumeration value="AdminReview" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">The project request has been submitted, with approval by the assigned Data Sponsor, but it is not yet approved by a System Administrator</xs:documentation>
+                    <xs:documentation xml:lang="en">Applies if the submission field lacks complete approvedBy or approvalDateTime subfields</xs:documentation>
+                    <xs:documentation xml:lang="en">This is typically the initial status of a project record; it marks the point at which a DOI is minted for the projectID</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Approved" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">The project has been approved by the assigned Data Sponsor and a System Administrator, but it is not yet active (i.e., not yet ready for the users)</xs:documentation>
+                    <xs:documentation xml:lang="en">Applies if the submission field has complete approvedBy and approvalDateTime subfields, but the frontend has not yet confirmed the project's collection ID in Mediaflux</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
             <xs:enumeration value="Active" xml:lang="en">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The project is live: approved and available to users</xs:documentation>
                     <xs:documentation xml:lang="en">Applies if the submission field has complete approvedBy and approvalDateTime subfields, the frontend has confirmed the project's collection ID in Mediaflux, and the project has been neither retired nor published</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
-            <xs:enumeration value="Approved" xml:lang="en">
+            <xs:enumeration value="Retired" xml:lang="en">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The project has been approved, but it is not yet active</xs:documentation>
-                    <xs:documentation xml:lang="en">Applies if the submission field has complete approvedBy and approvalDateTime subfields, but the frontend has not yet confirmed the project's collection ID in Mediaflux</xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="Pending" xml:lang="en">
-                <xs:annotation>
-                    <xs:documentation xml:lang="en">The project has been submitted, but not yet approved</xs:documentation>
-                    <xs:documentation xml:lang="en">Applies if the submission field lacks complete approvedBy or approvalDateTime subfields</xs:documentation>
+                    <xs:documentation xml:lang="en">The project has been retired due to lack of use or by request of the Data Sponsor or the Data Manager</xs:documentation>
+                    <xs:documentation xml:lang="en">Applies if the the retirement field has complete approvedBy and approvalDateTime subfields</xs:documentation>
+                    <xs:documentation xml:lang="en">If the retirementDate field is filled, then the change to Retired status is expected to occur on or after the retirementDate</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="Published" xml:lang="en">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The project has been published</xs:documentation>
                     <xs:documentation xml:lang="en">Applies if the the publication field has complete approvedBy and approvalDateTime subfields</xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="Retired" xml:lang="en">
-                <xs:annotation>
-                    <xs:documentation xml:lang="en">The project has been retired and is no longer active</xs:documentation>
-                    <xs:documentation xml:lang="en">Applies if the the retirement field has complete approvedBy and approvalDateTime subfields</xs:documentation>
+                    <xs:documentation xml:lang="en">If the publicationDate field is filled, then the change to Published status is expected to occur on or after the publicationDate</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
         </xs:restriction>
@@ -1891,14 +1907,14 @@
     
     <xs:element name="startDate">
         <xs:annotation>
-            <xs:documentation xml:lang="en">The date when the resource became, or will become, active (may be estimated)</xs:documentation>
-            <xs:documentation xml:lang="en">The value must not be chronologically earlier than that of the approvalDateTime subfield under the submission field</xs:documentation>
+            <xs:documentation xml:lang="en">The date when the resource became, or will become, active (may be estimated with a range)</xs:documentation>
+            <xs:documentation xml:lang="en">The value should not be chronologically earlier than that of the approvalDateTime subfield under the submission field</xs:documentation>
             <xs:documentation xml:lang="en">Unlike provenance records, this date field is discoverable and tracked in the resource record</xs:documentation>
             <xs:documentation xml:lang="en">May apply to either Projects or Items</xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:simpleContent>
-                <xs:extension base="xs:date">
+                <xs:extension base="dateOrRangeType">
                     <xs:attribute ref="inherited" default="true"/>
                 </xs:extension>
             </xs:simpleContent>
@@ -1907,14 +1923,14 @@
     
     <xs:element name="endDate">
         <xs:annotation>
-            <xs:documentation xml:lang="en">The date when the resource became, or will become, inactive (may be estimated)</xs:documentation>
-            <xs:documentation xml:lang="en">The value must not be chronologically earlier than that of startDate, nor later than that of retirementDate</xs:documentation>
+            <xs:documentation xml:lang="en">The date when the resource became, or will become, inactive from a user perspective, i.e., no further changes are expected to be made (may be estimated with a range)</xs:documentation>
+            <xs:documentation xml:lang="en">The value should not be chronologically earlier than that of startDate, nor later than that of retirementDate</xs:documentation>
             <xs:documentation xml:lang="en">Unlike provenance records, this date field is discoverable and tracked in the resource record</xs:documentation>
             <xs:documentation xml:lang="en">May apply to either Projects or Items</xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:simpleContent>
-                <xs:extension base="xs:date">
+                <xs:extension base="dateOrRangeType">
                     <xs:attribute ref="inherited" default="true"/>
                 </xs:extension>
             </xs:simpleContent>
@@ -1923,14 +1939,14 @@
     
     <xs:element name="retirementDate">
         <xs:annotation>
-            <xs:documentation xml:lang="en">The date when the resource became, or will become, no longer useful to the primary users (may be estimated)</xs:documentation>
-            <xs:documentation xml:lang="en">The value must not be chronolocially earlier than that of endDate, nor later than that of the approvalDateTime subfield under the retirement field</xs:documentation>
+            <xs:documentation xml:lang="en">The date when the resource became, or will become, no longer useful to the primary users (may be estimated with a range)</xs:documentation>
+            <xs:documentation xml:lang="en">The value should not be chronolocially earlier than that of endDate, nor later than that of the approvalDateTime subfield under the retirement provenance field</xs:documentation>
             <xs:documentation xml:lang="en">Unlike provenance records, this date field is discoverable and tracked in the resource record</xs:documentation>
             <xs:documentation xml:lang="en">May apply to either Projects or Items</xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:simpleContent>
-                <xs:extension base="xs:date">
+                <xs:extension base="dateOrRangeType">
                     <xs:attribute ref="inherited" fixed="true"/>
                 </xs:extension>
             </xs:simpleContent>
@@ -1939,14 +1955,14 @@
     
     <xs:element name="publicationDate">
         <xs:annotation>
-            <xs:documentation xml:lang="en">The date when the resource became, or will become, publicly available (may be estimated)</xs:documentation>
-            <xs:documentation xml:lang="en">The value must not be chronoligically earlier than that of startDate, nor later than that of the approvalDateTime subfield under the publication field</xs:documentation>
+            <xs:documentation xml:lang="en">The date when the resource became, or will become, publicly available (may be estimated with a range)</xs:documentation>
+            <xs:documentation xml:lang="en">The value should not be chronoligically earlier than that of startDate, nor later than that of the approvalDateTime subfield under the publication field</xs:documentation>
             <xs:documentation xml:lang="en">Unlike provenance records, this date field is discoverable and tracked in the resource record</xs:documentation>
             <xs:documentation xml:lang="en">Does not apply to Items</xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:simpleContent>
-                <xs:extension base="xs:date">
+                <xs:extension base="dateOrRangeType">
                     <xs:attribute ref="inherited" fixed="true"/>
                 </xs:extension>
             </xs:simpleContent>
@@ -1963,7 +1979,7 @@
             <xs:simpleContent>
                 <xs:extension base="dateOrRangeType">
                     <xs:attribute name="dateType" type="dateTypeType" use="required"/>
-                    <xs:attribute name="dateInformation" type="limitedTextType" use="optional">
+                    <xs:attribute name="dateInformation" type="shortDescriptionLimitType" use="optional">
                         <xs:annotation>
                             <xs:documentation xml:lang="en">More information about the value of otherDate (recommended if dateType is Other)</xs:documentation>
                         </xs:annotation>
@@ -1974,12 +1990,11 @@
         </xs:complexType>
     </xs:element>
     
-    <xs:element name="dates">
+    <xs:element name="projectDates">
         <xs:annotation>
-            <xs:documentation xml:lang="en">The container element for all date elements that apply to a resource</xs:documentation>
+            <xs:documentation xml:lang="en">The container element for all date elements that apply to a Project</xs:documentation>
             <xs:documentation xml:lang="en">Unlike provenance records, these date fields are all discoverable and tracked in the resource record</xs:documentation>
-            <xs:documentation xml:lang="en">If the dates element is present, then it should contain at least one sub-element</xs:documentation>
-            <xs:documentation xml:lang="en">May apply to either Projects or Items</xs:documentation>
+            <xs:documentation xml:lang="en">If this element is present, then it should contain at least one sub-element</xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
@@ -1987,6 +2002,24 @@
                 <xs:element ref="endDate" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="retirementDate" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="publicationDate" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="otherDate" minOccurs="0" maxOccurs="100"/>
+            </xs:sequence>
+            <xs:attribute ref="discoverable" fixed="true"/>
+            <xs:attribute ref="trackingLevel" fixed="ResourceRecord"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="itemDates">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">The container element for all date elements that apply to an Item</xs:documentation>
+            <xs:documentation xml:lang="en">Unlike provenance records, these date fields are all discoverable and tracked in the resource record</xs:documentation>
+            <xs:documentation xml:lang="en">If this element is present, then it should contain at least one sub-element</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="startDate" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="endDate" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="retirementDate" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="otherDate" minOccurs="0" maxOccurs="100"/>
             </xs:sequence>
             <xs:attribute ref="discoverable" fixed="true"/>
@@ -2006,7 +2039,7 @@
             <xs:element name="requestedBy" type="userType" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The person who made the request</xs:documentation>
-                    <xs:documentation xml:lang="en">May be an eligible Data Sponsor, a System Administrator, or a technical service account</xs:documentation>
+                    <xs:documentation xml:lang="en">May be an eligible Data Sponsor or Data Manager, a System Administrator, or a technical service account</xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="requestDateTime" type="xs:dateTime" minOccurs="1" maxOccurs="1">
@@ -2091,6 +2124,11 @@
                                     <xs:enumeration value="Sponsor" xml:lang="en">
                                         <xs:annotation>
                                             <xs:documentation xml:lang="en">Event note records any changes to the project's Data Sponsor</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:enumeration>
+                                    <xs:enumeration value="Revision" xml:lang="en">
+                                        <xs:annotation>
+                                            <xs:documentation xml:lang="en">Event note explains the return of the project request to the submitter for revision</xs:documentation>
                                         </xs:annotation>
                                     </xs:enumeration>
                                     <xs:enumeration value="Denial" xml:lang="en">
@@ -2504,7 +2542,7 @@
                 </xs:complexType>
             </xs:element>
             <xs:element ref="fundingReferences" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="dates" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="projectDates" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="projectResourceType" minOccurs="1" maxOccurs="1"/>            
             <xs:element ref="licenses" minOccurs="0" maxOccurs="1"/>            
             <xs:element name="dataUseAgreement" minOccurs="0" maxOccurs="1">
@@ -2759,7 +2797,7 @@
                                 <xs:attribute ref="trackingLevel" fixed="InternalUseOnly"/>
                             </xs:complexType>
                         </xs:element>
-                        <xs:element name="status" minOccurs="1" maxOccurs="1" default="Pending">
+                        <xs:element name="status" minOccurs="1" maxOccurs="1" default="AdminReview">
                             <xs:annotation>
                                 <xs:documentation xml:lang="en">The current status of the project</xs:documentation>
                             </xs:annotation>
@@ -2831,7 +2869,7 @@
             <xs:element ref="licenses" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="fundingReferences" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="duaReferences" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="dates" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="itemDates" minOccurs="0" maxOccurs="1"/>
         </xs:sequence>
     </xs:group>
     

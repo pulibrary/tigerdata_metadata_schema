@@ -54,6 +54,7 @@
             - Added the federalFunder attribute
             - Set the default funderIDType to ROR and the default funderIDSchema to https://ror.org/
           - Set the projectVisibility default to Limited
+          - Removed the default for projectPurpose
         
         2025-03-20:
           - Revised documentation for researchDomain
@@ -2379,7 +2380,7 @@
             </xs:element>
             <xs:element name="numberOfFiles" minOccurs="1" maxOccurs="1" default="Less than 10,000">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The estimated number of files the project will incorporate</xs:documentation>
+                    <xs:documentation xml:lang="en">The estimated number of files the project will incorporate (default is Less than 10,000)</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                     <xs:simpleContent>
@@ -2393,7 +2394,7 @@
             </xs:element>
             <xs:element name="hpc" minOccurs="1" maxOccurs="1" default="No">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">Whether the project is expected to connect to high performance computing resources</xs:documentation>
+                    <xs:documentation xml:lang="en">Whether the project is expected to connect to high performance computing resources (default is No)</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                     <xs:simpleContent>
@@ -2470,7 +2471,7 @@
                         </xs:element>
                         <xs:element name="globusCollection" minOccurs="0" maxOccurs="100">
                             <xs:annotation>
-                                <xs:documentation xml:lang="en">Details for any enabled Globus collections for the project</xs:documentation>
+                                <xs:documentation xml:lang="en">Details for an enabled Globus collection for the project</xs:documentation>
                                 <xs:documentation xml:lang="en">If globusEnableSetting is true, then at least one globusCollection value set should be given</xs:documentation>
                                 <xs:documentation xml:lang="en">If no Globus collection is approved, then this field should be omitted</xs:documentation>
                             </xs:annotation>
@@ -2518,7 +2519,7 @@
             <xs:documentation xml:lang="en">Does not apply to Items</xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:element name="projectPurpose" minOccurs="1" maxOccurs="1" default="Research">
+            <xs:element name="projectPurpose" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The high-level category for the purpose of the project</xs:documentation>
                 </xs:annotation>

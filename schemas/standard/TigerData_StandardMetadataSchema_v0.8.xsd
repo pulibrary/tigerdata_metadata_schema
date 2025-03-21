@@ -34,6 +34,7 @@
         2025-03-21:
           - Revised header comments
           - Revised comments within body
+          - Revised documentation throughout
         
         2025-03-20:
           - Revised documentation for researchDomain
@@ -113,7 +114,7 @@
     <xs:simpleType name="netIDType">
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard type used for values meant to be a Princeton NetID</xs:documentation>
-            <xs:documentation xml:lang="en">Applies a simple pattern true for all Princeton NetIDs</xs:documentation>
+            <xs:documentation xml:lang="en">Applies a simple pattern that is true for all Princeton NetIDs</xs:documentation>
             <xs:documentation xml:lang="en">Validation of user accounts and permissions happens separate from metadata validation</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
@@ -123,7 +124,7 @@
     
     <xs:simpleType name="limitedTextType">
         <xs:annotation>
-            <xs:documentation xml:lang="en">Specification for the practical limit applied to free text values</xs:documentation>
+            <xs:documentation xml:lang="en">Specification for the practical limit for text values within textType</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:minLength value="1"/>
@@ -144,7 +145,7 @@
     
     <xs:simpleType name="limitedTitleType">
         <xs:annotation>
-            <xs:documentation xml:lang="en">Specification for the practical limit applied to title values</xs:documentation>
+            <xs:documentation xml:lang="en">Specification for the practical limit for text values within titleType</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:minLength value="1"/>
@@ -165,7 +166,7 @@
     
     <xs:simpleType name="pathSafeType">
         <xs:annotation>
-            <xs:documentation xml:lang="en">Primitive type used within pathType</xs:documentation>
+            <xs:documentation xml:lang="en">Standard type used within pathType to prevent invalid entries</xs:documentation>
             <xs:documentation xml:lang="en">Restricts to alphanumeric characters, underscore, forward and back slashes, and minus-dash</xs:documentation>
             <xs:documentation xml:lang="en">The typical value is expected to start "/tigerdata/" and follow with a parent folder of at least 3 characters and a project folder of at least 3 characters, with a slash in-between, hence the minimum of 18 characters</xs:documentation>
             <xs:documentation xml:lang="en">The ordinary practical limit of 1000 characters for a text field is too high; Windows systems have a hard limit of 260 characters for the full path, so the directory needs to much less than that to avoid problems, hence the maximum of 128 characters</xs:documentation>
@@ -177,7 +178,7 @@
     
     <xs:simpleType name="uuidType">
         <xs:annotation>
-            <xs:documentation xml:lang="en">Primitive type used for values meant to be Universally Unique Identifiers</xs:documentation>
+            <xs:documentation xml:lang="en">Standard type used for values meant to be Universally Unique Identifiers (e.g., in globusUUID)</xs:documentation>
             <xs:documentation xml:lang="en">Restricts to alphanumeric characters and minus-dashes, with a length ranging from 32 to 36</xs:documentation>
             <xs:documentation xml:lang="en">The most common value is expected to be hexadecimal in 8-4-4-4-12 format, but this type specification is simplified for XML, and therefore more permissive</xs:documentation>
         </xs:annotation>
@@ -245,12 +246,12 @@
         <xs:restriction base="xs:string">
             <xs:enumeration value="ResourceRecord">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The field should be included in any long-term or crosswalked records for the resource</xs:documentation>
+                    <xs:documentation xml:lang="en">The respective field should be included in any long-term or crosswalked records for the resource</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="InternalUseOnly">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The field is intended for internal (Princeton) use only</xs:documentation>
+                    <xs:documentation xml:lang="en">The respective field is intended for internal (Princeton) use only</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
         </xs:restriction>

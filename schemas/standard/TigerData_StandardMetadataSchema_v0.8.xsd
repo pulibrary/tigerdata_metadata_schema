@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- Version Notes:
-        - Draft of version 0.8 of the TigerData Standard Metadata Schema
-        - Updated on 2025-03-20 by Matt Chandler
+        - Version 0.8 of the TigerData Standard Metadata Schema
+        - Updated on 2025-03-21 by Matt Chandler
 -->
 <!-- References:
         - As noted in documentation fields below, several elements are derived from DataCite:
@@ -26,21 +26,22 @@
             - If a given attribute is intended to be used only in one element, then it is defined within that element
             - If a given element or attribute can have multiple applications, then it is called out earlier in the primitives and then referenced where needed
         - camelCase is used for all custom names for types, attributes, elements, and groups (acronyms are lowercase when beginning a name)
-        - The name of every simple and complex type ends with "Type" (if the semantic part of the name ends in "Type" then "Type" is still appended, e.g. "relationTypeType")
-        - Acronyms and abbreviations are avoided in names and annotations to prevent confusion, but unlike DataCite, some acronyms are used
+        - The name of every simple and complex type ends with "Type" (if the semantic part of the name ends in "Type" then "Type" is still appended to the XML type name, e.g. "relationTypeType")
+        - Acronyms and abbreviations are avoided in names and annotations to prevent confusion, but unlike DataCite, some acronyms are used (e.g., ID for identifier)
         - Repeatable elements are typically placed within container elements, and container elements have names that are the plural form of the repeatable element they contain
 -->
-<!-- Open Questions:
-        - Documenting guidance for how to implement in Mediaflux:
-            - How to handle imported namespaces?
-            - Can all of our custom types be implemented as-is?
-                - Or might we have to strip them down (e.g. to strings with no explicit restrictions, like DataCite does)?
-                - Or create "dictionaries" in Mediaflux for controlled vocabularies?
-            - Will all of our default and fixed values apply?
-            - Could (or should) we use the built-in "keyword" type?
-            - Could (or should) we use either the built-in "citeable-id" or "hierarchical-id" type?
--->
 <!-- Version 0.8 Change Log:
+        2025-03-21:
+          - Revised header comments
+          - Revised comments within body
+          - Revised documentation throughout
+          - Revised resource types to account for various item descriptions
+            - Removed resourceTypeType
+            - Changed resourceType to itemResourceType
+            - Added projectResourceType and made its values fixed
+            - Created shortDescriptionType and shortDescriptionLimitType to manage values for itemResourceType
+            - Updated references in project and Item groups
+        
         2025-03-20:
           - Revised documentation for researchDomain
           - Adjusted departments
@@ -83,7 +84,7 @@
     <xs:import schemaLocation="http://www.w3.org/2001/xml.xsd" namespace="http://www.w3.org/XML/1998/namespace"/>
     
 <!-- PRIMITIVES -->
-    <!-- All of the types, attributes, elements, and groups that are combined to make up a standard metadata payload (defined below, lines 2527-2567) -->
+    <!-- All of the types, attributes, elements, and groups that are combined to make up a standard metadata payload, which is defined last -->
     
     <!-- Common Types -->
         <!-- Simple and complex types that are either necessary building blocks for further types or that have application in various places (e.g., both elements and attributes) -->
@@ -119,7 +120,7 @@
     <xs:simpleType name="netIDType">
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard type used for values meant to be a Princeton NetID</xs:documentation>
-            <xs:documentation xml:lang="en">Applies a simple pattern true for all Princeton NetIDs</xs:documentation>
+            <xs:documentation xml:lang="en">Applies a simple pattern that is true for all Princeton NetIDs</xs:documentation>
             <xs:documentation xml:lang="en">Validation of user accounts and permissions happens separate from metadata validation</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
@@ -129,7 +130,7 @@
     
     <xs:simpleType name="limitedTextType">
         <xs:annotation>
-            <xs:documentation xml:lang="en">Specification for the practical limit applied to free text values</xs:documentation>
+            <xs:documentation xml:lang="en">Specification for the practical limit for text values within textType</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:minLength value="1"/>
@@ -150,7 +151,7 @@
     
     <xs:simpleType name="limitedTitleType">
         <xs:annotation>
-            <xs:documentation xml:lang="en">Specification for the practical limit applied to title values</xs:documentation>
+            <xs:documentation xml:lang="en">Specification for the practical limit for text values within titleType</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:minLength value="1"/>
@@ -169,9 +170,30 @@
         </xs:simpleContent>
     </xs:complexType>
     
+    <xs:simpleType name="shortDescriptionLimitType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Specification for the practical limit for text values within shortDescriptionType</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="60"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="shortDescriptionType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Standard type uesed for short descriptive values (e.g., itemResourceType)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="limitedTitleType">
+                <xs:attribute ref="xml:lang" default="en"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    
     <xs:simpleType name="pathSafeType">
         <xs:annotation>
-            <xs:documentation xml:lang="en">Primitive type used within pathType</xs:documentation>
+            <xs:documentation xml:lang="en">Standard type used within pathType to prevent invalid entries</xs:documentation>
             <xs:documentation xml:lang="en">Restricts to alphanumeric characters, underscore, forward and back slashes, and minus-dash</xs:documentation>
             <xs:documentation xml:lang="en">The typical value is expected to start "/tigerdata/" and follow with a parent folder of at least 3 characters and a project folder of at least 3 characters, with a slash in-between, hence the minimum of 18 characters</xs:documentation>
             <xs:documentation xml:lang="en">The ordinary practical limit of 1000 characters for a text field is too high; Windows systems have a hard limit of 260 characters for the full path, so the directory needs to much less than that to avoid problems, hence the maximum of 128 characters</xs:documentation>
@@ -183,7 +205,7 @@
     
     <xs:simpleType name="uuidType">
         <xs:annotation>
-            <xs:documentation xml:lang="en">Primitive type used for values meant to be Universally Unique Identifiers</xs:documentation>
+            <xs:documentation xml:lang="en">Standard type used for values meant to be Universally Unique Identifiers (e.g., in globusUUID)</xs:documentation>
             <xs:documentation xml:lang="en">Restricts to alphanumeric characters and minus-dashes, with a length ranging from 32 to 36</xs:documentation>
             <xs:documentation xml:lang="en">The most common value is expected to be hexadecimal in 8-4-4-4-12 format, but this type specification is simplified for XML, and therefore more permissive</xs:documentation>
         </xs:annotation>
@@ -195,6 +217,7 @@
     <xs:simpleType name="byteUnitType">
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard type that defines the controlled vocabulary for byte units in storageQuantityType</xs:documentation>
+            <xs:documentation xml:lang="en">All byte units are base-10, not base-2</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="B" xml:lang="en">
@@ -251,12 +274,12 @@
         <xs:restriction base="xs:string">
             <xs:enumeration value="ResourceRecord">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The field should be included in any long-term or crosswalked records for the resource</xs:documentation>
+                    <xs:documentation xml:lang="en">The respective field should be included in any long-term or crosswalked records for the resource</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="InternalUseOnly">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The field is intended for internal (Princeton) use only</xs:documentation>
+                    <xs:documentation xml:lang="en">The respective field is intended for internal (Princeton) use only</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
         </xs:restriction>
@@ -300,8 +323,11 @@
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard type that defines the controlled vocabulary for resourceTypeGeneral values</xs:documentation>
             <xs:documentation xml:lang="en">Applies to both Projects and Items</xs:documentation>
+            <xs:documentation xml:lang="en">TigerData projects and subprojects should always use the standard type Project</xs:documentation>
             <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for resourceTypeGeneral (v4.6+)</xs:documentation>
             <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.6/appendices/appendix-1/resourceTypeGeneral/</xs:documentation>
+            <xs:documentation xml:lang="en">Appends custom options for TigerData items: README and DataDocumentation</xs:documentation>
+            <xs:documentation xml:lang="en">For labeling an item as a Data Management Plan (DMP), use the DataCite standard type OutputManagementPlan</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="Audiovisual" xml:lang="en">
@@ -397,7 +423,7 @@
             <xs:enumeration value="OutputManagementPlan" xml:lang="en">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">A formal document that outlines how research outputs are to be handled both during a research project and after the project is completed.</xs:documentation>
-                    <xs:documentation xml:lang="en">Use this resource type for items that serve as the Data Management Plan for a TigerData project.</xs:documentation>
+                    <xs:documentation xml:lang="en">Use this resource type for items that serve as the Data Management Plan (DMP) for a TigerData project.</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="PeerReview" xml:lang="en">
@@ -418,7 +444,7 @@
             <xs:enumeration value="Project" xml:lang="en">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">A planned endeavor or activity, frequently collaborative, intended to achieve a particular aim using allocated resources such as budget, time, and expertise.</xs:documentation>
-                    <xs:documentation xml:lang="en">Use this resource type for all TigerData projects.</xs:documentation>
+                    <xs:documentation xml:lang="en">Use this resource type for all TigerData projects and subprojects.</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="Report" xml:lang="en">
@@ -599,6 +625,8 @@
             <xs:documentation xml:lang="en">Applies to both Projects and Items</xs:documentation>
             <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for relatedIdentifierType (v4.6+)</xs:documentation>
             <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.6/appendices/appendix-1/relatedIdentifierType/</xs:documentation>
+            <xs:documentation xml:lang="en">Appends a custom option for TigerData items: MFAID</xs:documentation>
+            <xs:documentation xml:lang="en">TigerData projects and subprojects should use DOI</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="ARK" xml:lang="en">
@@ -628,6 +656,7 @@
                 <xs:annotation>
                     <xs:documentation xml:lang="en">Digital Object Identifier</xs:documentation>
                     <xs:documentation xml:lang="en">A character string used to uniquely identify an object. A DOI name is divided into two parts, a prefix and a suffix, separated by a slash.</xs:documentation>
+                    <xs:documentation xml:lang="en">Use this type to reference TigerData projects</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="EAN13" xml:lang="en">
@@ -728,6 +757,7 @@
                 <xs:annotation>
                     <xs:documentation xml:lang="en">A Mediaflux Asset ID number</xs:documentation>
                     <xs:documentation xml:lang="en">Include the domain and namespace to make the ID as persistent as possible</xs:documentation>
+                    <xs:documentation xml:lang="en">Use this type to reference TigerData items</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
         </xs:restriction>
@@ -739,6 +769,9 @@
             <xs:documentation xml:lang="en">Applies to both Projects and Items</xs:documentation>
             <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for relationType (v4.6+)</xs:documentation>
             <xs:documentation>https://datacite-metadata-schema.readthedocs.io/en/4.6/appendices/appendix-1/relationType/</xs:documentation>
+            <xs:documentation xml:lang="en">The value is applied to object A to denote its relation to object B</xs:documentation>
+            <xs:documentation xml:lang="en">Appends custom options for TigerData: HasSubproject, IsSubprojectOf, HasItem, and IsItemOf</xs:documentation>
+            <xs:documentation xml:lang="en">Formal parent-child relationships between TigerData resources are called out in the parentProject field, and they can be further specified by relationType</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="IsCitedBy" xml:lang="en">
@@ -814,13 +847,13 @@
             <xs:enumeration value="IsPartOf" xml:lang="en">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">A is a portion of B; may be used for elements of a series</xs:documentation>
-                    <xs:documentation xml:lang="en">Do not use for formal relationships between TigerData projects, subprojects, or items</xs:documentation>
+                    <xs:documentation xml:lang="en">Do not use for formal parent-child relationships between TigerData projects, subprojects, or items</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="HasPart" xml:lang="en">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">A includes the part B</xs:documentation>
-                    <xs:documentation xml:lang="en">Do not use for formal relationships between TigerData projects, subprojects, or items</xs:documentation>
+                    <xs:documentation xml:lang="en">Do not use for formal parent-child relationships between TigerData projects, subprojects, or items</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="IsPublishedIn" xml:lang="en">
@@ -1031,7 +1064,7 @@
     
     <xs:attribute name="inherited" type="xs:boolean">
         <xs:annotation>
-            <xs:documentation xml:lang="en">Standard attribute to specify whether a given field's value should be inherited by child resources</xs:documentation>
+            <xs:documentation xml:lang="en">Standard attribute to specify whether a given field's value should be inherited by any child resources</xs:documentation>
             <xs:documentation xml:lang="en">Inheritance is limited to the applicability of the field to the child resource (e.g., researchDomain may be inherited by a subproject but not an item)</xs:documentation>
         </xs:annotation>
     </xs:attribute>
@@ -1084,7 +1117,7 @@
             </xs:element>
             <xs:element name="fullName" type="xs:string" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The full name of the person in a given role, verified in the format family-comma-given and matching the corresponding given and family name fields.</xs:documentation>
+                    <xs:documentation xml:lang="en">The full name of the person in a given role, verified in the format family-comma-given and matching the corresponding given and family name fields, if available.</xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="givenName" type="xs:string" minOccurs="0" maxOccurs="1">
@@ -1140,7 +1173,8 @@
     <xs:simpleType name="researchDomainNameType">
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard type that defines the controlled vocabulary for the researchDomain field</xs:documentation>
-            <xs:documentation xml:lang="en">Options are limited to the 4 domains Princeton University uses to categorize departments</xs:documentation>
+            <xs:documentation xml:lang="en">Applies when projectPurpose is Research</xs:documentation>
+            <xs:documentation xml:lang="en">Options are limited to the 4 domains Princeton University uses to categorize academic departments</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="Natural Sciences" xml:lang="en"/>
@@ -1153,6 +1187,7 @@
     <xs:simpleType name="departmentType">
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard type that defines the allowable values for department</xs:documentation>
+            <xs:documentation xml:lang="en">Applies to all projects, regardless of projectPurpose</xs:documentation>
             <xs:documentation xml:lang="en">Princeton department names typically start with a 2- or 3-character abbreviation, followed by a minus-dash, and then a short description; however, several exceptions exist</xs:documentation>
             <xs:documentation xml:lang="en">The enforceable pattern is a string length from 6 to 30</xs:documentation>
         </xs:annotation>
@@ -1161,7 +1196,7 @@
             <xs:maxLength value="30"/>
         </xs:restriction>
     </xs:simpleType>
-       
+    
     <xs:complexType name="pathType">
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard type used for file path values</xs:documentation>
@@ -1190,7 +1225,7 @@
             </xs:element>
             <xs:element name="unit" type="xs:string" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The standardized unit of measure for the quantity, following RFC 1738 standards</xs:documentation>
+                    <xs:documentation xml:lang="en">The standardized unit of measure for the quantity</xs:documentation>
                 </xs:annotation>
             </xs:element>
         </xs:sequence>
@@ -1204,11 +1239,12 @@
             <xs:element name="size" type="xs:decimal" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The numeric size of the storage quantity</xs:documentation>
+                    <xs:documentation xml:lang="en">The practical limits for floating point values set by Mediaflux are the range [4.9E-324,1.7976931348623157E308]</xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="unit" type="byteUnitType" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The logical byte unit for the storage quantity</xs:documentation>
+                    <xs:documentation xml:lang="en">The logical byte unit for the storage quantity (base-10)</xs:documentation>
                 </xs:annotation>
             </xs:element>
         </xs:sequence>
@@ -1222,7 +1258,7 @@
         <xs:restriction base="xs:string">
             <xs:enumeration value="Restricted" xml:lang="en">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">Visibility is restricted to those assigned roles on the resource</xs:documentation>
+                    <xs:documentation xml:lang="en">Visibility is restricted to those assigned explicit roles on the resource</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="Limited" xml:lang="en">
@@ -1252,7 +1288,7 @@
             </xs:enumeration>
             <xs:enumeration value="Standard" xml:lang="en">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The middle storage tier for TigerData, used as a default</xs:documentation>
+                    <xs:documentation xml:lang="en">The middle storage tier for TigerData, expected as a default</xs:documentation>
                     <xs:documentation xml:lang="en">Appropriate for data that is accessed occasionally but infrequently edited, i.e. cool storage</xs:documentation>
                     <xs:documentation xml:lang="en">The typical implementation is a network attached storage system, e.g. Dell PowerScale</xs:documentation>
                 </xs:annotation>
@@ -1262,6 +1298,7 @@
                     <xs:documentation xml:lang="en">The most performant storage tier available in TigerData</xs:documentation>
                     <xs:documentation xml:lang="en">Reserved for actively edited data that needs to be close to high performance computing systems, i.e. warm storage</xs:documentation>
                     <xs:documentation xml:lang="en">The typical implementation is a cluster file system, e.g. IBM General Parallel File System</xs:documentation>
+                    <xs:documentation xml:lang="en">A special request may be required for this tier</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
         </xs:restriction>
@@ -1303,17 +1340,18 @@
         <xs:restriction base="xs:string">
             <xs:enumeration value="No" xml:lang="en">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The project will not need to connect to high performance computing resources</xs:documentation>
+                    <xs:documentation xml:lang="en">The project is not expected to connect to high performance computing resources</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="Yes" xml:lang="en">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The project will need to connect to high performance computing resources</xs:documentation>
+                    <xs:documentation xml:lang="en">The project is expected to connect to high performance computing resources</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="Not Sure" xml:lang="en">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">It is unclear whether the project will need to connect to high performance computing resources</xs:documentation>
+                    <xs:documentation xml:lang="en">The submitter is unsure whether the project will need to connect to high performance computing resources</xs:documentation>
+                    <xs:documentation xml:lang="en">More conversation may be required to clarify needs</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
         </xs:restriction>
@@ -1326,44 +1364,24 @@
         <xs:restriction base="xs:string">
             <xs:enumeration value="Research" xml:lang="en">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The project is intended to contain research data</xs:documentation>
+                    <xs:documentation xml:lang="en">The project is intended to contain mainly research data</xs:documentation>
                     <xs:documentation xml:lang="en">This includes projects for labs and research groups; it is not restricted to one specific research project</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="Administrative" xml:lang="en">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The project is intended to contain administrative data</xs:documentation>
+                    <xs:documentation xml:lang="en">The project is intended to contain mainly administrative data</xs:documentation>
                     <xs:documentation xml:lang="en">This includes library and other staff-managed archive use-cases</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="Teaching" xml:lang="en">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The project is intended to contain data stemming from teaching and learning use-cases</xs:documentation>
+                    <xs:documentation xml:lang="en">The project is intended to contain mainly data related to teaching and learning activities</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
         </xs:restriction>
     </xs:simpleType>
-    
-    <xs:simpleType name="resourceTypeType">
-        <xs:annotation>
-            <xs:documentation xml:lang="en">Standard type that defines the controlled vocabulary for resourceType for TigerData resources</xs:documentation>
-        </xs:annotation>
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="TigerData Project" xml:lang="en">
-                <xs:annotation>
-                    <xs:documentation xml:lang="en">Standard resourceType value for TigerData Projects (not Items)</xs:documentation>
-                    <xs:documentation xml:lang="en">Intended to be used in conjuction with a resourceTypeGeneral value of "Project"</xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="TigerData Item" xml:lang="en">
-                <xs:annotation>
-                    <xs:documentation xml:lang="en">Standard resourceType value for TigerData Items (not Projects)</xs:documentation>
-                    <xs:documentation xml:lang="en">The value for resourceTypeGeneral may be anything other than "Project"</xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-        </xs:restriction>
-    </xs:simpleType>
-    
+       
     <xs:simpleType name="licenseType">
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard type that defines the controlled vocabulary for the license field</xs:documentation>
@@ -1733,16 +1751,34 @@
         </xs:complexType>
     </xs:element>
     
-    <xs:element name="resourceType">
+    <xs:element name="itemResourceType">
         <xs:annotation>
-            <xs:documentation xml:lang="en">A simple description of the resource, using controlled terms for TigerData resources</xs:documentation>
-            <xs:documentation xml:lang="en">May apply to either Projects or Items</xs:documentation>
-            <xs:documentation xml:lang="en">Derived from the DataCite controlled vocabulary for resourceTypeGeneral (v4.6+)</xs:documentation>
+            <xs:documentation xml:lang="en">A short description of the type of item, used in conjunction with a standard value for the resourceTypeGeneral attribute</xs:documentation>
+            <xs:documentation xml:lang="en">Does not apply to Projects</xs:documentation>
+            <xs:documentation xml:lang="en">Modeled after the DataCite definition for resourceType (v4.6+)</xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:simpleContent>
-                <xs:extension base="resourceTypeType">
+                <xs:extension base="shortDescriptionType">
                     <xs:attribute ref="resourceTypeGeneral" use="required"/>
+                    <xs:attribute ref="inherited" default="false"/>
+                    <xs:attribute ref="discoverable" fixed="true"/>
+                    <xs:attribute ref="trackingLevel" fixed="ResourceRecord"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="projectResourceType" fixed="TigerData Project">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">The standard (fixed) resource type setting for TigerData projects</xs:documentation>
+            <xs:documentation xml:lang="en">Does not apply to Items</xs:documentation>
+            <xs:documentation xml:lang="en">Modeled after the DataCite definition for resourceType (v4.6+)</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="shortDescriptionType">
+                    <xs:attribute ref="resourceTypeGeneral" fixed="Project"/>
                     <xs:attribute ref="inherited" default="false"/>
                     <xs:attribute ref="discoverable" fixed="true"/>
                     <xs:attribute ref="trackingLevel" fixed="ResourceRecord"/>
@@ -2469,7 +2505,7 @@
             </xs:element>
             <xs:element ref="fundingReferences" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dates" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="resourceType" minOccurs="0" maxOccurs="1"/>            
+            <xs:element ref="projectResourceType" minOccurs="1" maxOccurs="1"/>            
             <xs:element ref="licenses" minOccurs="0" maxOccurs="1"/>            
             <xs:element name="dataUseAgreement" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
@@ -2789,7 +2825,7 @@
             <xs:element ref="dataUsers" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="title" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="description" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="resourceType" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="itemResourceType" minOccurs="0" maxOccurs="1"/>
             <xs:group ref="supplementalMetadata"/>
             <xs:element ref="languages" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="licenses" minOccurs="0" maxOccurs="1"/>

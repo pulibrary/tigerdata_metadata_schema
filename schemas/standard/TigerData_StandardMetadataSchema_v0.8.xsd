@@ -39,6 +39,7 @@
             - Updated documentation for the federalFunder attribute under fundingReference to note interdependence
           - Updated documentation for hpc and smbEnable to note their interaction
           - Revised documentation for provisionalProject to note default of false and possible limitations on other fields
+            - Also made it clear that false for provisionalProject means the project is standard and that required fields are the same regardless
         
         2025-03-21:
           - Revised header comments
@@ -2559,6 +2560,8 @@
                 <xs:annotation>
                     <xs:documentation xml:lang="en">Whether the project is provisional, i.e., temporary, experimental, or intended for testing purposes only (default false)</xs:documentation>
                     <xs:documentation xml:lang="en">If the value is true, then limitations may be placed on other fields, e.g. storageCapacity, storagePerformance, and endDate</xs:documentation>
+                    <xs:documentation xml:lang="en">If the value is false, then the project is considered standard and the provisional limitations are not imposed</xs:documentation>
+                    <xs:documentation xml:lang="en">Whether provisional or standard, the same fields are required for all projects</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                     <xs:simpleContent>

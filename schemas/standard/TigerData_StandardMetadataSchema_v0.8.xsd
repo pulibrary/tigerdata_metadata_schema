@@ -40,6 +40,8 @@
           - Updated documentation for hpc and smbEnable to note their interaction
           - Revised documentation for provisionalProject to note default of false and possible limitations on other fields
             - Also made it clear that false for provisionalProject means the project is standard and that required fields are the same regardless
+          - Bumped up the max string length for department names to account for escape sequences in XML, e.g. for ampersand
+          - Tweaked pathSafeType to allow colons
         
         2025-03-21:
           - Revised header comments
@@ -221,12 +223,12 @@
     <xs:simpleType name="pathSafeType">
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard type used within pathType to prevent invalid entries</xs:documentation>
-            <xs:documentation xml:lang="en">Restricts to alphanumeric characters, underscore, forward and back slashes, and minus-dash</xs:documentation>
+            <xs:documentation xml:lang="en">Restricts to alphanumeric characters, underscore, forward and back slashes, colon, and minus-dash</xs:documentation>
             <xs:documentation xml:lang="en">The typical value is expected to start "/tigerdata/" and follow with a parent folder of at least 3 characters and a project folder of at least 3 characters, with a slash in-between, hence the minimum of 18 characters</xs:documentation>
             <xs:documentation xml:lang="en">The ordinary practical limit of 1000 characters for a text field is too high; Windows systems have a hard limit of 260 characters for the full path, so the directory needs to much less than that to avoid problems, hence the maximum of 128 characters</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
-            <xs:pattern value="[\w\\/-]{18,128}"/>
+            <xs:pattern value="[\w\\/:-]{18,128}"/>
         </xs:restriction>
     </xs:simpleType>
     
@@ -1218,11 +1220,11 @@
             <xs:documentation xml:lang="en">Standard type that defines the allowable values for department</xs:documentation>
             <xs:documentation xml:lang="en">Applies to all projects, regardless of projectPurpose</xs:documentation>
             <xs:documentation xml:lang="en">Princeton department names typically start with a 2- or 3-character abbreviation, followed by a minus-dash, and then a short description; however, several exceptions exist</xs:documentation>
-            <xs:documentation xml:lang="en">The enforceable pattern is a string length from 6 to 30</xs:documentation>
+            <xs:documentation xml:lang="en">The enforceable pattern is a string length from 6 to 38 (the real string max is 30, but we need to account for XML escape sequences for special characters)</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:minLength value="6"/>
-            <xs:maxLength value="30"/>
+            <xs:maxLength value="38"/>
         </xs:restriction>
     </xs:simpleType>
     

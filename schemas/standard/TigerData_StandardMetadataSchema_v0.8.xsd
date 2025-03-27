@@ -2,7 +2,7 @@
 
 <!-- Version Notes:
         - Version 0.8 of the TigerData Standard Metadata Schema
-        - Updated on 2025-03-21 by Matt Chandler
+        - Updated on 2025-03-27 by Matt Chandler
 -->
 <!-- References:
         - As noted in documentation fields below, several elements are derived from DataCite:
@@ -31,6 +31,16 @@
         - Repeatable elements are typically placed within container elements, and container elements have names that are the plural form of the repeatable element they contain
 -->
 <!-- Version 0.8 Change Log:
+        2023-03-27:
+          - Revised documentation to account for changes and special requests in storage and access
+            - storageCapacity
+            - storagePerformance
+          - Added federallyFunded attribute to funded element
+            - Updated documentation for the federalFunder attribute under fundingReference to note interdependence
+          - Updated documentation for hpc and smbEnable to note their interaction
+          - Revised documentation for provisionalProject to note default of false and possible limitations on other fields
+            - Also made it clear that false for provisionalProject means the project is standard and that required fields are the same regardless
+        
         2025-03-21:
           - Revised header comments
           - Revised comments within body
@@ -1765,6 +1775,7 @@
             <xs:attribute name="federalFunder" type="xs:boolean" default="false">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">Whether the funder is part of the U.S. federal government (default false)</xs:documentation>
+                    <xs:documentation xml:lang="en">If true, then the federallyFunded attribute for funded should also be true</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute ref="inherited" default="true"/>
@@ -2307,7 +2318,7 @@
         <xs:sequence>
             <xs:element name="storageCapacity" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The amount of storage allotted for the project (in logical byte units, base-10)</xs:documentation>
+                    <xs:documentation xml:lang="en">The amount of storage allotted for the project (using logical byte units, base-10)</xs:documentation>
                     <xs:documentation xml:lang="en">If no user request was received and no value has yet been approved, then this field may be empty</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
@@ -2315,18 +2326,21 @@
                         <xs:element name="storageCapacitySetting" type="storageQuantityType" minOccurs="0" maxOccurs="1">
                             <xs:annotation>
                                 <xs:documentation xml:lang="en">The current setting for storageCapacity (omitted until approved)</xs:documentation>
-                                <xs:documentation xml:lang="en">After approval, this value should be updated to match the approved value (in rare cases, the current setting may later deviate from the approved value)</xs:documentation>
+                                <xs:documentation xml:lang="en">After the implementation of the approval, this value should be updated to match the approvedValue</xs:documentation>
                             </xs:annotation>
                         </xs:element>
                         <xs:element name="requestedValue" type="storageQuantityType" minOccurs="0" maxOccurs="1">
                             <xs:annotation>
                                 <xs:documentation xml:lang="en">The requested value for storageCapacity (omitted if no user request was received)</xs:documentation>
+                                <xs:documentation xml:lang="en">This field gets updated when a Data Sponsor or Data Manager requests a change in storage capacity on an active project</xs:documentation>
+                                <xs:documentation xml:lang="en">Depending on the amount requested, a System Administrator may ask the Data Sponsor for more justification for the request</xs:documentation>
                             </xs:annotation>
                         </xs:element>
                         <xs:element name="approvedValue" type="storageQuantityType" minOccurs="0" maxOccurs="1">
                             <xs:annotation>
                                 <xs:documentation xml:lang="en">The approved value for storageCapacity (omitted if no sys admin has approved yet)</xs:documentation>
-                                <xs:documentation xml:lang="en">Once approved, the approved attribute should also be set to true</xs:documentation>
+                                <xs:documentation xml:lang="en">Once approved for initial project setup, the approved attribute should also be set to true</xs:documentation>
+                                <xs:documentation xml:lang="en">If the Data Sponsor or Data Manager requests a change in storage capacity, then the approval of the new amount will change the approvedValue</xs:documentation>
                             </xs:annotation>
                         </xs:element>
                     </xs:sequence>
@@ -2360,18 +2374,21 @@
                         <xs:element name="storagePerformanceSetting" type="storagePerformanceType" minOccurs="0" maxOccurs="1">
                             <xs:annotation>
                                 <xs:documentation xml:lang="en">The current setting for storagePerformance (omitted until approved)</xs:documentation>
-                                <xs:documentation xml:lang="en">After approval, this value should be updated to match the approved value (in rare cases, the current setting may later deviate from the approved value)</xs:documentation>
+                                <xs:documentation xml:lang="en">After the implementation of the approval, this value should be updated to match the approvedValue</xs:documentation>
                             </xs:annotation>
                         </xs:element>
                         <xs:element name="requestedValue" type="storagePerformanceType" minOccurs="0" maxOccurs="1">
                             <xs:annotation>
                                 <xs:documentation xml:lang="en">The requested value for storagePerformance (omitted if no user request was received)</xs:documentation>
+                                <xs:documentation xml:lang="en">This field gets updated when a Data Sponsor or Data Manager requests a change in storage performance on an active project</xs:documentation>
+                                <xs:documentation xml:lang="en">Depending on the level requested, a System Administrator may ask the Data Sponsor for more justification for the request</xs:documentation>
                             </xs:annotation>
                         </xs:element>
                         <xs:element name="approvedValue" type="storagePerformanceType" minOccurs="0" maxOccurs="1">
                             <xs:annotation>
                                 <xs:documentation xml:lang="en">The approved value for storagePerformance (omitted if no sys admin has approved yet)</xs:documentation>
                                 <xs:documentation xml:lang="en">Once approved, the approved attribute should also be set to true</xs:documentation>
+                                <xs:documentation xml:lang="en">If the Data Sponsor or Data Manager requests a change in storage performance, then the approval of the new level will change the approvedValue</xs:documentation>
                             </xs:annotation>
                         </xs:element>
                     </xs:sequence>
@@ -2398,6 +2415,9 @@
             <xs:element name="hpc" minOccurs="1" maxOccurs="1" default="No">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">Whether the project is expected to connect to high performance computing resources (default is No)</xs:documentation>
+                    <xs:documentation xml:lang="en">This value must be Yes for a project to be mounted to any HPC cluster</xs:documentation>
+                    <xs:documentation xml:lang="en">If this value is No, then smbEnable is likely needed</xs:documentation>
+                    <xs:documentation xml:lang="en">If this value is Not Sure, then a System Administrator should follow up with the Data Sponsor to clarify needs</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                     <xs:simpleContent>
@@ -2419,7 +2439,7 @@
                         <xs:element name="smbEnable" minOccurs="1" maxOccurs="1">
                             <xs:annotation>
                                 <xs:documentation xml:lang="en">Whether a project has an SMB share enabled</xs:documentation>
-                                <xs:documentation xml:lang="en">By default, projects do not get an SMB share</xs:documentation>
+                                <xs:documentation xml:lang="en">By default, projects do not get an SMB share, but if the hpc value is No, then smbEnable is likely needed</xs:documentation>
                                 <xs:documentation xml:lang="en">If an SMB share is approved and set, then the SMB path should be included in projectDirectoryPath</xs:documentation>
                             </xs:annotation>
                             <xs:complexType>
@@ -2538,7 +2558,10 @@
             </xs:element>
             <xs:element name="provisionalProject" minOccurs="1" maxOccurs="1" default="false">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">Whether the project is provisional</xs:documentation>
+                    <xs:documentation xml:lang="en">Whether the project is provisional, i.e., temporary, experimental, or intended for testing purposes only (default false)</xs:documentation>
+                    <xs:documentation xml:lang="en">If the value is true, then limitations may be placed on other fields, e.g. storageCapacity, storagePerformance, and endDate</xs:documentation>
+                    <xs:documentation xml:lang="en">If the value is false, then the project is considered standard and the provisional limitations are not imposed</xs:documentation>
+                    <xs:documentation xml:lang="en">Whether provisional or standard, the same fields are required for all projects</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                     <xs:simpleContent>
@@ -2559,6 +2582,12 @@
                 <xs:complexType>
                     <xs:simpleContent>
                         <xs:extension base="xs:boolean">
+                            <xs:attribute name="federallyFunded" type="xs:boolean" default="false">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="en">Whether the resource is funded by the U.S. federal government (default false)</xs:documentation>
+                                    <xs:documentation xml:lang="en">If true, then at least one fundingReference must have the federalFunder attribute set to true</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
                             <xs:attribute ref="inherited" default="true"/>
                             <xs:attribute ref="discoverable" fixed="false"/>
                             <xs:attribute ref="trackingLevel" fixed="InternalUseOnly"/>

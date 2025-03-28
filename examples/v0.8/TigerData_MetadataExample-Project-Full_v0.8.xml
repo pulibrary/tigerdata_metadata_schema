@@ -73,13 +73,13 @@
         <requestedValue>Standard</requestedValue>
         <approvedValue>Standard</approvedValue>
     </storagePerformance>
-    <numberOfFiles inherited="false" discoverable="false" trackingLevel="InternalUseOnly">Less than 10,000</numberOfFiles>
-    <hpc inherited="true" discoverable="false" trackingLevel="InternalUseOnly">No</hpc>
+    <numberOfFiles inherited="false" discoverable="false" trackingLevel="InternalUseOnly">100k - 1mil</numberOfFiles>
+    <hpc inherited="true" discoverable="false" trackingLevel="InternalUseOnly">Yes</hpc>
     <projectPurpose inherited="true" discoverable="true" trackingLevel="InternalUseOnly">Research</projectPurpose>
     <provisionalProject inherited="true" discoverable="true" trackingLevel="InternalUseOnly">false</provisionalProject>
-    <grantFunded inherited="true" discoverable="false" trackingLevel="InternalUseOnly">true</grantFunded>
+    <grantFunded federallyFunded="false" inherited="true" discoverable="false" trackingLevel="InternalUseOnly">true</grantFunded>
     <fundingReferences discoverable="true" trackingLevel="ResourceRecord">
-        <fundingReference inherited="true">
+        <fundingReference federalFunder="false" inherited="true">
             <funderName>Example Funder</funderName>
             <funderID funderIDType="Crossref Funder ID" funderIDSchema="https://www.crossref.org/services/funder-registry/">abc123</funderID>
             <awardNumber awardURI="www.fakeuri.fake">123456</awardNumber>
@@ -87,12 +87,11 @@
         </fundingReference>
     </fundingReferences>
     <dates discoverable="true" trackingLevel="ResourceRecord">
-        <startDate inherited="true">2024-07-23</startDate>
+        <startDate inherited="true">2025-03-28</startDate>
         <endDate inherited="true">2026-12-31</endDate>
-        <retirementDate inherited="true">2030-12-31</retirementDate>
-        <publicationDate inherited="true">2027-01-01</publicationDate>
+        <retirementDate inherited="true">2031-12-31</retirementDate>
         <otherDate dateType="Collected" inherited="true">2024-07-23/2025-12-31</otherDate>
-        <otherDate dateType="Updated" dateInformation="Error correction" inherited="true">2026-03-03</otherDate>
+        <otherDate dateType="Updated" dateInformation="Error correction" inherited="true">2025-03-28</otherDate>
     </dates>
     <resourceType resourceTypeGeneral="Project" inherited="false" discoverable="true" trackingLevel="ResourceRecord">TigerData Project</resourceType>
     <licenses discoverable="true" trackingLevel="ResourceRecord">

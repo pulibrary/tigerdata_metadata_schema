@@ -31,7 +31,10 @@
         - Repeatable elements are typically placed within container elements, and container elements have names that are the plural form of the repeatable element they contain
 -->
 <!-- Version 0.8 Change Log:
-        2023-03-27:
+        2025-03-28:
+          - Removed default value for projectVisibility
+        
+        2025-03-27:
           - Revised documentation to account for changes and special requests in storage and access
             - storageCapacity
             - storagePerformance
@@ -2352,9 +2355,9 @@
                     <xs:attribute ref="trackingLevel" fixed="InternalUseOnly"/>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="projectVisibility" minOccurs="1" maxOccurs="1" default="Limited">
+            <xs:element name="projectVisibility" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The level of openness to allow for the project record (default is Limited)</xs:documentation>
+                    <xs:documentation xml:lang="en">The level of openness to allow for the project record</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                     <xs:simpleContent>

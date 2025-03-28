@@ -24,7 +24,7 @@
     <hpc inherited="true" discoverable="false" trackingLevel="InternalUseOnly">No</hpc>
     <projectPurpose inherited="true" discoverable="true" trackingLevel="InternalUseOnly">Research</projectPurpose>
     <provisionalProject inherited="true" discoverable="true" trackingLevel="InternalUseOnly">false</provisionalProject>
-    <projectResourceType resourceTypeGeneral="Project" inherited="false" discoverable="true" trackingLevel="ResourceRecord">TigerData Project</resourceType>
+    <projectResourceType resourceTypeGeneral="Project" inherited="false" discoverable="true" trackingLevel="ResourceRecord">TigerData Project</projectResourceType>
     <projectProvenance>
         <submission>
             <requestedBy userID="mjc12" userIDType="NetID"/>

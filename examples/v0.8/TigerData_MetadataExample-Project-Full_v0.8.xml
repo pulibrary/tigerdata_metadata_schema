@@ -36,7 +36,7 @@
     </dataUsers>
     <researchDomains discoverable="true" trackingLevel="ResourceRecord">
         <researchDomain inherited="true">Natural Sciences</researchDomain>
-        <researchDomain inherited="false">Engineering</researchDomain>
+        <researchDomain inherited="true">Engineering</researchDomain>
     </researchDomains>
     <departments discoverable="true" trackingLevel="ResourceRecord">
         <department departmentCode="23500" inherited="true">CHM-Chemistry</department>
@@ -75,9 +75,27 @@
     </storagePerformance>
     <numberOfFiles inherited="false" discoverable="false" trackingLevel="InternalUseOnly">100k - 1mil</numberOfFiles>
     <hpc inherited="true" discoverable="false" trackingLevel="InternalUseOnly">Yes</hpc>
+    <accessPoints inherited="false" discoverable="false" trackingLevel="InternalUseOnly">
+        <smbEnable approved="true">
+            <smbEnableSetting>true</smbEnableSetting>
+            <requestedValue>true</requestedValue>
+            <approvedValue>true</approvedValue>
+        </smbEnable>
+        <globusEnable approved="true">
+            <globusEnableSetting>true</globusEnableSetting>
+            <requestedValue>true</requestedValue>
+            <approvedValue>true</approvedValue>
+        </globusEnable>
+        <globusCollection>
+            <globusName>Princeton TigerData - abcd1/test-project-1</globusName>
+            <globusUUID>abcd1234-0001-0002-0003-1234567890ab</globusUUID>
+            <globusOwner userID="def2" userIDType="NetID"></globusOwner>
+            <globusURL>https://app.globus.org/file-manager?origin_id=abcd1234-0001-0002-0003-1234567890ab</globusURL>
+        </globusCollection>
+    </accessPoints>
     <projectPurpose inherited="true" discoverable="true" trackingLevel="InternalUseOnly">Research</projectPurpose>
     <provisionalProject inherited="true" discoverable="true" trackingLevel="InternalUseOnly">false</provisionalProject>
-    <grantFunded federallyFunded="false" inherited="true" discoverable="false" trackingLevel="InternalUseOnly">true</grantFunded>
+    <funded federallyFunded="false" inherited="true" discoverable="false" trackingLevel="InternalUseOnly">true</funded>
     <fundingReferences discoverable="true" trackingLevel="ResourceRecord">
         <fundingReference federalFunder="false" inherited="true">
             <funderName>Example Funder</funderName>
@@ -86,14 +104,14 @@
             <awardTitle>Example Award Title</awardTitle>
         </fundingReference>
     </fundingReferences>
-    <dates discoverable="true" trackingLevel="ResourceRecord">
+    <projectDates discoverable="true" trackingLevel="ResourceRecord">
         <startDate inherited="true">2025-03-28</startDate>
         <endDate inherited="true">2026-12-31</endDate>
         <retirementDate inherited="true">2031-12-31</retirementDate>
         <otherDate dateType="Collected" inherited="true">2024-07-23/2025-12-31</otherDate>
         <otherDate dateType="Updated" dateInformation="Error correction" inherited="true">2025-03-28</otherDate>
-    </dates>
-    <resourceType resourceTypeGeneral="Project" inherited="false" discoverable="true" trackingLevel="ResourceRecord">TigerData Project</resourceType>
+    </projectDates>
+    <projectResourceType resourceTypeGeneral="Project" inherited="false" discoverable="true" trackingLevel="ResourceRecord">TigerData Project</projectResourceType>
     <licenses discoverable="true" trackingLevel="ResourceRecord">
         <license licenseURI="https://creativecommons.org/licenses/by/4.0/" licenseID="CC BY 4.0" licenseIDScheme="SPDX" licenseIDSchemeURI="https://spdx.org/licenses/" inherited="true">Creative Commons Attribution 4.0 International</license>
     </licenses>
@@ -113,7 +131,7 @@
     <relations discoverable="true" trackingLevel="ResourceRecord">
         <relation relatedIDType="DOI" relationType="IsCitedBy" resourceTypeGeneral="JournalArticle" inherited="false">10.21384/bar1</relation>
         <relation relatedIDType="DOI" relationType="IsDerivedFrom" resourceTypeGeneral="Project" inherited="false">10.21384/bar2</relation>
-        <relation relatedIDType="DOI" relationType="HasMetadata" relatedMetadataScheme="Metadata Title" relatedMetadataSchemeURI="www.fakeuri-m.fake" relatedMetadataSchemeType="Turtle" resourceTypeGeneral="Text" inherited="false">10.21384/bar2</relation>
+        <relation relatedIDType="DOI" relationType="HasMetadata" relatedMetadataScheme="Metadata Title" relatedMetadataSchemeURI="www.fakeuri-m.fake" relatedMetadataSchemeType="Turtle" resourceTypeGeneral="Text" inherited="false">10.21384/bar3</relation>
     </relations>
     <extendedMetadataSchemas discoverable="false" trackingLevel="InternalUseOnly">
         <extendedMetadataSchema inherited="false">Example supported schema name</extendedMetadataSchema>
@@ -121,17 +139,17 @@
     <projectProvenance>
         <submission>
             <requestedBy userID="abdc12" userIDType="NetID"/>
-            <requestDateTime>2024-07-23T11:53:03-04:00</requestDateTime>
-            <approvedBy userID="def34" userIDType="NetID"/>
-            <approvalDateTime>2024-07-23T11:54:47-04:00</approvalDateTime>
+            <requestDateTime>2025-03-28T15:10:03-04:00</requestDateTime>
+            <approvedBy userID="xyz321" userIDType="NetID"/>
+            <approvalDateTime>2025-03-28T16:14:47-04:00</approvalDateTime>
             <eventNote>
-                <noteBy userID="def34" userIDType="NetID"/>
-                <noteDateTime>2024-07-23T11:54:12-04:00</noteDateTime>
+                <noteBy userID="xyz321" userIDType="NetID"/>
+                <noteDateTime>2025-03-28T16:18:11-04:00</noteDateTime>
                 <eventType>Quota</eventType>
-                <message>Delivering just 500 GB to start, and planning to increase to 500 TB by 2024-12-31</message>
+                <message>Delivering just 10 TB to start, and planning to increase to 200 TB by 2025-10-31</message>
             </eventNote>
         </submission>
         <status>Active</status>
-        <schemaVersion>0.7</schemaVersion>
+        <schemaVersion>0.8</schemaVersion>
     </projectProvenance>
 </resource>

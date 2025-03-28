@@ -16,7 +16,7 @@
             <unit>GB</unit>
         </requestedValue>
     </storageCapacity>
-    <projectVisibility inherited="true" discoverable="false" trackingLevel="InternalUseOnly">Limited</projectVisibility>
+    <projectVisibility inherited="true" discoverable="false" trackingLevel="InternalUseOnly">Restricted</projectVisibility>
     <storagePerformance approved="false" inherited="true" discoverable="false" trackingLevel="InternalUseOnly">
         <requestedValue>Standard</requestedValue>
     </storagePerformance>

@@ -36,7 +36,7 @@
             <requestedBy userID="mjc12" userIDType="NetID"/>
             <requestDateTime>2025-03-27T09:56:09-04:00</requestDateTime>
             <approvedBy userID="cbentler" userIDType="NetID"/>
-            <requestDateTime>2025-04-01T09:34:12-04:00</requestDateTime>
+            <approvalDateTime>2025-04-01T09:34:12-04:00</approvalDateTime>
         </submission>
         <status>Approved</status>
         <schemaVersion>0.8</schemaVersion>

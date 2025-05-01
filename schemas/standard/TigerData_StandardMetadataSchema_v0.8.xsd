@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- Version Notes:
-        - Version 0.8 of the TigerData Standard Metadata Schema
-        - Updated on 2025-03-28 by Matt Chandler
+        - Version 0.8.2 of the TigerData Standard Metadata Schema
+        - Updated on 2025-05-01 by Matt Chandler
 -->
 <!-- References:
         - As noted in documentation fields below, several elements are derived from DataCite:
@@ -31,6 +31,14 @@
         - Repeatable elements are typically placed within container elements, and container elements have names that are the plural form of the repeatable element they contain
 -->
 <!-- Version 0.8 Change Log:
+        2025-05-01:
+          - Added PUID to userType, along with puidType to control it
+          - Corrected the netID element in userType to use netIDType
+          - Applied limitedTextType to name fields
+        
+        2025-04-30:
+          - Fixed w3 reference
+        
         2025-03-28:
           - Removed default value for projectVisibility
         
@@ -157,6 +165,17 @@
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:pattern value="[a-z0-9]{2,8}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="puidType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Standard type used for values meant to be a Princeton University ID (PUID)</xs:documentation>
+            <xs:documentation xml:lang="en">Applies a simple pattern that is true for all PUIDs</xs:documentation>
+            <xs:documentation xml:lang="en">Validation of user accounts and permissions happens separate from metadata validation</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{9}"/>
         </xs:restriction>
     </xs:simpleType>
     
@@ -1139,9 +1158,14 @@
             <xs:documentation xml:lang="en">If the sub-element netID is included, its value should match that of the userID attribute</xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:element name="netID" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:element name="netID" type="netIDType" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The University NetID (also called the OIT NetID) is the name or user-id that identifies a person to a computer system or electronic service at Princeton.</xs:documentation>
+                    <xs:documentation xml:lang="en">The Princeton University NetID (also called the OIT NetID) is the name or user-id that identifies a person to a computer system or electronic service at Princeton.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="PUID" type="puidType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">The Princeton University ID (aka Student ID, Employee ID, EMPLID, Princeton ID, or PUID) is a unique nine digit identifier assigned to an individual who has an official affiliation with the University.</xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="orcid" type="xs:anyURI" minOccurs="0" maxOccurs="1">
@@ -1149,17 +1173,17 @@
                     <xs:documentation xml:lang="en">The ORCID ID URL for the person in a given role, if available and if verified as valid against the ORCID API upon entry.</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="fullName" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:element name="fullName" type="limitedTextType" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The full name of the person in a given role, verified in the format family-comma-given and matching the corresponding given and family name fields, if available.</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="givenName" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:element name="givenName" type="limitedTextType" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The given name(s) of the person in a given role. If the person has multiple given names, then all should be included in this field, along with any suffixes.</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="familyName" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:element name="familyName" type="limitedTextType" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The family name(s) of the person in a given role. If the person has multiple family names, then all should be included in this field.</xs:documentation>
                 </xs:annotation>
@@ -1176,7 +1200,7 @@
                 <xs:complexType>
                     <xs:simpleContent>
                         <xs:extension base="xs:string">
-                            <xs:attribute name="nameIdentifierScheme" type="xs:string" use="required">
+                            <xs:attribute name="nameIdentifierScheme" type="limitedTextType" use="required">
                                 <xs:annotation>
                                     <xs:documentation xml:lang="en">The name of the scheme to which the name identifier belongs (required when an alternative name identifier is given).</xs:documentation>
                                 </xs:annotation>
@@ -1199,7 +1223,7 @@
         </xs:attribute>
         <xs:attribute name="userIDType" type="xs:string" fixed="NetID">
             <xs:annotation>
-                <xs:documentation xml:lang="en">Makes explicit that Princeton NetIDs are always used as the identifier for userID</xs:documentation>
+                <xs:documentation xml:lang="en">Makes explicit that Princeton NetIDs are always used as the identifier for the userID attribute</xs:documentation>
             </xs:annotation>
         </xs:attribute>
     </xs:complexType>

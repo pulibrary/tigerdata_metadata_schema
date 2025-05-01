@@ -6,6 +6,7 @@
     <parentProject projectIDType="DOI" inherited="true" discoverable="true" trackingLevel="ResourceRecord">10.34770/az09-0001</parentProject>
     <dataSponsor userID="abcd1" userIDType="NetID" discoverable="true" inherited="true" trackingLevel="ResourceRecord">
         <netID>abcd1</netID>
+        <PUID>123456789</PUID>
         <orcid>https://orcid.org/0000-0001-2345-6789</orcid>
         <fullName>Familyc-Familyd, Givena Givenb</fullName>
         <givenName>Givena Givenb</givenName>
@@ -15,6 +16,7 @@
     </dataSponsor>
     <dataManager userID="def2" userIDType="NetID" discoverable="true" inherited="true" trackingLevel="ResourceRecord">
         <netID>def3</netID>
+        <PUID>223456789</PUID>
         <orcid>https://orcid.org/0000-0002-2345-6789</orcid>
         <fullName>Familyf, Givend Givene</fullName>
         <givenName>Givend Givene</givenName>
@@ -25,6 +27,7 @@
     <dataUsers trackingLevel="ResourceRecord">
         <dataUser userID="ghij3" userIDType="NetID" readOnly="true" inherited="true" discoverable="true">
             <netID>ghij3</netID>
+            <PUID>323456789</PUID>
             <orcid>https://orcid.org/0000-0003-2345-6789</orcid>
             <fullName>Familyg Familyh, Giveni Jr.</fullName>
             <givenName>Giveni Jr.</givenName>
@@ -138,12 +141,12 @@
     </extendedMetadataSchemas>
     <projectProvenance>
         <submission>
-            <requestedBy userID="abdc12" userIDType="NetID"/>
+            <requestedBy userID="abdc12" userIDType="NetID"></requestedBy>
             <requestDateTime>2025-03-28T15:10:03-04:00</requestDateTime>
-            <approvedBy userID="xyz321" userIDType="NetID"/>
+            <approvedBy userID="xyz321" userIDType="NetID"></approvedBy>
             <approvalDateTime>2025-03-28T16:14:47-04:00</approvalDateTime>
             <eventNote>
-                <noteBy userID="xyz321" userIDType="NetID"/>
+                <noteBy userID="xyz321" userIDType="NetID"></noteBy>
                 <noteDateTime>2025-03-28T16:18:11-04:00</noteDateTime>
                 <eventType>Quota</eventType>
                 <message>Delivering just 10 TB to start, and planning to increase to 200 TB by 2025-10-31</message>

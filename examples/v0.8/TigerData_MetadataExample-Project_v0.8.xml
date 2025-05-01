@@ -61,9 +61,9 @@
     <dataUseAgreement inherited="true" discoverable="false" trackingLevel="InternalUseOnly">false</dataUseAgreement>
     <projectProvenance>
         <submission>
-            <requestedBy userID="abdc12" userIDType="NetID"/>
+            <requestedBy userID="abdc12" userIDType="NetID"></requestedBy>
             <requestDateTime>2025-03-28T15:34:11-04:00</requestDateTime>
-            <approvedBy userID="xyz321" userIDType="NetID"/>
+            <approvedBy userID="xyz321" userIDType="NetID"></approvedBy>
             <approvalDateTime>2025-03-28T16:15:25-04:00</approvalDateTime>
         </submission>
         <status>Active</status>

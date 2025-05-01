@@ -138,12 +138,12 @@
     </extendedMetadataSchemas>
     <projectProvenance>
         <submission>
-            <requestedBy userID="abdc12" userIDType="NetID"/>
+            <requestedBy userID="abdc12" userIDType="NetID"></requestedBy>
             <requestDateTime>2025-03-28T15:10:03-04:00</requestDateTime>
-            <approvedBy userID="xyz321" userIDType="NetID"/>
+            <approvedBy userID="xyz321" userIDType="NetID"></approvedBy>
             <approvalDateTime>2025-03-28T16:14:47-04:00</approvalDateTime>
             <eventNote>
-                <noteBy userID="xyz321" userIDType="NetID"/>
+                <noteBy userID="xyz321" userIDType="NetID"></noteBy>
                 <noteDateTime>2025-03-28T16:18:11-04:00</noteDateTime>
                 <eventType>Quota</eventType>
                 <message>Delivering just 10 TB to start, and planning to increase to 200 TB by 2025-10-31</message>

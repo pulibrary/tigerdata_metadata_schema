@@ -33,9 +33,9 @@
     <projectResourceType resourceTypeGeneral="Project" inherited="false" discoverable="true" trackingLevel="ResourceRecord">TigerData Project</projectResourceType>
     <projectProvenance>
         <submission>
-            <requestedBy userID="mjc12" userIDType="NetID"/>
+            <requestedBy userID="mjc12" userIDType="NetID"></requestedBy>
             <requestDateTime>2025-03-28T13:25:47-04:00</requestDateTime>
-            <approvedBy userID="cbentler" userIDType="NetID"/>
+            <approvedBy userID="cbentler" userIDType="NetID"></approvedBy>
             <approvalDateTime>2025-04-02T09:38:30-04:00</approvalDateTime>
         </submission>
         <status>Approved</status>

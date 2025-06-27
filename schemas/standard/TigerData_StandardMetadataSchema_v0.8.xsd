@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- Version Notes:
-        - Version 0.8.2 of the TigerData Standard Metadata Schema
-        - Updated on 2025-05-01 by Matt Chandler
+        - Version 1.0 of the TigerData Standard Metadata Schema
+        - Updated on 2025-06-27 by Halle Burns
 -->
 <!-- References:
         - As noted in documentation fields below, several elements are derived from DataCite:
@@ -29,6 +29,10 @@
         - The name of every simple and complex type ends with "Type" (if the semantic part of the name ends in "Type" then "Type" is still appended to the XML type name, e.g. "relationTypeType")
         - Acronyms and abbreviations are avoided in names and annotations to prevent confusion, but unlike DataCite, some acronyms are used (e.g., ID for identifier)
         - Repeatable elements are typically placed within container elements, and container elements have names that are the plural form of the repeatable element they contain
+-->
+<!-- Version 1.0 Change Log:
+        2025-06-27:
+            - Updated attributes and related documentation including the word "scheme" to say "schema" instead
 -->
 <!-- Version 0.8 Change Log:
         2025-05-01:
@@ -1200,14 +1204,14 @@
                 <xs:complexType>
                     <xs:simpleContent>
                         <xs:extension base="xs:string">
-                            <xs:attribute name="nameIdentifierScheme" type="limitedTextType" use="required">
+                            <xs:attribute name="nameIdentifierSchema" type="limitedTextType" use="required">
                                 <xs:annotation>
-                                    <xs:documentation xml:lang="en">The name of the scheme to which the name identifier belongs (required when an alternative name identifier is given).</xs:documentation>
+                                    <xs:documentation xml:lang="en">The name of the schema to which the name identifier belongs (required when an alternative name identifier is given).</xs:documentation>
                                 </xs:annotation>
                             </xs:attribute>
-                            <xs:attribute name="schemeURI" type="xs:anyURI" use="required">
+                            <xs:attribute name="schemaURI" type="xs:anyURI" use="required">
                                 <xs:annotation>
-                                    <xs:documentation xml:lang="en">The URI of the scheme to which the name identifier belongs (required when an alternative name identifier is given).</xs:documentation>
+                                    <xs:documentation xml:lang="en">The URI of the schema to which the name identifier belongs (required when an alternative name identifier is given).</xs:documentation>
                                 </xs:annotation>
                             </xs:attribute>
                         </xs:extension>
@@ -1881,14 +1885,14 @@
                             <xs:documentation xml:lang="en">Specifies the short, standardized version of the license name</xs:documentation>
                         </xs:annotation>
                     </xs:attribute>
-                    <xs:attribute name="licenseIDScheme" type="xs:string" fixed="SPDX">
+                    <xs:attribute name="licenseIDSchema" type="xs:string" fixed="SPDX">
                         <xs:annotation>
-                            <xs:documentation xml:lang="en">Specifies the scheme used for licenseID</xs:documentation>
+                            <xs:documentation xml:lang="en">Specifies the schema used for licenseID</xs:documentation>
                         </xs:annotation>
                     </xs:attribute>
-                    <xs:attribute name="licenseIDSchemeURI" type="xs:anyURI" fixed="https://spdx.org/licenses/">
+                    <xs:attribute name="licenseIDSchemaURI" type="xs:anyURI" fixed="https://spdx.org/licenses/">
                         <xs:annotation>
-                            <xs:documentation xml:lang="en">Specifies the URI of the scheme given by licenseIDScheme</xs:documentation>
+                            <xs:documentation xml:lang="en">Specifies the URI of the schema given by licenseIDSchema</xs:documentation>
                         </xs:annotation>
                     </xs:attribute>
                     <xs:attribute ref="inherited" default="true"/>
@@ -2672,14 +2676,14 @@
                             <xs:complexType>
                                 <xs:simpleContent>
                                     <xs:extension base="shortDescriptionType">
-                                        <xs:attribute name="subjectScheme" type="limitedTextType" use="optional">
+                                        <xs:attribute name="subjectSchema" type="limitedTextType" use="optional">
                                             <xs:annotation>
-                                                <xs:documentation xml:lang="en">The name of the subject scheme or classification code or authority, if applicable</xs:documentation>
+                                                <xs:documentation xml:lang="en">The name of the subject schema or classification code or authority, if applicable</xs:documentation>
                                             </xs:annotation>
                                         </xs:attribute>
-                                        <xs:attribute name="subjectSchemeURI" type="xs:anyURI" use="optional">
+                                        <xs:attribute name="subjectSchemaURI" type="xs:anyURI" use="optional">
                                             <xs:annotation>
-                                                <xs:documentation xml:lang="en">The URI of the subject identifier scheme, if applicable</xs:documentation>
+                                                <xs:documentation xml:lang="en">The URI of the subject identifier schema, if applicable</xs:documentation>
                                             </xs:annotation>
                                         </xs:attribute>
                                         <xs:attribute name="valueURI" type="xs:anyURI" use="optional">
@@ -2689,7 +2693,7 @@
                                         </xs:attribute>
                                         <xs:attribute name="classificationCode" type="limitedTextType" use="optional">
                                             <xs:annotation>
-                                                <xs:documentation xml:lang="en">The classification code used for the subject term in the subject scheme, if applicable</xs:documentation>
+                                                <xs:documentation xml:lang="en">The classification code used for the subject term in the subject schema, if applicable</xs:documentation>
                                             </xs:annotation>
                                         </xs:attribute>
                                         <xs:attribute ref="inherited" default="true"/>
@@ -2722,21 +2726,21 @@
                                     <xs:extension base="limitedTextType">
                                         <xs:attribute name="relatedIDType" type="relatedIDTypeType" default="DOI"/>
                                         <xs:attribute name="relationType" type="relationTypeType" use="required"/>
-                                        <xs:attribute name="relatedMetadataScheme" type="limitedTextType" use="optional">
+                                        <xs:attribute name="relatedMetadataSchema" type="limitedTextType" use="optional">
                                             <xs:annotation>
-                                                <xs:documentation xml:lang="en">The name of the related metadata scheme, if applicable</xs:documentation>
+                                                <xs:documentation xml:lang="en">The name of the related metadata schema, if applicable</xs:documentation>
                                                 <xs:documentation xml:lang="en">Use only with HasMetadata and IsMetadataFor relation types</xs:documentation>
                                             </xs:annotation>
                                         </xs:attribute>
-                                        <xs:attribute name="relatedMetadataSchemeURI" type="xs:anyURI" use="optional">
+                                        <xs:attribute name="relatedMetadataSchemaURI" type="xs:anyURI" use="optional">
                                             <xs:annotation>
-                                                <xs:documentation xml:lang="en">The URI of the related metadata scheme, if applicable</xs:documentation>
+                                                <xs:documentation xml:lang="en">The URI of the related metadata schema, if applicable</xs:documentation>
                                                 <xs:documentation xml:lang="en">Use only with HasMetadata and IsMetadataFor relation types</xs:documentation>
                                             </xs:annotation>
                                         </xs:attribute>
-                                        <xs:attribute name="relatedMetadataSchemeType" type="limitedTextType" use="optional">
+                                        <xs:attribute name="relatedMetadataSchemaType" type="limitedTextType" use="optional">
                                             <xs:annotation>
-                                                <xs:documentation xml:lang="en">The type of the related metadata scheme, if applicable (e.g. XSD, DDT, Turtle)</xs:documentation>
+                                                <xs:documentation xml:lang="en">The type of the related metadata schema, if applicable (e.g. XSD, DDT, Turtle)</xs:documentation>
                                                 <xs:documentation xml:lang="en">Use only with HasMetadata and IsMetadataFor relation types</xs:documentation>
                                             </xs:annotation>
                                         </xs:attribute>

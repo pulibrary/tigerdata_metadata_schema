@@ -36,6 +36,10 @@
             - Updated XML version to 1.1 to improve Unicode handling
             - Defined XSD version 1.1 to allow for assertions (specifying interdependencies)
             - Included self-referential links for the schema home in GitHub
+            - Added tests in userType:
+              - for netID and userID to match
+              - for orcid and alternativeNameIdentifier to not match
+              - for fullName to match the catenation of familyName and givenName
             
         2025-09-03:
             - Moved schemaVersion out of projectProvenance to be defined as a common element
@@ -1148,6 +1152,9 @@
                 <xs:documentation xml:lang="en">Makes explicit that Princeton NetIDs are always used as the identifier for the userID attribute</xs:documentation>
             </xs:annotation>
         </xs:attribute>
+        <xs:assert test="@userID = ./netID"/>
+        <xs:assert test="./orcid != ./alternativeNameIdentifier"/>
+        <xs:assert test="./fullName = string-join(./familyName, ', ', ./givenName)"/>
     </xs:complexType>
     
     <xs:simpleType name="researchDomainNameType">

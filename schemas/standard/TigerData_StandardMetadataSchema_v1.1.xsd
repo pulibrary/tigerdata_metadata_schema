@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.1" encoding="UTF-8"?>
 
 <!-- Version Notes:
         - Version 1.1 of the TigerData Standard Metadata Schema
-        - Updated on 2025-09-03 by Matt Chandler
+        - Updated on 2025-09-04 by Matt Chandler
 -->
 <!-- References:
         - As noted in documentation fields below, several elements are derived from DataCite:
@@ -32,12 +32,17 @@
 -->
 
 <!-- Version 1.x Change Log:
+        2025-09-04:
+            - Updated XML version to 1.1 to improve Unicode handling
+            - Defined XSD version 1.1 to allow for assertions (specifying interdependencies)
+            - Included self-referential links for the schema home in GitHub
+            
         2025-09-03:
             - Moved schemaVersion out of projectProvenance to be defined as a common element
             - Added schemaVersion to resource as a top-level element that applies to both projects and items
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://github.com/pulibrary/tigerdata_metadata_schema" targetNamespace="https://github.com/pulibrary/tigerdata_metadata_schema" elementFormDefault="qualified" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.1">
     <xs:import schemaLocation="https://www.w3.org/2001/xml.xsd" namespace="http://www.w3.org/XML/1998/namespace"/>
     
 <!-- PRIMITIVES -->

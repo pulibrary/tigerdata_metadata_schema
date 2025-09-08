@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<td:resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+ xmlns:td="https://github.com/pulibrary/tigerdata_metadata_schema"
+ xsi:schemaLocation="https://github.com/pulibrary/tigerdata_metadata_schema file:/C:/Users/mjc12/Documents/GitHub/tigerdata_metadata_schema/schemas/standard/TigerData_StandardMetadataSchema_v1.1.xsd" resourceClass="Project" resourceID="10.0000/abcd-1234" resourceIDType="DOI">
+    <td:projectID td:inherited="false" td:discoverable="true" td:trackingLevel="ResourceRecord" projectIDType="DOI">10.0000/abcd-1234</td:projectID>
+    <td:alternativeIDs td:discoverable="true" td:trackingLevel="ResourceRecord">
+        <td:alternativeID alternativeIDType="alternativeIDType0" td:inherited="false">alternativeID0</td:alternativeID>
+    </td:alternativeIDs>
+    <td:parentProject td:inherited="true" td:discoverable="true" td:trackingLevel="ResourceRecord" projectIDType="DOI">10.0000/!&quot;</td:parentProject>
+    <td:dataSponsor td:inherited="true" td:discoverable="true" td:trackingLevel="ResourceRecord" userID="00" userIDType="NetID">
+        <td:netID>00</td:netID>
+        <td:PUID>000000000</td:PUID>
+        <td:orcid>http://www.oxygenxml.com/</td:orcid>
+        <td:fullName>fullName0</td:fullName>
+        <td:givenName>givenName0</td:givenName>
+        <td:familyName>familyName0</td:familyName>
+        <td:nameDate>0000-01-01</td:nameDate>
+        <td:alternativeNameIdentifier nameIdentifierSchema="nameIdentifierSchema0" schemaURI="http://www.oxygenxml.com/">alternativeNameIdentifier0</td:alternativeNameIdentifier>
+    </td:dataSponsor>
+    <td:dataManager td:inherited="true" td:discoverable="true" td:trackingLevel="ResourceRecord" userID="00" userIDType="NetID">
+        <td:netID>00</td:netID>
+        <td:PUID>000000000</td:PUID>
+        <td:orcid>http://www.oxygenxml.com/</td:orcid>
+        <td:fullName>fullName1</td:fullName>
+        <td:givenName>givenName1</td:givenName>
+        <td:familyName>familyName1</td:familyName>
+        <td:nameDate>0000-01-01</td:nameDate>
+        <td:alternativeNameIdentifier nameIdentifierSchema="nameIdentifierSchema1" schemaURI="http://www.oxygenxml.com/">alternativeNameIdentifier1</td:alternativeNameIdentifier>
+    </td:dataManager>
+    <td:dataUsers td:trackingLevel="ResourceRecord">
+        <td:dataUser readOnly="false" td:inherited="true" td:discoverable="false" userID="00" userIDType="NetID">
+            <td:netID>00</td:netID>
+            <td:PUID>000000000</td:PUID>
+            <td:orcid>http://www.oxygenxml.com/</td:orcid>
+            <td:fullName>fullName2</td:fullName>
+            <td:givenName>givenName2</td:givenName>
+            <td:familyName>familyName2</td:familyName>
+            <td:nameDate>0000-01-01</td:nameDate>
+            <td:alternativeNameIdentifier nameIdentifierSchema="nameIdentifierSchema2" schemaURI="http://www.oxygenxml.com/">alternativeNameIdentifier2</td:alternativeNameIdentifier>
+        </td:dataUser>
+    </td:dataUsers>
+    <td:researchDomains td:discoverable="true" td:trackingLevel="ResourceRecord">
+        <td:researchDomain td:inherited="true">Natural Sciences</td:researchDomain>
+    </td:researchDomains>
+    <td:departments td:discoverable="true" td:trackingLevel="ResourceRecord">
+        <td:department departmentCode="00000" td:inherited="true">department0</td:department>
+    </td:departments>
+    <td:projectDirectory td:approved="false" td:inherited="false" td:discoverable="false" td:trackingLevel="InternalUseOnly">
+        <td:projectDirectoryPath protocol="NFS">projectDirectoryPath0</td:projectDirectoryPath>
+        <td:requestedValue protocol="NFS">$$$$$$$$$$$$$$$$$$</td:requestedValue>
+        <td:approvedValue protocol="NFS">$$$$$$$$$$$$$$$$$$</td:approvedValue>
+    </td:projectDirectory>
+    <td:title td:inherited="false" td:discoverable="true" td:trackingLevel="ResourceRecord" xml:lang="en">title0</td:title>
+    <td:description td:inherited="false" td:discoverable="true" td:trackingLevel="ResourceRecord" xml:lang="en">description0</td:description>
+    <td:languages td:discoverable="true" td:trackingLevel="ResourceRecord">
+        <td:language td:inherited="true">en-US</td:language>
+    </td:languages>
+    <td:storageCapacity td:approved="false" td:inherited="false" td:discoverable="false" td:trackingLevel="InternalUseOnly">
+        <td:storageCapacitySetting>
+            <td:size>0</td:size>
+            <td:unit>B</td:unit>
+        </td:storageCapacitySetting>
+        <td:requestedValue>
+            <td:size>0</td:size>
+            <td:unit>B</td:unit>
+        </td:requestedValue>
+        <td:approvedValue>
+            <td:size>0</td:size>
+            <td:unit>B</td:unit>
+        </td:approvedValue>
+    </td:storageCapacity>
+    <td:projectVisibility td:inherited="true" td:discoverable="false" td:trackingLevel="InternalUseOnly">Restricted</td:projectVisibility>
+    <td:storagePerformance td:approved="false" td:inherited="true" td:discoverable="false" td:trackingLevel="InternalUseOnly">
+        <td:storagePerformanceSetting>Eco</td:storagePerformanceSetting>
+        <td:requestedValue>Eco</td:requestedValue>
+        <td:approvedValue>Eco</td:approvedValue>
+    </td:storagePerformance>
+    <td:numberOfFiles td:inherited="false" td:discoverable="false" td:trackingLevel="InternalUseOnly">Less than 10,000</td:numberOfFiles>
+    <td:hpc td:inherited="true" td:discoverable="false" td:trackingLevel="InternalUseOnly">No</td:hpc>
+    <td:accessPoints td:inherited="false" td:discoverable="false" td:trackingLevel="InternalUseOnly">
+        <td:smbEnable td:approved="false">
+            <td:smbEnableSetting>false</td:smbEnableSetting>
+            <td:requestedValue>false</td:requestedValue>
+            <td:approvedValue>false</td:approvedValue>
+        </td:smbEnable>
+        <td:globusEnable td:approved="false">
+            <td:globusEnableSetting>false</td:globusEnableSetting>
+            <td:requestedValue>false</td:requestedValue>
+            <td:approvedValue>false</td:approvedValue>
+        </td:globusEnable>
+        <td:globusCollection>
+            <td:globusName xml:lang="en">globusName0</td:globusName>
+            <td:globusUUID>$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$</td:globusUUID>
+            <td:globusOwner userID="00" userIDType="NetID">
+                <td:netID>00</td:netID>
+                <td:PUID>000000000</td:PUID>
+                <td:orcid>http://www.oxygenxml.com/</td:orcid>
+                <td:fullName>fullName3</td:fullName>
+                <td:givenName>givenName3</td:givenName>
+                <td:familyName>familyName3</td:familyName>
+                <td:nameDate>0000-01-01</td:nameDate>
+                <td:alternativeNameIdentifier nameIdentifierSchema="nameIdentifierSchema3" schemaURI="http://www.oxygenxml.com/">alternativeNameIdentifier3</td:alternativeNameIdentifier>
+            </td:globusOwner>
+            <td:globusURL>http://www.oxygenxml.com/</td:globusURL>
+        </td:globusCollection>
+    </td:accessPoints>
+    <td:projectPurpose td:inherited="true" td:discoverable="true" td:trackingLevel="InternalUseOnly">Research</td:projectPurpose>
+    <td:provisionalProject td:inherited="true" td:discoverable="true" td:trackingLevel="InternalUseOnly">false</td:provisionalProject>
+    <td:funded federallyFunded="false" td:inherited="true" td:discoverable="false" td:trackingLevel="InternalUseOnly">false</td:funded>
+    <td:fundingReferences td:discoverable="true" td:trackingLevel="ResourceRecord">
+        <td:fundingReference federalFunder="false" td:inherited="true">
+            <td:funderName xml:lang="en">funderName0</td:funderName>
+            <td:funderID funderIDType="ROR" funderIDSchema="https://ror.org/">funderID0</td:funderID>
+            <td:awardNumber awardURI="http://www.oxygenxml.com/">awardNumber0</td:awardNumber>
+            <td:awardTitle xml:lang="en">awardTitle0</td:awardTitle>
+        </td:fundingReference>
+    </td:fundingReferences>
+    <td:projectDates td:discoverable="true" td:trackingLevel="ResourceRecord">
+        <td:startDate td:inherited="true">0000-01-01</td:startDate>
+        <td:endDate td:inherited="true">0000-01-01</td:endDate>
+        <td:retirementDate td:inherited="true">0000-01-01</td:retirementDate>
+        <td:publicationDate td:inherited="true">0000-01-01</td:publicationDate>
+        <td:otherDate dateType="Accepted" dateInformation="dateInformation0" td:inherited="true">0000-01-01</td:otherDate>
+    </td:projectDates>
+    <td:projectResourceType td:resourceTypeGeneral="Project" td:inherited="false" td:discoverable="true" td:trackingLevel="ResourceRecord"
+         xml:lang="en">TigerData Project</td:projectResourceType>
+    <td:licenses td:discoverable="true" td:trackingLevel="ResourceRecord">
+        <td:license licenseURI="https://creativecommons.org/publicdomain/zero/1.0/" licenseID="CC0 1.0" licenseIDSchema="SPDX"
+             licenseIDSchemaURI="https://spdx.org/licenses/" td:inherited="true">Creative Commons Public Domain Dedication 1.0 Universal</td:license>
+    </td:licenses>
+    <td:dataUseAgreement td:inherited="true" td:discoverable="false" td:trackingLevel="InternalUseOnly">false</td:dataUseAgreement>
+    <td:duaReferences td:discoverable="true" td:trackingLevel="ResourceRecord">
+        <td:duaReference td:inherited="true">
+            <td:grantorName xml:lang="en">grantorName0</td:grantorName>
+            <td:duaID duaURI="http://www.oxygenxml.com/">duaID0</td:duaID>
+            <td:duaTitle xml:lang="en">duaTitle0</td:duaTitle>
+        </td:duaReference>
+    </td:duaReferences>
+    <td:keywords td:discoverable="true" td:trackingLevel="ResourceRecord">
+        <td:keyword subjectSchema="subjectSchema0" subjectSchemaURI="http://www.oxygenxml.com/" valueURI="http://www.oxygenxml.com/"
+             classificationCode="classificationCode0" td:inherited="true" xml:lang="en">keyword0</td:keyword>
+    </td:keywords>
+    <td:relations td:discoverable="true" td:trackingLevel="ResourceRecord">
+        <td:relation relatedIDType="DOI" relationType="IsCitedBy" relatedMetadataSchema="relatedMetadataSchema0" relatedMetadataSchemaURI="http://www.oxygenxml.com/"
+             relatedMetadataSchemaType="relatedMetadataSchemaType0" td:resourceTypeGeneral="Audiovisual"
+             td:inherited="false">relation0</td:relation>
+    </td:relations>
+    <td:extendedMetadataSchemas td:discoverable="false" td:trackingLevel="InternalUseOnly">
+        <td:extendedMetadataSchema td:inherited="false">extendedMetadataSchema0</td:extendedMetadataSchema>
+    </td:extendedMetadataSchemas>
+    <td:projectProvenance>
+        <td:submission td:inherited="false" td:discoverable="false" td:trackingLevel="InternalUseOnly">
+            <td:requestedBy userID="00" userIDType="NetID">
+                <td:netID>00</td:netID>
+                <td:PUID>000000000</td:PUID>
+                <td:orcid>http://www.oxygenxml.com/</td:orcid>
+                <td:fullName>fullName4</td:fullName>
+                <td:givenName>givenName4</td:givenName>
+                <td:familyName>familyName4</td:familyName>
+                <td:nameDate>0000-01-01</td:nameDate>
+                <td:alternativeNameIdentifier nameIdentifierSchema="nameIdentifierSchema4" schemaURI="http://www.oxygenxml.com/">alternativeNameIdentifier4</td:alternativeNameIdentifier>
+            </td:requestedBy>
+            <td:requestDateTime>2006-05-04T18:13:51.0</td:requestDateTime>
+            <td:approvedBy userID="00" userIDType="NetID">
+                <td:netID>00</td:netID>
+                <td:PUID>000000000</td:PUID>
+                <td:orcid>http://www.oxygenxml.com/</td:orcid>
+                <td:fullName>fullName5</td:fullName>
+                <td:givenName>givenName5</td:givenName>
+                <td:familyName>familyName5</td:familyName>
+                <td:nameDate>0000-01-01</td:nameDate>
+                <td:alternativeNameIdentifier nameIdentifierSchema="nameIdentifierSchema5" schemaURI="http://www.oxygenxml.com/">alternativeNameIdentifier5</td:alternativeNameIdentifier>
+            </td:approvedBy>
+            <td:approvalDateTime>2006-05-04T18:13:51.0</td:approvalDateTime>
+            <td:deniedBy userID="00" userIDType="NetID">
+                <td:netID>00</td:netID>
+                <td:PUID>000000000</td:PUID>
+                <td:orcid>http://www.oxygenxml.com/</td:orcid>
+                <td:fullName>fullName6</td:fullName>
+                <td:givenName>givenName6</td:givenName>
+                <td:familyName>familyName6</td:familyName>
+                <td:nameDate>0000-01-01</td:nameDate>
+                <td:alternativeNameIdentifier nameIdentifierSchema="nameIdentifierSchema6" schemaURI="http://www.oxygenxml.com/">alternativeNameIdentifier6</td:alternativeNameIdentifier>
+            </td:deniedBy>
+            <td:denialDateTime>2006-05-04T18:13:51.0</td:denialDateTime>
+            <td:eventNote>
+                <td:noteBy userID="00" userIDType="NetID">
+                    <td:netID>00</td:netID>
+                    <td:PUID>000000000</td:PUID>
+                    <td:orcid>http://www.oxygenxml.com/</td:orcid>
+                    <td:fullName>fullName7</td:fullName>
+                    <td:givenName>givenName7</td:givenName>
+                    <td:familyName>familyName7</td:familyName>
+                    <td:nameDate>0000-01-01</td:nameDate>
+                    <td:alternativeNameIdentifier nameIdentifierSchema="nameIdentifierSchema7" schemaURI="http://www.oxygenxml.com/">alternativeNameIdentifier7</td:alternativeNameIdentifier>
+                </td:noteBy>
+                <td:noteDateTime>2006-05-04T18:13:51.0</td:noteDateTime>
+                <td:eventType>Collection</td:eventType>
+                <td:message xml:lang="en">message0</td:message>
+            </td:eventNote>
+        </td:submission>
+        <td:revisions td:discoverable="false" td:trackingLevel="InternalUseOnly">
+            <td:revision td:inherited="false">
+                <td:requestedBy userID="00" userIDType="NetID">
+                    <td:netID>00</td:netID>
+                    <td:PUID>000000000</td:PUID>
+                    <td:orcid>http://www.oxygenxml.com/</td:orcid>
+                    <td:fullName>fullName8</td:fullName>
+                    <td:givenName>givenName8</td:givenName>
+                    <td:familyName>familyName8</td:familyName>
+                    <td:nameDate>0000-01-01</td:nameDate>
+                    <td:alternativeNameIdentifier nameIdentifierSchema="nameIdentifierSchema8" schemaURI="http://www.oxygenxml.com/">alternativeNameIdentifier8</td:alternativeNameIdentifier>
+                </td:requestedBy>
+                <td:requestDateTime>2006-05-04T18:13:51.0</td:requestDateTime>
+                <td:approvedBy userID="00" userIDType="NetID">
+                    <td:netID>00</td:netID>
+                    <td:PUID>000000000</td:PUID>
+                    <td:orcid>http://www.oxygenxml.com/</td:orcid>
+                    <td:fullName>fullName9</td:fullName>
+                    <td:givenName>givenName9</td:givenName>
+                    <td:familyName>familyName9</td:familyName>
+                    <td:nameDate>0000-01-01</td:nameDate>
+                    <td:alternativeNameIdentifier nameIdentifierSchema="nameIdentifierSchema9" schemaURI="http://www.oxygenxml.com/">alternativeNameIdentifier9</td:alternativeNameIdentifier>
+                </td:approvedBy>
+                <td:approvalDateTime>2006-05-04T18:13:51.0</td:approvalDateTime>
+                <td:deniedBy userID="00" userIDType="NetID">
+                    <td:netID>00</td:netID>
+                    <td:PUID>000000000</td:PUID>
+                    <td:orcid>http://www.oxygenxml.com/</td:orcid>
+                    <td:fullName>fullName10</td:fullName>
+                    <td:givenName>givenName10</td:givenName>
+                    <td:familyName>familyName10</td:familyName>
+                    <td:nameDate>0000-01-01</td:nameDate>
+                    <td:alternativeNameIdentifier nameIdentifierSchema="nameIdentifierSchema10" schemaURI="http://www.oxygenxml.com/">alternativeNameIdentifier10</td:alternativeNameIdentifier>
+                </td:deniedBy>
+                <td:denialDateTime>2006-05-04T18:13:51.0</td:denialDateTime>
+                <td:eventNote>
+                    <td:noteBy userID="00" userIDType="NetID">
+                    </td:noteBy>
+                    <td:noteDateTime>2006-05-04T18:13:51.0</td:noteDateTime>
+                    <td:eventType>Collection</td:eventType>
+                    <td:message xml:lang="en">message1</td:message>
+                </td:eventNote>
+            </td:revision>
+        </td:revisions>
+        <td:retirement td:inherited="true" td:discoverable="false" td:trackingLevel="InternalUseOnly">
+            <td:requestedBy userID="00" userIDType="NetID">
+                <td:netID>00</td:netID>
+                <td:PUID>000000000</td:PUID>
+                <td:orcid>http://www.oxygenxml.com/</td:orcid>
+                <td:fullName>fullName11</td:fullName>
+                <td:givenName>givenName11</td:givenName>
+                <td:familyName>familyName11</td:familyName>
+                <td:nameDate>0000-01-01</td:nameDate>
+                <td:alternativeNameIdentifier nameIdentifierSchema="nameIdentifierSchema11" schemaURI="http://www.oxygenxml.com/">alternativeNameIdentifier11</td:alternativeNameIdentifier>
+            </td:requestedBy>
+            <td:requestDateTime>2006-05-04T18:13:51.0</td:requestDateTime>
+            <td:approvedBy userID="00" userIDType="NetID">
+                <td:netID>00</td:netID>
+                <td:PUID>000000000</td:PUID>
+                <td:orcid>http://www.oxygenxml.com/</td:orcid>
+                <td:fullName>fullName12</td:fullName>
+                <td:givenName>givenName12</td:givenName>
+                <td:familyName>familyName12</td:familyName>
+                <td:nameDate>0000-01-01</td:nameDate>
+                <td:alternativeNameIdentifier nameIdentifierSchema="nameIdentifierSchema12" schemaURI="http://www.oxygenxml.com/">alternativeNameIdentifier12</td:alternativeNameIdentifier>
+            </td:approvedBy>
+            <td:approvalDateTime>2006-05-04T18:13:51.0</td:approvalDateTime>
+            <td:deniedBy userID="00" userIDType="NetID">
+                <td:netID>00</td:netID>
+                <td:PUID>000000000</td:PUID>
+                <td:orcid>http://www.oxygenxml.com/</td:orcid>
+                <td:fullName>fullName13</td:fullName>
+                <td:givenName>givenName13</td:givenName>
+                <td:familyName>familyName13</td:familyName>
+                <td:nameDate>0000-01-01</td:nameDate>
+                <td:alternativeNameIdentifier nameIdentifierSchema="nameIdentifierSchema13" schemaURI="http://www.oxygenxml.com/">alternativeNameIdentifier13</td:alternativeNameIdentifier>
+            </td:deniedBy>
+            <td:denialDateTime>2006-05-04T18:13:51.0</td:denialDateTime>
+            <td:eventNote>
+                <td:noteBy userID="00" userIDType="NetID">
+                    <td:netID>00</td:netID>
+                    <td:PUID>000000000</td:PUID>
+                    <td:orcid>http://www.oxygenxml.com/</td:orcid>
+                    <td:fullName>fullName14</td:fullName>
+                    <td:givenName>givenName14</td:givenName>
+                    <td:familyName>familyName14</td:familyName>
+                    <td:nameDate>0000-01-01</td:nameDate>
+                    <td:alternativeNameIdentifier nameIdentifierSchema="nameIdentifierSchema14" schemaURI="http://www.oxygenxml.com/">alternativeNameIdentifier14</td:alternativeNameIdentifier>
+                </td:noteBy>
+                <td:noteDateTime>2006-05-04T18:13:51.0</td:noteDateTime>
+                <td:eventType>Collection</td:eventType>
+                <td:message xml:lang="en">message2</td:message>
+            </td:eventNote>
+        </td:retirement>
+        <td:publication td:inherited="true" td:discoverable="false" td:trackingLevel="InternalUseOnly">
+            <td:requestedBy userID="00" userIDType="NetID">
+                <td:netID>00</td:netID>
+                <td:PUID>000000000</td:PUID>
+                <td:orcid>http://www.oxygenxml.com/</td:orcid>
+                <td:fullName>fullName15</td:fullName>
+                <td:givenName>givenName15</td:givenName>
+                <td:familyName>familyName15</td:familyName>
+                <td:nameDate>0000-01-01</td:nameDate>
+                <td:alternativeNameIdentifier nameIdentifierSchema="nameIdentifierSchema15" schemaURI="http://www.oxygenxml.com/">alternativeNameIdentifier15</td:alternativeNameIdentifier>
+            </td:requestedBy>
+            <td:requestDateTime>2006-05-04T18:13:51.0</td:requestDateTime>
+            <td:approvedBy userID="00" userIDType="NetID">
+                <td:netID>00</td:netID>
+                <td:PUID>000000000</td:PUID>
+                <td:orcid>http://www.oxygenxml.com/</td:orcid>
+                <td:fullName>fullName16</td:fullName>
+                <td:givenName>givenName16</td:givenName>
+                <td:familyName>familyName16</td:familyName>
+                <td:nameDate>0000-01-01</td:nameDate>
+                <td:alternativeNameIdentifier nameIdentifierSchema="nameIdentifierSchema16" schemaURI="http://www.oxygenxml.com/">alternativeNameIdentifier16</td:alternativeNameIdentifier>
+            </td:approvedBy>
+            <td:approvalDateTime>2006-05-04T18:13:51.0</td:approvalDateTime>
+            <td:deniedBy userID="00" userIDType="NetID">
+                <td:netID>00</td:netID>
+                <td:PUID>000000000</td:PUID>
+                <td:orcid>http://www.oxygenxml.com/</td:orcid>
+                <td:fullName>fullName17</td:fullName>
+                <td:givenName>givenName17</td:givenName>
+                <td:familyName>familyName17</td:familyName>
+                <td:nameDate>0000-01-01</td:nameDate>
+                <td:alternativeNameIdentifier nameIdentifierSchema="nameIdentifierSchema17" schemaURI="http://www.oxygenxml.com/">alternativeNameIdentifier17</td:alternativeNameIdentifier>
+            </td:deniedBy>
+            <td:denialDateTime>2006-05-04T18:13:51.0</td:denialDateTime>
+            <td:eventNote>
+                <td:noteBy userID="00" userIDType="NetID">
+                    <td:netID>00</td:netID>
+                    <td:PUID>000000000</td:PUID>
+                    <td:orcid>http://www.oxygenxml.com/</td:orcid>
+                    <td:fullName>fullName18</td:fullName>
+                    <td:givenName>givenName18</td:givenName>
+                    <td:familyName>familyName18</td:familyName>
+                    <td:nameDate>0000-01-01</td:nameDate>
+                    <td:alternativeNameIdentifier nameIdentifierSchema="nameIdentifierSchema18" schemaURI="http://www.oxygenxml.com/">alternativeNameIdentifier18</td:alternativeNameIdentifier>
+                </td:noteBy>
+                <td:noteDateTime>2006-05-04T18:13:51.0</td:noteDateTime>
+                <td:eventType>Collection</td:eventType>
+                <td:message xml:lang="en">message3</td:message>
+            </td:eventNote>
+        </td:publication>
+        <td:status td:inherited="false" td:discoverable="true" td:trackingLevel="InternalUseOnly">AdminReview</td:status>
+    </td:projectProvenance>
+    <td:schemaVersion td:inherited="true" td:discoverable="true" td:trackingLevel="InternalUseOnly">schemaVersion0</td:schemaVersion>
+</td:resource>

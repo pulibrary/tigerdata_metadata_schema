@@ -2,7 +2,7 @@
 
 <!-- Version Notes:
         - Version 1.1 of the TigerData Standard Metadata Schema
-        - Updated on 2025-09-05 by Matt Chandler
+        - Updated on 2025-09-08 by Matt Chandler
 -->
 <!-- References:
         - As noted in documentation fields below, several elements are derived from DataCite:
@@ -32,6 +32,9 @@
 -->
 
 <!-- Version 1.x Change Log:
+        2025-09-08:
+            - Made headway on assert tests to pass for XML examples (still figuring out some failures)
+        
         2025-09-05:
             - Added a test in resource for resourceID to match projectID or itemID
         
@@ -1155,9 +1158,9 @@
                 <xs:documentation xml:lang="en">Makes explicit that Princeton NetIDs are always used as the identifier for the userID attribute</xs:documentation>
             </xs:annotation>
         </xs:attribute>
-        <xs:assert test="@userID = ./netID"/>
-        <xs:assert test="./orcid != ./alternativeNameIdentifier"/>
-        <xs:assert test="./fullName = string-join(./familyName, ', ', ./givenName)"/>
+        <xs:assert test="if (exists(netID)) then (netID eq @userID) else (true())"/>
+        <xs:assert test="not(orcid = alternativeNameIdentifier)"/>
+        <xs:assert test="fullName eq concat(familyName, ' ,', givenName)"/>
     </xs:complexType>
     
     <xs:simpleType name="researchDomainNameType">
@@ -2921,7 +2924,7 @@
                     </xs:restriction>
                 </xs:simpleType>
             </xs:attribute>
-            <xs:assert test="@resourceID = ./projectID|./itemID"/>
+            <xs:assert test="if (exists(projectID)) then (@resourceID eq projectID) else (@resourceID eq itemID)"/>
         </xs:complexType>
     </xs:element>
 

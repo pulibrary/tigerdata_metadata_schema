@@ -12,17 +12,17 @@
         <td:netID>00</td:netID>
         <td:PUID>000000000</td:PUID>
         <td:orcid>http://www.oxygenxml.com/</td:orcid>
-        <td:fullName>fullName0</td:fullName>
+        <td:fullName>familyName0, givenName0</td:fullName>
         <td:givenName>givenName0</td:givenName>
         <td:familyName>familyName0</td:familyName>
         <td:nameDate>0000-01-01</td:nameDate>
         <td:alternativeNameIdentifier nameIdentifierSchema="nameIdentifierSchema0" schemaURI="http://www.oxygenxml.com/">alternativeNameIdentifier0</td:alternativeNameIdentifier>
     </td:dataSponsor>
-    <td:dataManager td:inherited="true" td:discoverable="true" td:trackingLevel="ResourceRecord" userID="00" userIDType="NetID">
-        <td:netID>00</td:netID>
+    <td:dataManager td:inherited="true" td:discoverable="true" td:trackingLevel="ResourceRecord" userID="01" userIDType="NetID">
+        <td:netID>01</td:netID>
         <td:PUID>000000000</td:PUID>
         <td:orcid>http://www.oxygenxml.com/</td:orcid>
-        <td:fullName>fullName1</td:fullName>
+        <td:fullName>familyName1, givenName1</td:fullName>
         <td:givenName>givenName1</td:givenName>
         <td:familyName>familyName1</td:familyName>
         <td:nameDate>0000-01-01</td:nameDate>

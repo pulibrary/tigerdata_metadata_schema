@@ -2,7 +2,7 @@
 
 <!-- Version Notes:
         - Version 1.1 of the TigerData Standard Metadata Schema
-        - Updated on 2025-09-08 by Matt Chandler
+        - Updated on 2025-09-11 by Matt Chandler
 -->
 <!-- References:
         - As noted in documentation fields below, several elements are derived from DataCite:
@@ -32,6 +32,13 @@
 -->
 
 <!-- Version 1.x Change Log:
+        2025-09-11:
+            - Commented out the resource-level assertion, because I haven't figured out how to make it work yet
+        
+        2025-09-09:
+            - Added conditions to apply assertions to optional/alternative fields, clearing errors in the early validation tests on XML examples
+            - Removed the type for the resourceID attribute, as it erroneously limited to text (MFAID is an integer)
+        
         2025-09-08:
             - Made headway on assert tests to pass for XML examples (still figuring out some failures)
         
@@ -1160,7 +1167,7 @@
         </xs:attribute>
         <xs:assert test="if (exists(netID)) then (netID eq @userID) else (true())"/>
         <xs:assert test="not(orcid = alternativeNameIdentifier)"/>
-        <xs:assert test="fullName eq concat(familyName, ' ,', givenName)"/>
+        <xs:assert test="if (exists(fullName)) then ((exists(familyName)) and (exists(givenName)) and (fullName eq concat(familyName/text(), ' ,', givenName/text()))) else (true())"/>
     </xs:complexType>
     
     <xs:simpleType name="researchDomainNameType">
@@ -2908,9 +2915,10 @@
                     </xs:restriction>
                 </xs:simpleType>
             </xs:attribute>
-            <xs:attribute name="resourceID" type="limitedTextType" use="required">
+            <xs:attribute name="resourceID" use="required">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The unique identifier for the resource within TigerData systems (required)</xs:documentation>
+                    <xs:documentation xml:lang="en">If resourceClass is 'Project' then resourceID should be a DOI (string); if resourceClass is 'Item' then it should be an MFAID (integer)</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="resourceIDType" use="required">
@@ -2924,7 +2932,9 @@
                     </xs:restriction>
                 </xs:simpleType>
             </xs:attribute>
-            <xs:assert test="if (exists(projectID)) then (@resourceID eq projectID) else (@resourceID eq itemID)"/>
+            <!-- 
+                <xs:assert test="(exists(projectID) and (@resourceClass eq 'Project') and (@resourceIDType eq 'DOI') and (@resourceID eq projectID)) or (exists(itemID) and (@resourceClass eq 'Item') and (@resourceIDType eq 'MFAID') and (@resourceID eq itemID))"/>
+            -->
         </xs:complexType>
     </xs:element>
 

@@ -3,30 +3,19 @@
 <!-- Version Notes:
         - Version 1.1a of the TigerData Standard Metadata Schema
             - This is an interim version intended only to support a working version of the Web Portal (the "Space Ghost" epic)
-        - Updated on 2025-09-23 by Matt Chandler
+        - Updated on 2025-09-24 by Matt Chandler
 -->
 <!-- References:
         - As noted in documentation fields below, several elements are derived from DataCite:
             DataCite Metadata Working Group. (2024). DataCite Metadata Schema for the Publication and Citation of Research Data and Other Research Outputs. 
             Version 4.6. DataCite e.V. https://doi.org/10.14454/mzv1-5b55
 -->
-<!-- Key Concepts:
-        - Resource: a digital object in TigerData systems
-            - The containing element for the metadata record of every project in TigerData is "resource"
-        - Project: a conceptual container linking persons to data and metadata, including a persistent identifier, defined roles, and various system settings
--->
-<!-- Style Notes:
-        - Elements and attributes are defined individually only when needed
-            - If a given element is intended to be used in only one place, then it is defined in that place (e.g., within a group)
-            - If a given attribute is intended to be used only in one element, then it is defined within that element
-            - If a given element or attribute can have multiple applications, then it is called out earlier in the primitives and then referenced where needed
-        - camelCase is used for all custom names for types, attributes, elements, and groups (acronyms are lowercase when beginning a name)
-        - The name of every simple and complex type ends with "Type" (if the semantic part of the name ends in "Type" then "Type" is still appended to the XML type name)
-        - Acronyms and abbreviations are avoided in names and annotations to prevent confusion, but unlike DataCite, some acronyms are used (e.g., ID for identifier)
-        - Repeatable elements are typically placed within container elements, and container elements have names that are the plural form of the repeatable element they contain
--->
-
 <!-- Version 1.1a Change Log:
+        2025-09-24:
+            - Made sure every element and attribute is explicitly either a string or a boolean
+            - Removed the enumeration from resourceClass
+            - Removed "Key Concepts" and "Style Notes" from the header comments
+        
         2025-09-23:
             - Unnecessary project elements and related definitions:
                 - alternativeID and alternativeIDs
@@ -433,18 +422,12 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:group ref="projectFields"/>
-                <xs:element name="schemaVersion" fixed="1.1a"/>
+                <xs:element name="schemaVersion" type="xs:string" fixed="1.1a"/>
             </xs:sequence>
-            <xs:attribute name="resourceClass" fixed="Project">
+            <xs:attribute name="resourceClass" type="xs:string" fixed="Project">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">Specifies the class of a given resource</xs:documentation>
                 </xs:annotation>
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:enumeration value="Project" xml:lang="en"/>
-                        <xs:enumeration value="Item" xml:lang="en"/>
-                    </xs:restriction>
-                </xs:simpleType>
             </xs:attribute>
             <xs:attribute name="resourceID" type="xs:string" use="required">
                 <xs:annotation>

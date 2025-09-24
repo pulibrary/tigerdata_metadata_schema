@@ -1,0 +1,345 @@
+<resource resourceClass="Project" resourceID="10.34770/abcd-9999" resourceIDType="DOI">
+    <projectID projectIDType="DOI">10.34770/abcd-9999</projectID>
+    <dataSponsor userID="userID0"/>
+    <dataManager userID="userID1"/>
+    <dataUsers>
+        <dataUser readOnly="false" userID="userID2"/>
+        <dataUser readOnly="false" userID="userID3"/>
+        <dataUser readOnly="false" userID="userID4"/>
+        <dataUser readOnly="false" userID="userID5"/>
+        <dataUser readOnly="false" userID="userID6"/>
+        <dataUser readOnly="false" userID="userID7"/>
+        <dataUser readOnly="false" userID="userID8"/>
+        <dataUser readOnly="false" userID="userID9"/>
+        <dataUser readOnly="false" userID="userID10"/>
+        <dataUser readOnly="false" userID="userID11"/>
+        <dataUser readOnly="false" userID="userID12"/>
+        <dataUser readOnly="false" userID="userID13"/>
+        <dataUser readOnly="false" userID="userID14"/>
+        <dataUser readOnly="false" userID="userID15"/>
+        <dataUser readOnly="false" userID="userID16"/>
+        <dataUser readOnly="false" userID="userID17"/>
+        <dataUser readOnly="false" userID="userID18"/>
+        <dataUser readOnly="false" userID="userID19"/>
+        <dataUser readOnly="false" userID="userID20"/>
+        <dataUser readOnly="false" userID="userID21"/>
+        <dataUser readOnly="false" userID="userID22"/>
+        <dataUser readOnly="false" userID="userID23"/>
+        <dataUser readOnly="false" userID="userID24"/>
+        <dataUser readOnly="false" userID="userID25"/>
+        <dataUser readOnly="false" userID="userID26"/>
+        <dataUser readOnly="false" userID="userID27"/>
+        <dataUser readOnly="false" userID="userID28"/>
+        <dataUser readOnly="false" userID="userID29"/>
+        <dataUser readOnly="false" userID="userID30"/>
+        <dataUser readOnly="false" userID="userID31"/>
+        <dataUser readOnly="false" userID="userID32"/>
+        <dataUser readOnly="false" userID="userID33"/>
+        <dataUser readOnly="false" userID="userID34"/>
+        <dataUser readOnly="false" userID="userID35"/>
+        <dataUser readOnly="false" userID="userID36"/>
+        <dataUser readOnly="false" userID="userID37"/>
+        <dataUser readOnly="false" userID="userID38"/>
+        <dataUser readOnly="false" userID="userID39"/>
+        <dataUser readOnly="false" userID="userID40"/>
+        <dataUser readOnly="false" userID="userID41"/>
+        <dataUser readOnly="false" userID="userID42"/>
+        <dataUser readOnly="false" userID="userID43"/>
+        <dataUser readOnly="false" userID="userID44"/>
+        <dataUser readOnly="false" userID="userID45"/>
+        <dataUser readOnly="false" userID="userID46"/>
+        <dataUser readOnly="false" userID="userID47"/>
+        <dataUser readOnly="false" userID="userID48"/>
+        <dataUser readOnly="false" userID="userID49"/>
+        <dataUser readOnly="false" userID="userID50"/>
+        <dataUser readOnly="false" userID="userID51"/>
+        <dataUser readOnly="false" userID="userID52"/>
+        <dataUser readOnly="false" userID="userID53"/>
+        <dataUser readOnly="false" userID="userID54"/>
+        <dataUser readOnly="false" userID="userID55"/>
+        <dataUser readOnly="false" userID="userID56"/>
+        <dataUser readOnly="false" userID="userID57"/>
+        <dataUser readOnly="false" userID="userID58"/>
+        <dataUser readOnly="false" userID="userID59"/>
+        <dataUser readOnly="false" userID="userID60"/>
+        <dataUser readOnly="false" userID="userID61"/>
+        <dataUser readOnly="false" userID="userID62"/>
+        <dataUser readOnly="false" userID="userID63"/>
+        <dataUser readOnly="false" userID="userID64"/>
+        <dataUser readOnly="false" userID="userID65"/>
+        <dataUser readOnly="false" userID="userID66"/>
+        <dataUser readOnly="false" userID="userID67"/>
+        <dataUser readOnly="false" userID="userID68"/>
+        <dataUser readOnly="false" userID="userID69"/>
+        <dataUser readOnly="false" userID="userID70"/>
+        <dataUser readOnly="false" userID="userID71"/>
+        <dataUser readOnly="false" userID="userID72"/>
+        <dataUser readOnly="false" userID="userID73"/>
+        <dataUser readOnly="false" userID="userID74"/>
+        <dataUser readOnly="false" userID="userID75"/>
+        <dataUser readOnly="false" userID="userID76"/>
+        <dataUser readOnly="false" userID="userID77"/>
+        <dataUser readOnly="false" userID="userID78"/>
+        <dataUser readOnly="false" userID="userID79"/>
+        <dataUser readOnly="false" userID="userID80"/>
+        <dataUser readOnly="false" userID="userID81"/>
+        <dataUser readOnly="false" userID="userID82"/>
+        <dataUser readOnly="false" userID="userID83"/>
+        <dataUser readOnly="false" userID="userID84"/>
+        <dataUser readOnly="false" userID="userID85"/>
+        <dataUser readOnly="false" userID="userID86"/>
+        <dataUser readOnly="false" userID="userID87"/>
+        <dataUser readOnly="false" userID="userID88"/>
+        <dataUser readOnly="false" userID="userID89"/>
+        <dataUser readOnly="false" userID="userID90"/>
+        <dataUser readOnly="false" userID="userID91"/>
+        <dataUser readOnly="false" userID="userID92"/>
+        <dataUser readOnly="false" userID="userID93"/>
+        <dataUser readOnly="false" userID="userID94"/>
+        <dataUser readOnly="false" userID="userID95"/>
+        <dataUser readOnly="false" userID="userID96"/>
+        <dataUser readOnly="false" userID="userID97"/>
+        <dataUser readOnly="false" userID="userID98"/>
+        <dataUser readOnly="false" userID="userID99"/>
+        <dataUser readOnly="false" userID="userID100"/>
+        <dataUser readOnly="false" userID="userID101"/>
+    </dataUsers>
+    <departments>
+        <department departmentCode="departmentCode0">department0</department>
+        <department departmentCode="departmentCode1">department1</department>
+        <department departmentCode="departmentCode2">department2</department>
+        <department departmentCode="departmentCode3">department3</department>
+        <department departmentCode="departmentCode4">department4</department>
+        <department departmentCode="departmentCode5">department5</department>
+        <department departmentCode="departmentCode6">department6</department>
+        <department departmentCode="departmentCode7">department7</department>
+        <department departmentCode="departmentCode8">department8</department>
+        <department departmentCode="departmentCode9">department9</department>
+        <department departmentCode="departmentCode10">department10</department>
+        <department departmentCode="departmentCode11">department11</department>
+        <department departmentCode="departmentCode12">department12</department>
+        <department departmentCode="departmentCode13">department13</department>
+        <department departmentCode="departmentCode14">department14</department>
+        <department departmentCode="departmentCode15">department15</department>
+        <department departmentCode="departmentCode16">department16</department>
+        <department departmentCode="departmentCode17">department17</department>
+        <department departmentCode="departmentCode18">department18</department>
+        <department departmentCode="departmentCode19">department19</department>
+        <department departmentCode="departmentCode20">department20</department>
+        <department departmentCode="departmentCode21">department21</department>
+        <department departmentCode="departmentCode22">department22</department>
+        <department departmentCode="departmentCode23">department23</department>
+        <department departmentCode="departmentCode24">department24</department>
+        <department departmentCode="departmentCode25">department25</department>
+        <department departmentCode="departmentCode26">department26</department>
+        <department departmentCode="departmentCode27">department27</department>
+        <department departmentCode="departmentCode28">department28</department>
+        <department departmentCode="departmentCode29">department29</department>
+        <department departmentCode="departmentCode30">department30</department>
+        <department departmentCode="departmentCode31">department31</department>
+        <department departmentCode="departmentCode32">department32</department>
+        <department departmentCode="departmentCode33">department33</department>
+        <department departmentCode="departmentCode34">department34</department>
+        <department departmentCode="departmentCode35">department35</department>
+        <department departmentCode="departmentCode36">department36</department>
+        <department departmentCode="departmentCode37">department37</department>
+        <department departmentCode="departmentCode38">department38</department>
+        <department departmentCode="departmentCode39">department39</department>
+        <department departmentCode="departmentCode40">department40</department>
+        <department departmentCode="departmentCode41">department41</department>
+        <department departmentCode="departmentCode42">department42</department>
+        <department departmentCode="departmentCode43">department43</department>
+        <department departmentCode="departmentCode44">department44</department>
+        <department departmentCode="departmentCode45">department45</department>
+        <department departmentCode="departmentCode46">department46</department>
+        <department departmentCode="departmentCode47">department47</department>
+        <department departmentCode="departmentCode48">department48</department>
+        <department departmentCode="departmentCode49">department49</department>
+        <department departmentCode="departmentCode50">department50</department>
+        <department departmentCode="departmentCode51">department51</department>
+        <department departmentCode="departmentCode52">department52</department>
+        <department departmentCode="departmentCode53">department53</department>
+        <department departmentCode="departmentCode54">department54</department>
+        <department departmentCode="departmentCode55">department55</department>
+        <department departmentCode="departmentCode56">department56</department>
+        <department departmentCode="departmentCode57">department57</department>
+        <department departmentCode="departmentCode58">department58</department>
+        <department departmentCode="departmentCode59">department59</department>
+        <department departmentCode="departmentCode60">department60</department>
+        <department departmentCode="departmentCode61">department61</department>
+        <department departmentCode="departmentCode62">department62</department>
+        <department departmentCode="departmentCode63">department63</department>
+        <department departmentCode="departmentCode64">department64</department>
+        <department departmentCode="departmentCode65">department65</department>
+        <department departmentCode="departmentCode66">department66</department>
+        <department departmentCode="departmentCode67">department67</department>
+        <department departmentCode="departmentCode68">department68</department>
+        <department departmentCode="departmentCode69">department69</department>
+        <department departmentCode="departmentCode70">department70</department>
+        <department departmentCode="departmentCode71">department71</department>
+        <department departmentCode="departmentCode72">department72</department>
+        <department departmentCode="departmentCode73">department73</department>
+        <department departmentCode="departmentCode74">department74</department>
+        <department departmentCode="departmentCode75">department75</department>
+        <department departmentCode="departmentCode76">department76</department>
+        <department departmentCode="departmentCode77">department77</department>
+        <department departmentCode="departmentCode78">department78</department>
+        <department departmentCode="departmentCode79">department79</department>
+        <department departmentCode="departmentCode80">department80</department>
+        <department departmentCode="departmentCode81">department81</department>
+        <department departmentCode="departmentCode82">department82</department>
+        <department departmentCode="departmentCode83">department83</department>
+        <department departmentCode="departmentCode84">department84</department>
+        <department departmentCode="departmentCode85">department85</department>
+        <department departmentCode="departmentCode86">department86</department>
+        <department departmentCode="departmentCode87">department87</department>
+        <department departmentCode="departmentCode88">department88</department>
+        <department departmentCode="departmentCode89">department89</department>
+        <department departmentCode="departmentCode90">department90</department>
+        <department departmentCode="departmentCode91">department91</department>
+        <department departmentCode="departmentCode92">department92</department>
+        <department departmentCode="departmentCode93">department93</department>
+        <department departmentCode="departmentCode94">department94</department>
+        <department departmentCode="departmentCode95">department95</department>
+        <department departmentCode="departmentCode96">department96</department>
+        <department departmentCode="departmentCode97">department97</department>
+        <department departmentCode="departmentCode98">department98</department>
+        <department departmentCode="departmentCode99">department99</department>
+    </departments>
+    <projectDirectory>
+        <projectDirectoryPath>projectDirectoryPath0</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath1</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath2</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath3</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath4</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath5</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath6</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath7</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath8</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath9</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath10</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath11</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath12</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath13</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath14</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath15</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath16</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath17</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath18</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath19</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath20</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath21</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath22</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath23</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath24</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath25</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath26</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath27</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath28</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath29</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath30</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath31</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath32</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath33</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath34</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath35</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath36</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath37</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath38</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath39</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath40</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath41</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath42</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath43</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath44</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath45</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath46</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath47</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath48</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath49</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath50</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath51</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath52</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath53</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath54</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath55</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath56</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath57</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath58</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath59</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath60</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath61</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath62</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath63</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath64</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath65</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath66</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath67</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath68</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath69</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath70</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath71</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath72</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath73</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath74</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath75</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath76</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath77</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath78</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath79</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath80</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath81</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath82</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath83</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath84</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath85</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath86</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath87</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath88</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath89</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath90</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath91</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath92</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath93</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath94</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath95</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath96</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath97</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath98</projectDirectoryPath>
+        <projectDirectoryPath>projectDirectoryPath99</projectDirectoryPath>
+        <requestedValue>requestedValue0</requestedValue>
+        <approvedValue>approvedValue0</approvedValue>
+    </projectDirectory>
+    <title>title0</title>
+    <description>description0</description>
+    <storageCapacity>
+        <storageCapacitySetting>
+            <size>size0</size>
+            <unit>unit0</unit>
+        </storageCapacitySetting>
+        <requestedValue>
+            <size>size1</size>
+            <unit>unit1</unit>
+        </requestedValue>
+        <approvedValue>
+            <size>size2</size>
+            <unit>unit2</unit>
+        </approvedValue>
+    </storageCapacity>
+    <numberOfFiles>Less than 10,000</numberOfFiles>
+    <hpc>false</hpc>
+    <accessPoints>
+        <smbEnable>
+            <smbEnableSetting>false</smbEnableSetting>
+            <requestedValue>false</requestedValue>
+            <approvedValue>false</approvedValue>
+        </smbEnable>
+        <globusEnable>
+            <globusEnableSetting>false</globusEnableSetting>
+            <requestedValue>false</requestedValue>
+            <approvedValue>false</approvedValue>
+        </globusEnable>
+    </accessPoints>
+    <projectPurpose>projectPurpose0</projectPurpose>
+    <schemaVersion>1.1a</schemaVersion>
+</resource>

@@ -1,0 +1,35 @@
+<resource resourceClass="Project" resourceID="10.34770/abcd-3333" resourceIDType="DOI">
+    <projectID projectIDType="DOI">10.34770/abcd-3333</projectID>
+    <dataSponsor userID="user2"/>
+    <dataManager userID="user2"/>
+    <departments>
+        <department departmentCode="13579">ABC-Department Name</department>
+    </departments>
+    <projectDirectory>
+        <requestedValue>/tigerdata/parent/project3</requestedValue>
+    </projectDirectory>
+    <title>Example Title 3</title>
+    <description>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</description>
+    <storageCapacity>
+        <requestedValue>
+            <size>5</size>
+            <unit>TB</unit>
+        </requestedValue>
+    </storageCapacity>
+    <numberOfFiles>Less than 10,000</numberOfFiles>
+    <hpc>true</hpc>
+    <accessPoints>
+        <smbEnable>
+            <smbEnableSetting>false</smbEnableSetting>
+            <requestedValue>true</requestedValue>
+            <approvedValue>false</approvedValue>
+        </smbEnable>
+        <globusEnable>
+            <globusEnableSetting>false</globusEnableSetting>
+            <requestedValue>true</requestedValue>
+            <approvedValue>false</approvedValue>
+        </globusEnable>
+    </accessPoints>
+    <projectPurpose>Research</projectPurpose>
+    <schemaVersion>1.1a</schemaVersion>
+</resource>

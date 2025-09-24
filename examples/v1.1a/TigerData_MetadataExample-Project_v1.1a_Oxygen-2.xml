@@ -1,0 +1,53 @@
+<resource resourceClass="Project" resourceID="10.34770/abcd-2468" resourceIDType="DOI">
+    <projectID projectIDType="DOI">10.34770/abcd-2468</projectID>
+    <dataSponsor userID="user2"/>
+    <dataManager userID="user3"/>
+    <dataUsers>
+        <dataUser readOnly="false" userID="user4"/>
+        <dataUser readOnly="false" userID="user5"/>
+        <dataUser readOnly="false" userID="user6"/>
+        <dataUser readOnly="false" userID="user7"/>
+        <dataUser readOnly="false" userID="user8"/>
+        <dataUser readOnly="false" userID="user9"/>
+    </dataUsers>
+    <departments>
+        <department departmentCode="12345">department5</department>
+    </departments>
+    <projectDirectory>
+        <projectDirectoryPath>/tigerdata/parent/project1</projectDirectoryPath>
+        <requestedValue>/tigerdata/parent/project1</requestedValue>
+        <approvedValue>/tigerdata/parent/project1</approvedValue>
+    </projectDirectory>
+    <title>title1</title>
+    <description>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</description>
+    <storageCapacity>
+        <storageCapacitySetting>
+            <size>500</size>
+            <unit>GB</unit>
+        </storageCapacitySetting>
+        <requestedValue>
+            <size>500</size>
+            <unit>GB</unit>
+        </requestedValue>
+        <approvedValue>
+            <size>500</size>
+            <unit>GB</unit>
+        </approvedValue>
+    </storageCapacity>
+    <numberOfFiles>Less than 10,000</numberOfFiles>
+    <hpc>true</hpc>
+    <accessPoints>
+        <smbEnable>
+            <smbEnableSetting>false</smbEnableSetting>
+            <requestedValue>false</requestedValue>
+            <approvedValue>false</approvedValue>
+        </smbEnable>
+        <globusEnable>
+            <globusEnableSetting>true</globusEnableSetting>
+            <requestedValue>true</requestedValue>
+            <approvedValue>true</approvedValue>
+        </globusEnable>
+    </accessPoints>
+    <projectPurpose>Research</projectPurpose>
+    <schemaVersion>1.1a</schemaVersion>
+</resource>

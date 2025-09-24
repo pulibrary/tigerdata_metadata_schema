@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Version Notes:
+        - Version 1.1a-1 of the TigerData Standard Metadata Schema
+            - This is the first step toward the v1.1a interim version
+        - Updated on 2025-09-24 by Matt Chandler
+-->
+<!-- References:
+        - As noted in documentation fields below, several elements are derived from DataCite:
+            DataCite Metadata Working Group. (2024). DataCite Metadata Schema for the Publication and Citation of Research Data and Other Research Outputs. 
+            Version 4.6. DataCite e.V. https://doi.org/10.14454/mzv1-5b55
+-->
+<!-- Version 1.1a-1 Change Log:
+        2025-09-24:
+            - Stripped out all fields besides title and schemaVersion
+                - Retained structure of definitions, with projectDescription and projectFields groups
+                - Retained resource-level attributes
+                - Set schemaVersion to have a fixed value of 1.1a-1
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+    <xs:import schemaLocation="https://www.w3.org/2001/xml.xsd" namespace="http://www.w3.org/XML/1998/namespace"/>
+    
+<!-- PRIMITIVES -->
+    <!-- All of the types, attributes, elements, and groups that are combined to make up a standard metadata payload, which is defined last -->
+            
+    <!-- Common Elements -->
+        <!-- Element definitions that appear in multiple groups and/or apply to both projects and items -->
+    
+    <xs:element name="title" type="xs:string">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">A plain-language title for the resource</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+        
+    <!-- Element Groups -->
+        <!-- Group definitions for elements, including some reference to common elements and some new element definitions within -->
+       
+    <xs:group name="projectDescription">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">A group of all elements included in TigerData project descriptions</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="title" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:group>
+    
+    <!-- Composite Groups -->
+        <!-- Group definitions that include references to prior group definitions, along with some new element defintions within -->
+    
+    <xs:group name="projectFields">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">A group of all elements/groups included in the TigerData standard metadata for projects</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="projectDescription"/>
+        </xs:sequence>
+    </xs:group>
+    
+<!-- PAYLOAD -->
+    <!-- The definition for a standard metadata payload, constructed from the above primitives -->
+    
+    <xs:element name="resource">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Root element of any metadata record for TigerData resources</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:group ref="projectFields"/>
+                <xs:element name="schemaVersion" type="xs:string" fixed="1.1a-1"/>
+            </xs:sequence>
+            <xs:attribute name="resourceClass" type="xs:string" fixed="Project">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Specifies the class of a given resource</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="resourceID" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">The unique identifier for the resource within TigerData systems (required)</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="resourceIDType" type="xs:string" fixed="DOI">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">If the resourceClass is Project, then the resourceID should be a DOI</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

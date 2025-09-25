@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- Version Notes:
-        - Version 1.1a of the TigerData Standard Metadata Schema
-            - This is an interim version intended only to support a working version of the Web Portal (the "Space Ghost" epic)
-        - Updated on 2025-09-24 by Matt Chandler
+        - Version 1.1a of the TigerData Metadata Schema
+            - This is an incremental (not standard) version intended only to support a working iteration of the Web Portal (the "Space Ghost" epic)
+        - Updated on 2025-09-25 by Matt Chandler
 -->
 <!-- References:
         - As noted in documentation fields below, several elements are derived from DataCite:
@@ -11,6 +11,11 @@
             Version 4.6. DataCite e.V. https://doi.org/10.14454/mzv1-5b55
 -->
 <!-- Version 1.1a Change Log:
+        2025-09-25:
+            - Renamed file to "TigerData_IncrementalMetadataSchema_v1.1a.xsd" and place in "schemas/incremental" folder
+            - Tweaked comments to align with renaming
+            - Tweaked annotations to reference only elements/attributes included in v1.1a
+        
         2025-09-24:
             - Made sure every element and attribute is explicitly either a string or a boolean
             - Removed the enumeration from resourceClass
@@ -35,7 +40,7 @@
                 - protocolType
                 - userIDType
                 - departmentType
-                - quantityType (note: this may not be needed in 1.1 at all)
+                - quantityType (note: this is also removed from 1.1)
                 - fileEstimateType and hpcType
                 - projectPurposeType
             - Revised types to all be strings (with no patterns or limits) or booleans
@@ -62,10 +67,6 @@
             - Fixed default values for:
                 - schemaVersion (removed stand-alone element and defined inside resource with value fixed at '1.1a')
             - Fixed attributes in resource to apply only to Projects
-        
-        2025-09-03:
-            - Moved schemaVersion out of projectProvenance to be defined as a common element
-            - Added schemaVersion to resource as a top-level element that applies to both projects and items
 -->
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
@@ -79,7 +80,7 @@
     
     <xs:complexType name="projectIDValueType">
         <xs:annotation>
-            <xs:documentation xml:lang="en">Standard type for the values of projectID and parentProject fields</xs:documentation>
+            <xs:documentation xml:lang="en">Standard type for the values of projectID</xs:documentation>
         </xs:annotation>
         <xs:simpleContent>
             <xs:extension base="xs:string">
@@ -98,13 +99,10 @@
     <xs:complexType name="userType">
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard type used for user fields</xs:documentation>
-            <xs:documentation xml:lang="en">Given the required attribute userID, all sub-elements are optional, so the element for a given user field may be left empty</xs:documentation>
-            <xs:documentation xml:lang="en">If the sub-element netID is included, its value should match that of the userID attribute</xs:documentation>
         </xs:annotation>
         <xs:attribute name="userID" type="xs:string" use="required">
             <xs:annotation>
                 <xs:documentation xml:lang="en">Specifies the (locally) unique user ID</xs:documentation>
-                <xs:documentation xml:lang="en">If a value is given for the sub-element netID, then it should match the value given for userID</xs:documentation>
             </xs:annotation>
         </xs:attribute>
     </xs:complexType>
@@ -243,7 +241,7 @@
                             <xs:annotation>
                                 <xs:documentation xml:lang="en">A current setting for projectDirectory (omitted until approved)</xs:documentation>
                                 <xs:documentation xml:lang="en">After approval, this value should be updated to match the approved value (in rare cases, the current setting may later deviate from the approved value)</xs:documentation>
-                                <xs:documentation xml:lang="en">Multiple elements are allowed to specify paths in alternative protocols, using the protocol attribute</xs:documentation>
+                                <xs:documentation xml:lang="en">Multiple elements are allowed to specify paths in alternative protocols</xs:documentation>
                                 <xs:documentation xml:lang="en">Example NFS path: /tigerdata/parent-folder/project-folder</xs:documentation>
                                 <xs:documentation xml:lang="en">Example SMB path: \\tigerdata-smb\parent-folder\project-folder</xs:documentation>
                                 <xs:documentation xml:lang="en">Example S3 path: S3://princeton/tigerdata/parent-folder/project-folder</xs:documentation>
@@ -295,7 +293,6 @@
                         <xs:element name="approvedValue" type="storageQuantityType" minOccurs="0" maxOccurs="1">
                             <xs:annotation>
                                 <xs:documentation xml:lang="en">The approved value for storageCapacity (omitted if no sys admin has approved yet)</xs:documentation>
-                                <xs:documentation xml:lang="en">Once approved for initial project setup, the approved attribute should also be set to true</xs:documentation>
                                 <xs:documentation xml:lang="en">If the Data Sponsor or Data Manager requests a change in storage capacity, then the approval of the new amount will change the approvedValue</xs:documentation>
                             </xs:annotation>
                         </xs:element>
@@ -304,7 +301,7 @@
             </xs:element>
             <xs:element name="numberOfFiles" type="xs:string" minOccurs="1" maxOccurs="1" fixed="Less than 10,000">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The estimated number of files the project will incorporate (default is Less than 10,000)</xs:documentation>
+                    <xs:documentation xml:lang="en">The estimated number of files the project will incorporate</xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="hpc" type="xs:boolean" minOccurs="1" maxOccurs="1" default="false">
@@ -322,7 +319,7 @@
                         <xs:element name="smbEnable" minOccurs="1" maxOccurs="1">
                             <xs:annotation>
                                 <xs:documentation xml:lang="en">Whether a project has an SMB share enabled</xs:documentation>
-                                <xs:documentation xml:lang="en">By default, projects do not get an SMB share, but if the hpc value is No, then smbEnable is likely needed</xs:documentation>
+                                <xs:documentation xml:lang="en">By default, projects do not get an SMB share, but if the hpc value is false, then smbEnable is likely needed</xs:documentation>
                                 <xs:documentation xml:lang="en">If an SMB share is approved and set, then the SMB path should be included in projectDirectoryPath</xs:documentation>
                             </xs:annotation>
                             <xs:complexType>
@@ -340,7 +337,6 @@
                                     <xs:element name="approvedValue" type="xs:boolean" maxOccurs="1" default="false">
                                         <xs:annotation>
                                             <xs:documentation xml:lang="en">The approved value for smbEnable (false by default)</xs:documentation>
-                                            <xs:documentation xml:lang="en">If approvedValue is true, then smbEnableSetting and the approved attribute should also be set to true</xs:documentation>
                                         </xs:annotation>
                                     </xs:element>
                                 </xs:sequence>
@@ -350,7 +346,6 @@
                             <xs:annotation>
                                 <xs:documentation xml:lang="en">Whether a project has a Globus collection enabled</xs:documentation>
                                 <xs:documentation xml:lang="en">By default, projects do not get a Globus collection</xs:documentation>
-                                <xs:documentation xml:lang="en">If a Globus collection is approved and set, then the details should be given in globusCollection</xs:documentation>
                             </xs:annotation>
                             <xs:complexType>
                                 <xs:sequence>
@@ -367,7 +362,6 @@
                                     <xs:element name="approvedValue" type="xs:boolean" maxOccurs="1" default="false">
                                         <xs:annotation>
                                             <xs:documentation xml:lang="en">The approved value for globusEnable (false by default)</xs:documentation>
-                                            <xs:documentation xml:lang="en">If approvedValue is true, then globusEnableSetting and the approved attribute should also be set to true</xs:documentation>
                                         </xs:annotation>
                                     </xs:element>
                                 </xs:sequence>

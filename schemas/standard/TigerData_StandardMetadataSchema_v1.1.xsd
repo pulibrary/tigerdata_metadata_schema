@@ -33,6 +33,7 @@
 
 <!-- Version 1.1 Change Log:
         2025-09-25:
+            - Revised the pattern restriction in netIDType to allow dashes and a longer string
             - Revised text types for consistency and better error-handling
                 - Renamed shortDescriptionLimitType to shortTextLimitType and shortDescriptionType to shortTextType
                 - Renamed limitedTextType to textLimitType
@@ -98,7 +99,7 @@
             <xs:documentation xml:lang="en">Validation of user accounts and permissions happens separate from metadata validation</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
-            <xs:pattern value="[a-z0-9]{2,8}"/>
+            <xs:pattern value="[a-z0-9-]{2,10}"/>
         </xs:restriction>
     </xs:simpleType>
     

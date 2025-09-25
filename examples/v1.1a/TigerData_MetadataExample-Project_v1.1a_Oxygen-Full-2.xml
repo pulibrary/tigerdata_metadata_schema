@@ -1,0 +1,345 @@
+<resource resourceClass="Project" resourceID="10.34770/wxyz-9999" resourceIDType="DOI">
+    <projectID projectIDType="DOI">10.34770/wxyz-9999</projectID>
+    <dataSponsor userID="M9xOAsql9odl71IauM0s-K80gEtCd"/>
+    <dataManager userID="DX6_tXcSfcNTRp6fQJGTPII1ld1"/>
+    <dataUsers>
+        <dataUser readOnly="1" userID="AEd3aqxWrVjeCdcA"/>
+        <dataUser readOnly="1" userID="ayGVTl2H5q96By3W0Nb0354E0Zo"/>
+        <dataUser readOnly="1" userID="iN01W"/>
+        <dataUser readOnly="0" userID="QTs3zpCcDMNY"/>
+        <dataUser readOnly="true" userID="ekc9rrCZwDm6PUty_v5NfccLD"/>
+        <dataUser readOnly="0" userID="s"/>
+        <dataUser readOnly="false" userID="gBReiR2FQEfH-dX"/>
+        <dataUser readOnly="false" userID="K0Uwg6nBDauFchQlZ5x"/>
+        <dataUser readOnly="true" userID="Hsz_La3T8p7zXsR7l"/>
+        <dataUser readOnly="1" userID="cfuTFlWxbRoHnw"/>
+        <dataUser readOnly="1" userID="Uy"/>
+        <dataUser readOnly="1" userID="s4Of6lXY-CN"/>
+        <dataUser readOnly="0" userID="c5Xa4Clmfod1HbwSGncfbZFmP-k"/>
+        <dataUser readOnly="false" userID="BMvc"/>
+        <dataUser readOnly="false" userID="QLv6WyC"/>
+        <dataUser readOnly="1" userID="bORqDd84TH.4"/>
+        <dataUser readOnly="0" userID="SR5M6e"/>
+        <dataUser readOnly="0" userID="mf-V6effHRzYgCTp.RPoVNz3zK"/>
+        <dataUser readOnly="1" userID="Wl5pKake5"/>
+        <dataUser readOnly="false" userID="GQyfrsHwBeQ"/>
+        <dataUser readOnly="true" userID="NxrFDbbIR"/>
+        <dataUser readOnly="false" userID="mq5rLSUjxBrtykn"/>
+        <dataUser readOnly="0" userID="RbADFmpOvL07r"/>
+        <dataUser readOnly="0" userID="BnL8pGl.ZnXVDdfwiY1EJo3.gOIX"/>
+        <dataUser readOnly="0" userID="vjN_mB3gqLcFKXN"/>
+        <dataUser readOnly="0" userID="wZacWmwam8NUx"/>
+        <dataUser readOnly="0" userID="p6OP7DlJC0y9"/>
+        <dataUser readOnly="0" userID="JYWOXdhvHxgfmKiJtdl7"/>
+        <dataUser readOnly="true" userID="OvUm.J"/>
+        <dataUser readOnly="true" userID="fDxXdLHcku1akzyypiV"/>
+        <dataUser readOnly="0" userID="Z6949G"/>
+        <dataUser readOnly="1" userID="GkuN3hMIkzIuEpZCl_VIDy"/>
+        <dataUser readOnly="false" userID="til4QNGsId-"/>
+        <dataUser readOnly="0" userID="suWh"/>
+        <dataUser readOnly="true" userID="J9iyoBbeRZKXEXg1J5F-QicxGbdX"/>
+        <dataUser readOnly="0" userID="rB5Ub_JVTINsumfbdobmK-O3"/>
+        <dataUser readOnly="true" userID="w1D7EpG9eGYxU1xFCzkOn.TM"/>
+        <dataUser readOnly="true" userID="hJz7YttNqD9fBmteqT2Ot5umS"/>
+        <dataUser readOnly="0" userID="Er0bi18z3QvCe"/>
+        <dataUser readOnly="1" userID="wxon6tqc"/>
+        <dataUser readOnly="true" userID="F9h0D"/>
+        <dataUser readOnly="0" userID="Ypf_MZOIJhknoqco2b9KFa8yh"/>
+        <dataUser readOnly="false" userID="e"/>
+        <dataUser readOnly="1" userID="VSrhEmDbG"/>
+        <dataUser readOnly="true" userID="IiR5qjXsO4uFPgDVLeev"/>
+        <dataUser readOnly="0" userID="nt6GFEreRB3IWZR.pN5a"/>
+        <dataUser readOnly="1" userID="FX-EeZPMpA8D"/>
+        <dataUser readOnly="false" userID="Nl.axq9NpyiV-of_tqu29MTuu"/>
+        <dataUser readOnly="false" userID="fT"/>
+        <dataUser readOnly="0" userID="Qp1aEI0j-B.2eJtDLb0G"/>
+        <dataUser readOnly="1" userID="CbGNPNVZmq"/>
+        <dataUser readOnly="false" userID="VOLmC"/>
+        <dataUser readOnly="0" userID="xyoo"/>
+        <dataUser readOnly="0" userID="DwawYgBDUUL1tO6sEyLdI4P64wCRI"/>
+        <dataUser readOnly="true" userID="CS3-rqeVftPDwYX1au"/>
+        <dataUser readOnly="true" userID="GPaoUsuJ1wsg8ZAfiFveW04us7CoJ"/>
+        <dataUser readOnly="true" userID="ohwrUxwqnjtGvT5gE9ICQfZm"/>
+        <dataUser readOnly="0" userID="R4SXKbfdsQvn."/>
+        <dataUser readOnly="true" userID="wUnHiOGoMcA1IN8"/>
+        <dataUser readOnly="1" userID="LfeXnv8NreciFLE6gR1j"/>
+        <dataUser readOnly="1" userID="Pfx6z4AzfA"/>
+        <dataUser readOnly="0" userID="InffQ62jh1mPnq"/>
+        <dataUser readOnly="true" userID="HnzVnlQ3CdWniI4.YvMMd"/>
+        <dataUser readOnly="false" userID="u4-fRcpI5XX"/>
+        <dataUser readOnly="0" userID="cHzb"/>
+        <dataUser readOnly="0" userID="UP"/>
+        <dataUser readOnly="false" userID="r.m"/>
+        <dataUser readOnly="1" userID="sqOC"/>
+        <dataUser readOnly="0" userID="d6SGaI2XDFvEG"/>
+        <dataUser readOnly="0" userID="NA6qXav3Swz2q1n9jmaGNpd61s4wsk"/>
+        <dataUser readOnly="0" userID="Sfqy3TsJMNDXPTjFTwJ947xyKJ62"/>
+        <dataUser readOnly="true" userID="loarj9XJ"/>
+        <dataUser readOnly="1" userID="LiMhw9rXBnAlTIym"/>
+        <dataUser readOnly="true" userID="lC1F2sE9RV"/>
+        <dataUser readOnly="1" userID="zBUD04pJO0TXJhvzrAuy"/>
+        <dataUser readOnly="false" userID="kEtBbkbfnjGGqNsGD.BGeu.q-tuE"/>
+        <dataUser readOnly="true" userID="J."/>
+        <dataUser readOnly="0" userID="gQ8bGnbecAd0"/>
+        <dataUser readOnly="1" userID="uiGOhGqHwrg0h6mLPLt"/>
+        <dataUser readOnly="true" userID="qcU8HfrgANs3MSpU7jcrQjhhdh"/>
+        <dataUser readOnly="0" userID="t5bRY7YnCMGIl4uQH4pi8j"/>
+        <dataUser readOnly="false" userID="Wz633Q4ieAjbkInIhOjz7T3rj6JQMo"/>
+        <dataUser readOnly="1" userID="_xPEwqsp3Uqbbz7g."/>
+        <dataUser readOnly="0" userID="zJYw0iyaaxQ8zyeF.xI"/>
+        <dataUser readOnly="true" userID="Vg9vxY9D"/>
+        <dataUser readOnly="0" userID="yFJeC"/>
+        <dataUser readOnly="true" userID="akoQXZN0yxbrH"/>
+        <dataUser readOnly="0" userID="g9XVOUio5q_-rK7t"/>
+        <dataUser readOnly="0" userID="pWlSN5g"/>
+        <dataUser readOnly="false" userID="qm0MU9dVWj"/>
+        <dataUser readOnly="0" userID="lsJn8_YnBIzWSFNw.778m"/>
+        <dataUser readOnly="true" userID="AxbFZGjR3Fn75tS7ZvRb2zT"/>
+        <dataUser readOnly="1" userID="E"/>
+        <dataUser readOnly="false" userID="JB9G6uEjObY1JcyoDanp.J6jYP"/>
+        <dataUser readOnly="true" userID="_Mwx-fNfSy3zQ"/>
+        <dataUser readOnly="false" userID="g5W8N9Y"/>
+        <dataUser readOnly="0" userID="GmOHC"/>
+        <dataUser readOnly="1" userID="XjGR4q6Va5bih-9k0gKk8j"/>
+        <dataUser readOnly="1" userID="RumC"/>
+        <dataUser readOnly="false" userID="se6eQPlAhb8.8oMYW7w06_Yna7"/>
+    </dataUsers>
+    <departments>
+        <department departmentCode="QGGoBKz">P0CQzq5R7TxkTfvHj1F</department>
+        <department departmentCode="yyB-xLCmNxU4zM5qQzQX">R_F7RJw</department>
+        <department departmentCode="scJI6">nHRC0zG</department>
+        <department departmentCode="z8ojeDE4YFdCkpVw45phoDFHf">wDbaDglwIzV7RXj</department>
+        <department departmentCode="PbQfg0U9w">vQas7</department>
+        <department departmentCode="ecXD">ZAwjWvsBDDDpf9J</department>
+        <department departmentCode="ZBQsQDnCOg0">S8s</department>
+        <department departmentCode="aIBHguW">XVI</department>
+        <department departmentCode="AxMDnvTah88a2lIG6oA.J">PyvSnV9WCd5Mzn8xC2BAE7DevyaaVU</department>
+        <department departmentCode="Eo3hPJLjsdD7q_35xQ-Zo">KWCg6ObRpjhcYw2B5</department>
+        <department departmentCode="iSWygC1wEAOYzGZO2KMMx4bVP5d">UZqHkOvtEo</department>
+        <department departmentCode="DI6_ZivQ">LbLFJbKFrbfb18chhlBryjWcLy</department>
+        <department departmentCode="acedUruKuxr">y</department>
+        <department departmentCode="zWVU">YfzPbdJ-JsZX2.5Yi6vpyDze54</department>
+        <department departmentCode="lHj-M">sGLh6bsxk5RKz8KRlmc.ngkece</department>
+        <department departmentCode="S0BHD3">Ch00m3XojnBMr5MOmqf_hS_</department>
+        <department departmentCode="ayq_DLb1gvGERY.">VH9VUdGT3qfxSQ0h</department>
+        <department departmentCode="Rzv">YM1Srbahz</department>
+        <department departmentCode="RkZ-H4TklY57CKW4UR_Kql9bq2kP">bIj5WJCNe-esWZ0D</department>
+        <department departmentCode="sHE.pKpdC0jhI-et746J">qX5</department>
+        <department departmentCode="B0GtG-.dJbT1elkhgdWYBiq19CWv1">PHEqfdxSFi-ry-toDDqe9kd</department>
+        <department departmentCode="f0">uDyj8oe</department>
+        <department departmentCode="kprmbzCZcW0oi01">J3bO3SRIzWjI3lt</department>
+        <department departmentCode="mCZMZzetiWZ25Nh_xWftewSH">MhNZ.IEfNlmx_42r</department>
+        <department departmentCode="y3R-LXz9BkdYmQ5_7pCSdJ4E4">KOyZHiHi2v87z</department>
+        <department departmentCode="Tj">PhaCSj5zki-lS.JkQsZ.</department>
+        <department departmentCode="SNP91LUA4wAXe9">AoEweowD.SsRiJfH</department>
+        <department departmentCode="YMz0_d.ehkehwv">cMwx3-HLV</department>
+        <department departmentCode="mhJRbYhIGvkEIH21e">DxUN</department>
+        <department departmentCode="hL">_ov3B0w</department>
+        <department departmentCode="cXeU.7Tt-c1zWy2ZTHb4DYtGT">F1OQRm_CpAh2nt.6PpsI</department>
+        <department departmentCode="K">kpWBFO2vQ01zy-lgGgQ.vsW7b</department>
+        <department departmentCode="vQ">V-wgtk</department>
+        <department departmentCode="GNGuHbLudwdwBVf_pcDP7e53n">F0Qn_YmzXKcJL7GB3H7.8VH7V</department>
+        <department departmentCode="fsz7BdI1J.RHG">SgqakYl.UVv7rqWe-heykJvOXf7cW1</department>
+        <department departmentCode="Uxm_-HTL0H5ZLngW">bIXTRq.N5hi58Mn2q</department>
+        <department departmentCode="X">ZzSqjh</department>
+        <department departmentCode="cRgFG.nb5dqO2y">LWOopyu73cgXSjQ1GG_</department>
+        <department departmentCode="NQQle_6xCK3UJHvg">tkws906m</department>
+        <department departmentCode="wsOg2.jphWYR">z3la2H-B.ZBd</department>
+        <department departmentCode="EmF573O">p</department>
+        <department departmentCode="m57MTKbEaesY2OuZLF9">VmWdDaPD</department>
+        <department departmentCode="GoKpXFO">fh3uyeGFm73P4BH0</department>
+        <department departmentCode="DuW5cxeRC">H1usMTYfyC_525cV_BfLjy_yZ</department>
+        <department departmentCode="fq">su8uBUF</department>
+        <department departmentCode="Lvp">z520njGZlSi-DwVI</department>
+        <department departmentCode="Grck">MtxCw4A</department>
+        <department departmentCode="b0j31d_xX3Ry.5O">gFa-wTz3mMkyO4j2Evp2kHQzW2LOa_</department>
+        <department departmentCode="BJ5QDEETGVpDmzUq.">dsoWz12P5</department>
+        <department departmentCode="OX">ZqPLF.KF</department>
+        <department departmentCode="CbQMZiAy9sFaaSy">RROMKH9Xz8tBZnHiGKXK</department>
+        <department departmentCode="tw">Vg4gBQ3rzGvR9Hr9ZjqJWA</department>
+        <department departmentCode="PJfv59ks9kdx63VdcvX">zsaFxvxnm</department>
+        <department departmentCode="kuCgOOb89Iv96i2BcejCXVwa">xE</department>
+        <department departmentCode="waQjfPDiahKPbM">qec0C1CYl2</department>
+        <department departmentCode="N4OnVQNE-r">SUHrR06f6Qmvody4w0tpFV</department>
+        <department departmentCode="lUel.AwHmNVo_jZ_KF.">f</department>
+        <department departmentCode="yyeoOh5dtcG1Z8ftzR">o9EkSdx7w1-oSci</department>
+        <department departmentCode="Rsqs3DbqvUYkZpTn9B1bach_bnb">hrRcnQ3eNDEfpQ</department>
+        <department departmentCode="frB5hGAGL">j0ET</department>
+        <department departmentCode="Qbe6-1_NXWf03">voAdzTrIoOVSx4vERRHCG3HyGJE.</department>
+        <department departmentCode="Eddqe2qXZtQQEZHFGPWEMDl">_M_T</department>
+        <department departmentCode="T5LVUaaq4brNKEXtXykAJ">rmGw2i</department>
+        <department departmentCode="HM-umg4Rtsk5QyulNlKrqwb8OF">d_UhU79iaA5VXBz</department>
+        <department departmentCode="qi.7h.LMmAixWl7wyliriYVBgD4eP">GNQh08DKXSrGZ1lcfdLuienBi4DMip</department>
+        <department departmentCode="i6n">RFJjHzBtDigU_s_</department>
+        <department departmentCode="FTLQFUzyiU4IFDn">TzsvmU1VN</department>
+        <department departmentCode="bJNeasX_PG5">UbXB9Yh3-QAjQtZcN</department>
+        <department departmentCode="rYFvrf0oG19L">KHxtKHRchuEd6QhQ5s7G0V</department>
+        <department departmentCode="LPn5oeGHikzDUN.zqp">xFOD</department>
+        <department departmentCode="Tpifw">aM_EKb5ss9SmghZl</department>
+        <department departmentCode="mvtuBreMuB">jgIiGx1foH14suc</department>
+        <department departmentCode="jUNdkh5-">go55SLY2yWnP-BsnySLwD19TZzbw</department>
+        <department departmentCode="Vr">uF1zu91VW4jZ451iLRVH</department>
+        <department departmentCode="AL35qt">UnM2</department>
+        <department departmentCode="MF0atwVxw..e6gjHgohQWyKr">uewXm8zcAiYKZW</department>
+        <department departmentCode="DlTEjR84">DzgH6Xl</department>
+        <department departmentCode="eSM.-o5qaj5C2sVq.EZuzJtswD9tIc">gU</department>
+        <department departmentCode="gE2_9aKoCDIgyb-85C3amlUkzFT">j.Ew8iRABGHcD</department>
+        <department departmentCode="aaHII6R8o1lk2ePjsQY_YA7b">sYCG9d9MPg.QoUI</department>
+        <department departmentCode="vosADgi6.YA">nz9NO8GsnAmJK6BH</department>
+        <department departmentCode="OxNZgszsYqKZAjx9Dp2Br7F855FFE">op-JT</department>
+        <department departmentCode="fYScED-ElGpq0j8I">vyBWqJOYVYHc_cGoux7J_rf</department>
+        <department departmentCode="S_rzB2K">oFNMgJwBbeFslvTeZX</department>
+        <department departmentCode="izorObWIOd-FnQSH2a5">D7ul8v6eDY7gP</department>
+        <department departmentCode="VdkS1po30aNcPqn">MhmIK</department>
+        <department departmentCode="Z5Tw-">LZf2Lpf2</department>
+        <department departmentCode="i8nISbZEGaKl.dYOrvls">Mg</department>
+        <department departmentCode="MV3aDt">ekp79BOiH</department>
+        <department departmentCode="CsPGYhSoA.eRe2Zk">U5MKK9jDXfB8B1INWqyUIOjtH.a0Z</department>
+        <department departmentCode="B">LzRCD5W-</department>
+        <department departmentCode="I63StdB8QeSg74QN8BtoZq-1">YUny.pjeFpvRrL2uophV1i</department>
+        <department departmentCode="GI_tGfnX3">a6answdla54Bfy1</department>
+        <department departmentCode="j0DQxPZF">pypmhXGHrdFz59</department>
+        <department departmentCode="X4djmVHvH">mbUL_UsZgJeCQ17LhQfYMOvJk</department>
+        <department departmentCode="BmNDAHFxmESlReRUKOf.BcN6MhHjWi">LwELPcI6gwKsY5Jke5bGkPNJNg</department>
+        <department departmentCode="fz2V_FJwgoS6NYUcUHKxC">Aw2GL</department>
+        <department departmentCode="pkdwQTI">W8OU3kXFJsHwZx</department>
+        <department departmentCode="_q2BsjBC2Fp-QbeCwgQdG.4wq0s4">SKpmD4IazV7uie1d4Af7x72teyE</department>
+        <department departmentCode="G">xP</department>
+    </departments>
+    <projectDirectory>
+        <projectDirectoryPath>p</projectDirectoryPath>
+        <projectDirectoryPath>H6I-oPnSbN81CO.tP_6nabcS</projectDirectoryPath>
+        <projectDirectoryPath>r1JIV-yXx_v7hBt3D5bq</projectDirectoryPath>
+        <projectDirectoryPath>zl4bVO3LaiXR2</projectDirectoryPath>
+        <projectDirectoryPath>UnqOIRROtrgPvo4dK4MM</projectDirectoryPath>
+        <projectDirectoryPath>Wt02dVGu1T_NIuZtPRozarQ</projectDirectoryPath>
+        <projectDirectoryPath>wKZtU37Nam</projectDirectoryPath>
+        <projectDirectoryPath>aSjG</projectDirectoryPath>
+        <projectDirectoryPath>dkT4Z6jMSuwi953mn65GI8UYnjC</projectDirectoryPath>
+        <projectDirectoryPath>biDETI-mxpXNN_XpO8.D-ix1sTpo</projectDirectoryPath>
+        <projectDirectoryPath>D0zaSyzq8djBX9kpWQKC4lGgtbN9YF</projectDirectoryPath>
+        <projectDirectoryPath>hx</projectDirectoryPath>
+        <projectDirectoryPath>J</projectDirectoryPath>
+        <projectDirectoryPath>_P</projectDirectoryPath>
+        <projectDirectoryPath>PYnU6b_tih5Myhnq</projectDirectoryPath>
+        <projectDirectoryPath>Z37RjfW6oayc1ATwvhhGWQz7OAiu</projectDirectoryPath>
+        <projectDirectoryPath>XkR9FzjkP96Em5-n4Xd</projectDirectoryPath>
+        <projectDirectoryPath>pnVltJuPuh</projectDirectoryPath>
+        <projectDirectoryPath>N357e0D0ZNNr-qALKQV5Wsy3hL</projectDirectoryPath>
+        <projectDirectoryPath>PGL-NteKp2Z_Vxw3HS6jqTn2QnrKGF</projectDirectoryPath>
+        <projectDirectoryPath>uVNkJq3kJnH</projectDirectoryPath>
+        <projectDirectoryPath>HdfvW7YLZ-</projectDirectoryPath>
+        <projectDirectoryPath>bPv5-KCjlRrIBGyAvYH0X-9nTWtHq</projectDirectoryPath>
+        <projectDirectoryPath>WgJWNDj55N3uV80_l.i</projectDirectoryPath>
+        <projectDirectoryPath>hdg</projectDirectoryPath>
+        <projectDirectoryPath>a-COn</projectDirectoryPath>
+        <projectDirectoryPath>f3rCwhUBRpF6VpvYHNNeTRj.Lj</projectDirectoryPath>
+        <projectDirectoryPath>LGuBrotZB86cjHnjqW-pgEC24K3</projectDirectoryPath>
+        <projectDirectoryPath>EUnpj</projectDirectoryPath>
+        <projectDirectoryPath>G3Q4ZceO</projectDirectoryPath>
+        <projectDirectoryPath>vIFn1MS</projectDirectoryPath>
+        <projectDirectoryPath>euPTXqQ-2tvS</projectDirectoryPath>
+        <projectDirectoryPath>jBWFhgGW3lioXI1U3UXDYZ19-.</projectDirectoryPath>
+        <projectDirectoryPath>i-BOWmoirjXl8e</projectDirectoryPath>
+        <projectDirectoryPath>EXyZogHCLJcmxSUy-OXBy.5ljn</projectDirectoryPath>
+        <projectDirectoryPath>QA-</projectDirectoryPath>
+        <projectDirectoryPath>u9MAt3</projectDirectoryPath>
+        <projectDirectoryPath>R50CLfB2d2i5eCEseDJFHywAeDOlV</projectDirectoryPath>
+        <projectDirectoryPath>c</projectDirectoryPath>
+        <projectDirectoryPath>N3nFa59DWSL1.LPE</projectDirectoryPath>
+        <projectDirectoryPath>v2O08ZLFZhmY</projectDirectoryPath>
+        <projectDirectoryPath>KPbG3F5jFBArI7JcJ0RgEB</projectDirectoryPath>
+        <projectDirectoryPath>G3-HtXBR7DBY</projectDirectoryPath>
+        <projectDirectoryPath>SDFFyoJb9gndnBVSRwrQ_Hr11yiUM5</projectDirectoryPath>
+        <projectDirectoryPath>Sz3PHCbhqsMB3XdFVm</projectDirectoryPath>
+        <projectDirectoryPath>lKQ3OeMNPBJLypiAQcz</projectDirectoryPath>
+        <projectDirectoryPath>XP</projectDirectoryPath>
+        <projectDirectoryPath>R3.tIN-l0IhVoaGOiUr_BfD8diuptx</projectDirectoryPath>
+        <projectDirectoryPath>k8.HMziX_JBk</projectDirectoryPath>
+        <projectDirectoryPath>nioXKWiE1I8vHK-XbfY_7odu</projectDirectoryPath>
+        <projectDirectoryPath>OnuQMKdMIjKKhm8</projectDirectoryPath>
+        <projectDirectoryPath>X</projectDirectoryPath>
+        <projectDirectoryPath>gIhBpmVU1L7FC07SjIcYZ4HRu0P</projectDirectoryPath>
+        <projectDirectoryPath>gXqHitjT</projectDirectoryPath>
+        <projectDirectoryPath>rRZxE2Gp0.rBlwnlkPsOkzlFdSio</projectDirectoryPath>
+        <projectDirectoryPath>ChocID47jc</projectDirectoryPath>
+        <projectDirectoryPath>FrWDPlRTB</projectDirectoryPath>
+        <projectDirectoryPath>boeHOvM</projectDirectoryPath>
+        <projectDirectoryPath>jO9D</projectDirectoryPath>
+        <projectDirectoryPath>CKt9HOV21Ya.8w5FMPLZf3ZnVR</projectDirectoryPath>
+        <projectDirectoryPath>RTC8FmuXl9r_EcbGB89GtS1t3eS</projectDirectoryPath>
+        <projectDirectoryPath>z-Oqp1pERIqmhDzMC</projectDirectoryPath>
+        <projectDirectoryPath>PfUIkH</projectDirectoryPath>
+        <projectDirectoryPath>OnO_oQrE-pfZU4YKr</projectDirectoryPath>
+        <projectDirectoryPath>rljdzC91fA</projectDirectoryPath>
+        <projectDirectoryPath>dIoQcsdedcAzJNs</projectDirectoryPath>
+        <projectDirectoryPath>wX3r3Wj</projectDirectoryPath>
+        <projectDirectoryPath>x4TWD_v2PboYCT</projectDirectoryPath>
+        <projectDirectoryPath>dB6L</projectDirectoryPath>
+        <projectDirectoryPath>P</projectDirectoryPath>
+        <projectDirectoryPath>GgI3QUNPrtVueNsY6hNgRY-a</projectDirectoryPath>
+        <projectDirectoryPath>Fl8kjCYYOnI6hpVSb2</projectDirectoryPath>
+        <projectDirectoryPath>AkW48PmfxYsjL</projectDirectoryPath>
+        <projectDirectoryPath>nyZclST1RHp</projectDirectoryPath>
+        <projectDirectoryPath>UgbAH860i70m</projectDirectoryPath>
+        <projectDirectoryPath>ql5IEPWE7Ti</projectDirectoryPath>
+        <projectDirectoryPath>w.5PdTTFFoNnFAv.egKV-5ks.</projectDirectoryPath>
+        <projectDirectoryPath>uIJ</projectDirectoryPath>
+        <projectDirectoryPath>AfO8Fu75NL</projectDirectoryPath>
+        <projectDirectoryPath>N3MbBlOG5mna2sl49TLp3uW</projectDirectoryPath>
+        <projectDirectoryPath>QAoDxV-NU9APOUOZ-H6I3ix8YP</projectDirectoryPath>
+        <projectDirectoryPath>i.QwypwS</projectDirectoryPath>
+        <projectDirectoryPath>OQw5OpOYvumJ9JRNbrX6HmOaGKMrf</projectDirectoryPath>
+        <projectDirectoryPath>VUgQ-MHZ9FZXS7gK3BcxP7tAWCM9P</projectDirectoryPath>
+        <projectDirectoryPath>Lqvxqt_SlQNN</projectDirectoryPath>
+        <projectDirectoryPath>NUtgZl4_wPbm.vk38La8VBqg</projectDirectoryPath>
+        <projectDirectoryPath>bsi1RiDcB-9qf0ZJY6F</projectDirectoryPath>
+        <projectDirectoryPath>axbrH-MsIXyRXlRsrnmAmuIVwKTI</projectDirectoryPath>
+        <projectDirectoryPath>XehtTi7ddUi-SC-Eymq8EeRv4D</projectDirectoryPath>
+        <projectDirectoryPath>SK3Rl_5nunTp</projectDirectoryPath>
+        <projectDirectoryPath>a</projectDirectoryPath>
+        <projectDirectoryPath>H8</projectDirectoryPath>
+        <projectDirectoryPath>oml</projectDirectoryPath>
+        <projectDirectoryPath>NIr4ipscOKobT</projectDirectoryPath>
+        <projectDirectoryPath>IW</projectDirectoryPath>
+        <projectDirectoryPath>Y6BDsF6-YDAQC4lxLcq</projectDirectoryPath>
+        <projectDirectoryPath>VaPsw4Vc</projectDirectoryPath>
+        <projectDirectoryPath>Jl6hBwaFXTB2o_QS4</projectDirectoryPath>
+        <projectDirectoryPath>Ttu0Wm</projectDirectoryPath>
+        <projectDirectoryPath>eUFKrc6gBQw</projectDirectoryPath>
+        <requestedValue>WaYK2NJ_JAbwJ5Es.5CZk2OGilW</requestedValue>
+        <approvedValue>Jz9AzdVH2nZK_</approvedValue>
+    </projectDirectory>
+    <title>wciR_f7biMB.cKyP</title>
+    <description>Jgvo0NRkQZUxaPV0xg.hb7h-rdz</description>
+    <storageCapacity>
+        <storageCapacitySetting>
+            <size>n0wMD</size>
+            <unit>biitlLqQlP6Id-yRoel9xe</unit>
+        </storageCapacitySetting>
+        <requestedValue>
+            <size>NUCPI0JkVM</size>
+            <unit>Jjp7Xq0qbewHDHEt7z</unit>
+        </requestedValue>
+        <approvedValue>
+            <size>LdV.vq1-YD</size>
+            <unit>ac05-b8.2E1</unit>
+        </approvedValue>
+    </storageCapacity>
+    <numberOfFiles>Less than 10,000</numberOfFiles>
+    <hpc>false</hpc>
+    <accessPoints>
+        <smbEnable>
+            <smbEnableSetting>false</smbEnableSetting>
+            <requestedValue>false</requestedValue>
+            <approvedValue>false</approvedValue>
+        </smbEnable>
+        <globusEnable>
+            <globusEnableSetting>false</globusEnableSetting>
+            <requestedValue>false</requestedValue>
+            <approvedValue>false</approvedValue>
+        </globusEnable>
+    </accessPoints>
+    <projectPurpose>aBXn7CVsyvxXQ</projectPurpose>
+    <schemaVersion>1.1a</schemaVersion>
+</resource>

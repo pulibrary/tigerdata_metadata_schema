@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- Version Notes:
-        - Version 1.1a-1 of the TigerData Standard Metadata Schema
-            - This is the first step toward the v1.1a interim version
-        - Updated on 2025-09-24 by Matt Chandler
+        - Version 1.1a-1 of the TigerData Metadata Schema
+            - This is the first step toward the v1.1a incremental version
+        - Updated on 2025-09-25 by Matt Chandler
 -->
 <!-- References:
         - As noted in documentation fields below, several elements are derived from DataCite:
@@ -11,6 +11,9 @@
             Version 4.6. DataCite e.V. https://doi.org/10.14454/mzv1-5b55
 -->
 <!-- Version 1.1a-1 Change Log:
+        2025-09-25:
+            - Renamed and moved to incremental folder
+            
         2025-09-24:
             - Stripped out all fields besides title and schemaVersion
                 - Retained structure of definitions, with projectDescription and projectFields groups

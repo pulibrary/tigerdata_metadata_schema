@@ -2,7 +2,7 @@
 
 <!-- Version Notes:
         - Version 1.1 of the TigerData Standard Metadata Schema
-        - Updated on 2025-09-03 by Matt Chandler
+        - Updated on 2025-09-25 by Matt Chandler
 -->
 <!-- References:
         - As noted in documentation fields below, several elements are derived from DataCite:
@@ -31,7 +31,24 @@
         - Repeatable elements are typically placed within container elements, and container elements have names that are the plural form of the repeatable element they contain
 -->
 
-<!-- Version 1.x Change Log:
+<!-- Version 1.1 Change Log:
+        2025-09-25:
+            - Revised text types for consistency and better error-handling
+                - Renamed shortDescriptionLimitType to shortTextLimitType and shortDescriptionType to shortTextType
+                - Renamed limitedTextType to textLimitType
+                - Renamed limitedTypeType to titleLimitType
+                - Created longTextType and longTextLimitType, for use in description
+                - Updated references and annotations to match changes in these types
+                - Changed fundingReference and duaReference to: 
+                    - use titleType instead of textType to limit to 200 characters for grantor/funder and title
+                    - use textLimitType instead of xs:string for IDs and award numbers
+                - Changed schemaVersion to use shortTextLimitType
+                - Changed globusName to use titleLimitType
+            - Changed the third option in hpcType from "Not Sure" to "Maybe" to match the wizard
+            - Added string types to attributes with fixed string values
+            - Removed the generic quantityType (it isn't in use)
+            - Removed the type for the resourceID attribute, so it can be either a DOI (string) or a MFAID (integer)
+        
         2025-09-03:
             - Moved schemaVersion out of projectProvenance to be defined as a common element
             - Added schemaVersion to resource as a top-level element that applies to both projects and items
@@ -65,7 +82,7 @@
         </xs:annotation>
         <xs:simpleContent>
             <xs:extension base="doiType">
-                <xs:attribute name="projectIDType" fixed="DOI">
+                <xs:attribute name="projectIDType" type="xs:string" fixed="DOI">
                     <xs:annotation>
                         <xs:documentation xml:lang="en">Makes explicit that the project ID is always given as a DOI</xs:documentation>
                     </xs:annotation>
@@ -96,7 +113,7 @@
         </xs:restriction>
     </xs:simpleType>
     
-    <xs:simpleType name="limitedTextType">
+    <xs:simpleType name="textLimitType">
         <xs:annotation>
             <xs:documentation xml:lang="en">Specification for the practical limit for text values within textType</xs:documentation>
         </xs:annotation>
@@ -108,16 +125,16 @@
     
     <xs:complexType name="textType">
         <xs:annotation>
-            <xs:documentation xml:lang="en">Standard type uesed for free text values</xs:documentation>
+            <xs:documentation xml:lang="en">Standard type uesed for generic text values</xs:documentation>
         </xs:annotation>
         <xs:simpleContent>
-            <xs:extension base="limitedTextType">
+            <xs:extension base="textLimitType">
                 <xs:attribute ref="xml:lang" default="en"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
     
-    <xs:simpleType name="limitedTitleType">
+    <xs:simpleType name="titleLimitType">
         <xs:annotation>
             <xs:documentation xml:lang="en">Specification for the practical limit for text values within titleType</xs:documentation>
         </xs:annotation>
@@ -132,15 +149,15 @@
             <xs:documentation xml:lang="en">Standard type uesed for title values</xs:documentation>
         </xs:annotation>
         <xs:simpleContent>
-            <xs:extension base="limitedTitleType">
+            <xs:extension base="titleLimitType">
                 <xs:attribute ref="xml:lang" default="en"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
     
-    <xs:simpleType name="shortDescriptionLimitType">
+    <xs:simpleType name="shortTextLimitType">
         <xs:annotation>
-            <xs:documentation xml:lang="en">Specification for the practical limit for text values within shortDescriptionType</xs:documentation>
+            <xs:documentation xml:lang="en">Specification for the practical limit for text values within shortTextType</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:minLength value="1"/>
@@ -148,12 +165,33 @@
         </xs:restriction>
     </xs:simpleType>
     
-    <xs:complexType name="shortDescriptionType">
+    <xs:complexType name="shortTextType">
         <xs:annotation>
-            <xs:documentation xml:lang="en">Standard type uesed for short descriptive values (e.g., itemResourceType and keyword)</xs:documentation>
+            <xs:documentation xml:lang="en">Standard type uesed for short text values (e.g., itemResourceType and keyword)</xs:documentation>
         </xs:annotation>
         <xs:simpleContent>
-            <xs:extension base="shortDescriptionLimitType">
+            <xs:extension base="shortTextLimitType">
+                <xs:attribute ref="xml:lang" default="en"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    
+    <xs:simpleType name="longTextLimitType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Specification for the practical limit for text values within longTextType</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="2000"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="longTextType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Standard type uesed for long text values (e.g., description)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="longTextLimitType">
                 <xs:attribute ref="xml:lang" default="en"/>
             </xs:extension>
         </xs:simpleContent>
@@ -1090,17 +1128,17 @@
                     <xs:documentation xml:lang="en">The ORCID ID URL for the person in a given role, if available and if verified as valid against the ORCID API upon entry.</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="fullName" type="limitedTextType" minOccurs="0" maxOccurs="1">
+            <xs:element name="fullName" type="textLimitType" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The full name of the person in a given role, verified in the format family-comma-given and matching the corresponding given and family name fields, if available.</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="givenName" type="limitedTextType" minOccurs="0" maxOccurs="1">
+            <xs:element name="givenName" type="textLimitType" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The given name(s) of the person in a given role. If the person has multiple given names, then all should be included in this field, along with any suffixes.</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="familyName" type="limitedTextType" minOccurs="0" maxOccurs="1">
+            <xs:element name="familyName" type="textLimitType" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The family name(s) of the person in a given role. If the person has multiple family names, then all should be included in this field.</xs:documentation>
                 </xs:annotation>
@@ -1117,7 +1155,7 @@
                 <xs:complexType>
                     <xs:simpleContent>
                         <xs:extension base="xs:string">
-                            <xs:attribute name="nameIdentifierSchema" type="limitedTextType" use="required">
+                            <xs:attribute name="nameIdentifierSchema" type="textLimitType" use="required">
                                 <xs:annotation>
                                     <xs:documentation xml:lang="en">The name of the schema to which the name identifier belongs (required when an alternative name identifier is given).</xs:documentation>
                                 </xs:annotation>
@@ -1185,25 +1223,6 @@
                 </xs:attribute>
             </xs:extension>
         </xs:simpleContent>
-    </xs:complexType>
-    
-    <xs:complexType name="quantityType">
-        <xs:annotation>
-            <xs:documentation xml:lang="en">Standard type used for generic quantity values</xs:documentation>
-        </xs:annotation>
-        <xs:sequence>
-            <xs:element name="size" type="xs:decimal" minOccurs="1" maxOccurs="1">
-                <xs:annotation>
-                    <xs:documentation xml:lang="en">The numeric size of the quantity</xs:documentation>
-                    <xs:documentation xml:lang="en">The practical limits for floating point values set by Mediaflux are the range [4.9E-324,1.7976931348623157E308]</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="unit" type="xs:string" minOccurs="1" maxOccurs="1">
-                <xs:annotation>
-                    <xs:documentation xml:lang="en">The standardized unit of measure for the quantity</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-        </xs:sequence>
     </xs:complexType>
     
     <xs:complexType name="storageQuantityType">
@@ -1323,7 +1342,7 @@
                     <xs:documentation xml:lang="en">The project is expected to connect to high performance computing resources</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
-            <xs:enumeration value="Not Sure" xml:lang="en">
+            <xs:enumeration value="Maybe" xml:lang="en">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The submitter is unsure whether the project will need to connect to high performance computing resources</xs:documentation>
                     <xs:documentation xml:lang="en">More conversation may be required to clarify needs</xs:documentation>
@@ -1478,8 +1497,8 @@
         </xs:annotation>
         <xs:complexType>
             <xs:simpleContent>
-                <xs:extension base="limitedTextType">
-                    <xs:attribute name="alternativeIDType" type="limitedTextType" use="required">
+                <xs:extension base="textLimitType">
+                    <xs:attribute name="alternativeIDType" type="textLimitType" use="required">
                         <xs:annotation>
                             <xs:documentation xml:lang="en">A simple description of the alternative ID type (e.g. "Local accession number")</xs:documentation>
                         </xs:annotation>
@@ -1612,7 +1631,7 @@
         </xs:annotation>
         <xs:complexType>
             <xs:simpleContent>
-                <xs:extension base="textType">
+                <xs:extension base="longTextType">
                     <xs:attribute ref="inherited" fixed="false"/>
                     <xs:attribute ref="discoverable" fixed="true"/>
                     <xs:attribute ref="trackingLevel" fixed="ResourceRecord"/>
@@ -1660,7 +1679,7 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="funderName" type="textType" minOccurs="1" maxOccurs="1">
+                <xs:element name="funderName" type="titleType" minOccurs="1" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation xml:lang="en">Records the name of the funding provider</xs:documentation>
                         <xs:documentation xml:lang="en">If the funding provider is part of the U.S. federal government, then the federalFunder attribute should be set to true</xs:documentation>
@@ -1672,7 +1691,7 @@
                     </xs:annotation>
                     <xs:complexType>
                         <xs:simpleContent>
-                            <xs:extension base="xs:string">
+                            <xs:extension base="textLimitType">
                                 <xs:attribute name="funderIDType" default="ROR">
                                     <xs:annotation>
                                         <xs:documentation xml:lang="en">Records the type of identifier used for funderID</xs:documentation>
@@ -1702,7 +1721,7 @@
                     </xs:annotation>
                     <xs:complexType>
                         <xs:simpleContent>
-                            <xs:extension base="xs:string">
+                            <xs:extension base="textLimitType">
                                 <xs:attribute name="awardURI" type="xs:anyURI" use="optional">
                                     <xs:annotation>
                                         <xs:documentation xml:lang="en">Records the URI for the awardNumber</xs:documentation>
@@ -1712,7 +1731,7 @@
                         </xs:simpleContent>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="awardTitle" type="textType" minOccurs="0" maxOccurs="1">
+                <xs:element name="awardTitle" type="titleType" minOccurs="0" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation xml:lang="en">Records the title for the fundingReference, if applicable</xs:documentation>
                     </xs:annotation>
@@ -1751,7 +1770,7 @@
         </xs:annotation>
         <xs:complexType>
             <xs:simpleContent>
-                <xs:extension base="shortDescriptionType">
+                <xs:extension base="shortTextType">
                     <xs:attribute ref="resourceTypeGeneral" use="required"/>
                     <xs:attribute ref="inherited" default="false"/>
                     <xs:attribute ref="discoverable" fixed="true"/>
@@ -1769,7 +1788,7 @@
         </xs:annotation>
         <xs:complexType>
             <xs:simpleContent>
-                <xs:extension base="shortDescriptionType">
+                <xs:extension base="shortTextType">
                     <xs:attribute ref="resourceTypeGeneral" fixed="Project"/>
                     <xs:attribute ref="inherited" default="false"/>
                     <xs:attribute ref="discoverable" fixed="true"/>
@@ -1837,7 +1856,7 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="grantorName" type="textType" minOccurs="1" maxOccurs="1">
+                <xs:element name="grantorName" type="titleType" minOccurs="1" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation xml:lang="en">Records the name of the DUA grantor</xs:documentation>
                     </xs:annotation>
@@ -1848,7 +1867,7 @@
                     </xs:annotation>
                     <xs:complexType>
                         <xs:simpleContent>
-                            <xs:extension base="xs:string">
+                            <xs:extension base="textLimitType">
                                 <xs:attribute name="duaURI" type="xs:anyURI" use="optional">
                                     <xs:annotation>
                                         <xs:documentation xml:lang="en">Records the URI for the DUA</xs:documentation>
@@ -1858,7 +1877,7 @@
                         </xs:simpleContent>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="duaTitle" type="textType" minOccurs="0" maxOccurs="1">
+                <xs:element name="duaTitle" type="titleType" minOccurs="0" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation xml:lang="en">Records the title for the DUA, if applicable</xs:documentation>
                     </xs:annotation>
@@ -1958,7 +1977,7 @@
             <xs:simpleContent>
                 <xs:extension base="dateOrRangeType">
                     <xs:attribute name="dateType" type="dateTypeType" use="required"/>
-                    <xs:attribute name="dateInformation" type="shortDescriptionLimitType" use="optional">
+                    <xs:attribute name="dateInformation" type="shortTextLimitType" use="optional">
                         <xs:annotation>
                             <xs:documentation xml:lang="en">More information about the value of otherDate (recommended if dateType is Other)</xs:documentation>
                         </xs:annotation>
@@ -2012,7 +2031,7 @@
         </xs:annotation>
         <xs:complexType>
             <xs:simpleContent>
-                <xs:extension base="limitedTextType">
+                <xs:extension base="shortTextLimitType">
                     <xs:attribute ref="inherited" default="true"/>
                     <xs:attribute ref="discoverable" fixed="true"/>
                     <xs:attribute ref="trackingLevel" fixed="InternalUseOnly"/>
@@ -2378,7 +2397,7 @@
                     <xs:documentation xml:lang="en">Whether the project is expected to connect to high performance computing resources (default is No)</xs:documentation>
                     <xs:documentation xml:lang="en">This value must be Yes for a project to be mounted to any HPC cluster</xs:documentation>
                     <xs:documentation xml:lang="en">If this value is No, then smbEnable is likely needed</xs:documentation>
-                    <xs:documentation xml:lang="en">If this value is Not Sure, then a System Administrator should follow up with the Data Sponsor to clarify needs</xs:documentation>
+                    <xs:documentation xml:lang="en">If this value is Maybe, then a System Administrator should follow up with the Data Sponsor to clarify needs</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                     <xs:simpleContent>
@@ -2461,7 +2480,7 @@
                             </xs:annotation>
                             <xs:complexType>
                                 <xs:sequence>
-                                    <xs:element name="globusName" type="textType" minOccurs="1" maxOccurs="1">
+                                    <xs:element name="globusName" type="titleLimitType" minOccurs="1" maxOccurs="1">
                                         <xs:annotation>
                                             <xs:documentation xml:lang="en">The Globus collection name (required)</xs:documentation>
                                             <xs:documentation xml:lang="en">The naming convention is "Princeton TigerData - parent-folder/project-folder"</xs:documentation>
@@ -2603,8 +2622,8 @@
                             </xs:annotation>
                             <xs:complexType>
                                 <xs:simpleContent>
-                                    <xs:extension base="shortDescriptionType">
-                                        <xs:attribute name="subjectSchema" type="limitedTextType" use="optional">
+                                    <xs:extension base="shortTextType">
+                                        <xs:attribute name="subjectSchema" type="textLimitType" use="optional">
                                             <xs:annotation>
                                                 <xs:documentation xml:lang="en">The name of the subject schema or classification code or authority, if applicable</xs:documentation>
                                             </xs:annotation>
@@ -2619,7 +2638,7 @@
                                                 <xs:documentation xml:lang="en">The URI of the subject term, if applicable</xs:documentation>
                                             </xs:annotation>
                                         </xs:attribute>
-                                        <xs:attribute name="classificationCode" type="limitedTextType" use="optional">
+                                        <xs:attribute name="classificationCode" type="textLimitType" use="optional">
                                             <xs:annotation>
                                                 <xs:documentation xml:lang="en">The classification code used for the subject term in the subject schema, if applicable</xs:documentation>
                                             </xs:annotation>
@@ -2651,10 +2670,10 @@
                             </xs:annotation>
                             <xs:complexType>
                                 <xs:simpleContent>
-                                    <xs:extension base="limitedTextType">
+                                    <xs:extension base="textLimitType">
                                         <xs:attribute name="relatedIDType" type="relatedIDTypeType" default="DOI"/>
                                         <xs:attribute name="relationType" type="relationTypeType" use="required"/>
-                                        <xs:attribute name="relatedMetadataSchema" type="limitedTextType" use="optional">
+                                        <xs:attribute name="relatedMetadataSchema" type="textLimitType" use="optional">
                                             <xs:annotation>
                                                 <xs:documentation xml:lang="en">The name of the related metadata schema, if applicable</xs:documentation>
                                                 <xs:documentation xml:lang="en">Use only with HasMetadata and IsMetadataFor relation types</xs:documentation>
@@ -2666,7 +2685,7 @@
                                                 <xs:documentation xml:lang="en">Use only with HasMetadata and IsMetadataFor relation types</xs:documentation>
                                             </xs:annotation>
                                         </xs:attribute>
-                                        <xs:attribute name="relatedMetadataSchemaType" type="limitedTextType" use="optional">
+                                        <xs:attribute name="relatedMetadataSchemaType" type="textLimitType" use="optional">
                                             <xs:annotation>
                                                 <xs:documentation xml:lang="en">The type of the related metadata schema, if applicable (e.g. XSD, DDT, Turtle)</xs:documentation>
                                                 <xs:documentation xml:lang="en">Use only with HasMetadata and IsMetadataFor relation types</xs:documentation>
@@ -2698,7 +2717,7 @@
                             </xs:annotation>
                             <xs:complexType>
                                 <xs:simpleContent>
-                                    <xs:extension base="limitedTextType">
+                                    <xs:extension base="textLimitType">
                                         <xs:attribute ref="inherited" default="false"/>
                                     </xs:extension>
                                 </xs:simpleContent>
@@ -2836,7 +2855,7 @@
                 <xs:complexType>
                     <xs:simpleContent>
                         <xs:extension base="mediafluxAssetIDType">
-                            <xs:attribute name="itemIDType" fixed="MFAID">
+                            <xs:attribute name="itemIDType" type="xs:string" fixed="MFAID">
                                 <xs:annotation>
                                     <xs:documentation xml:lang="en">Makes explicit that itemID is always given as a Mediaflux Asset ID</xs:documentation>
                                 </xs:annotation>
@@ -2890,9 +2909,10 @@
                     </xs:restriction>
                 </xs:simpleType>
             </xs:attribute>
-            <xs:attribute name="resourceID" type="limitedTextType" use="required">
+            <xs:attribute name="resourceID" use="required">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The unique identifier for the resource within TigerData systems (required)</xs:documentation>
+                    <xs:documentation xml:lang="en">If the resourceClass is Project, then the resourceID should be a DOI; if Item, then the resourceID should be a Mediaflux AssetID (MFAID)</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="resourceIDType" use="required">

@@ -1,0 +1,110 @@
+<resource resourceClass="Item" resourceID="123456" resourceIDType="DOI">
+    <itemID itemIDType="MFAID" inherited="false" discoverable="false" trackingLevel="InternalUseOnly">123456</itemID>
+    <alternativeIDs discoverable="true" trackingLevel="ResourceRecord">
+        <alternativeID alternativeIDType="alternativeIDType0" inherited="false">alternativeID0</alternativeID>
+        <alternativeID alternativeIDType="alternativeIDType1" inherited="false">alternativeID1</alternativeID>
+        <alternativeID alternativeIDType="alternativeIDType2" inherited="false">alternativeID2</alternativeID>
+    </alternativeIDs>
+    <parentProject inherited="true" discoverable="true" trackingLevel="ResourceRecord" projectIDType="DOI">10.0000/bcde-2345</parentProject>
+    <dataUsers trackingLevel="ResourceRecord">
+        <dataUser readOnly="false" inherited="true" discoverable="false" userID="--" userIDType="NetID">
+            <netID>--</netID>
+            <PUID>000000000</PUID>
+            <orcid>http://www.oxygenxml.com/</orcid>
+            <fullName>familyName0, givenName0</fullName>
+            <givenName>givenName0</givenName>
+            <familyName>familyName0</familyName>
+            <nameDate>0000-01-01</nameDate>
+            <alternativeNameIdentifier nameIdentifierSchema="nameIdentifierSchema0" schemaURI="http://www.oxygenxml.com/">alternativeNameIdentifier0</alternativeNameIdentifier>
+            <alternativeNameIdentifier nameIdentifierSchema="nameIdentifierSchema1" schemaURI="http://www.oxygenxml.com/">alternativeNameIdentifier1</alternativeNameIdentifier>
+            <alternativeNameIdentifier nameIdentifierSchema="nameIdentifierSchema2" schemaURI="http://www.oxygenxml.com/">alternativeNameIdentifier2</alternativeNameIdentifier>
+        </dataUser>
+    </dataUsers>
+    <title inherited="false" discoverable="true" trackingLevel="ResourceRecord" xml:lang="en">title0</title>
+    <description inherited="false" discoverable="true" trackingLevel="ResourceRecord" xml:lang="en">description0</description>
+    <itemResourceType resourceTypeGeneral="Audiovisual" inherited="false" discoverable="true" trackingLevel="ResourceRecord"
+         xml:lang="en">itemResourceType0</itemResourceType>
+    <keywords discoverable="true" trackingLevel="ResourceRecord">
+        <keyword subjectSchema="subjectSchema0" subjectSchemaURI="http://www.oxygenxml.com/" valueURI="http://www.oxygenxml.com/"
+             classificationCode="classificationCode0" inherited="true" xml:lang="en">keyword0</keyword>
+        <keyword subjectSchema="subjectSchema1" subjectSchemaURI="http://www.oxygenxml.com/" valueURI="http://www.oxygenxml.com/"
+             classificationCode="classificationCode1" inherited="true" xml:lang="en">keyword1</keyword>
+        <keyword subjectSchema="subjectSchema2" subjectSchemaURI="http://www.oxygenxml.com/" valueURI="http://www.oxygenxml.com/"
+             classificationCode="classificationCode2" inherited="true" xml:lang="en">keyword2</keyword>
+    </keywords>
+    <relations discoverable="true" trackingLevel="ResourceRecord">
+        <relation relatedIDType="DOI" relationType="IsCitedBy" relatedMetadataSchema="relatedMetadataSchema0" relatedMetadataSchemaURI="http://www.oxygenxml.com/"
+             relatedMetadataSchemaType="relatedMetadataSchemaType0" resourceTypeGeneral="Audiovisual"
+             inherited="false">relation0</relation>
+        <relation relatedIDType="DOI" relationType="IsCitedBy" relatedMetadataSchema="relatedMetadataSchema1" relatedMetadataSchemaURI="http://www.oxygenxml.com/"
+             relatedMetadataSchemaType="relatedMetadataSchemaType1" resourceTypeGeneral="Audiovisual"
+             inherited="false">relation1</relation>
+        <relation relatedIDType="DOI" relationType="IsCitedBy" relatedMetadataSchema="relatedMetadataSchema2" relatedMetadataSchemaURI="http://www.oxygenxml.com/"
+             relatedMetadataSchemaType="relatedMetadataSchemaType2" resourceTypeGeneral="Audiovisual"
+             inherited="false">relation2</relation>
+    </relations>
+    <extendedMetadataSchemas discoverable="false" trackingLevel="InternalUseOnly">
+        <extendedMetadataSchema inherited="false">extendedMetadataSchema0</extendedMetadataSchema>
+        <extendedMetadataSchema inherited="false">extendedMetadataSchema1</extendedMetadataSchema>
+        <extendedMetadataSchema inherited="false">extendedMetadataSchema2</extendedMetadataSchema>
+    </extendedMetadataSchemas>
+    <languages discoverable="true" trackingLevel="ResourceRecord">
+        <language inherited="true">en-US</language>
+        <language inherited="true">en-US</language>
+        <language inherited="true">en-US</language>
+    </languages>
+    <licenses discoverable="true" trackingLevel="ResourceRecord">
+        <license licenseURI="https://creativecommons.org/publicdomain/zero/1.0/" licenseID="CC0 1.0" licenseIDSchema="SPDX"
+             licenseIDSchemaURI="https://spdx.org/licenses/" inherited="true">Creative Commons Public Domain Dedication 1.0 Universal</license>
+        <license licenseURI="https://creativecommons.org/publicdomain/zero/1.0/" licenseID="CC0 1.0" licenseIDSchema="SPDX"
+             licenseIDSchemaURI="https://spdx.org/licenses/" inherited="true">Creative Commons Public Domain Dedication 1.0 Universal</license>
+        <license licenseURI="https://creativecommons.org/publicdomain/zero/1.0/" licenseID="CC0 1.0" licenseIDSchema="SPDX"
+             licenseIDSchemaURI="https://spdx.org/licenses/" inherited="true">Creative Commons Public Domain Dedication 1.0 Universal</license>
+    </licenses>
+    <fundingReferences discoverable="true" trackingLevel="ResourceRecord">
+        <fundingReference federalFunder="false" inherited="true">
+            <funderName xml:lang="en">funderName0</funderName>
+            <funderID funderIDType="ROR" funderIDSchema="https://ror.org/">funderID0</funderID>
+            <awardNumber awardURI="http://www.oxygenxml.com/">awardNumber0</awardNumber>
+            <awardTitle xml:lang="en">awardTitle0</awardTitle>
+        </fundingReference>
+        <fundingReference federalFunder="false" inherited="true">
+            <funderName xml:lang="en">funderName1</funderName>
+            <funderID funderIDType="ROR" funderIDSchema="https://ror.org/">funderID1</funderID>
+            <awardNumber awardURI="http://www.oxygenxml.com/">awardNumber1</awardNumber>
+            <awardTitle xml:lang="en">awardTitle1</awardTitle>
+        </fundingReference>
+        <fundingReference federalFunder="false" inherited="true">
+            <funderName xml:lang="en">funderName2</funderName>
+            <funderID funderIDType="ROR" funderIDSchema="https://ror.org/">funderID2</funderID>
+            <awardNumber awardURI="http://www.oxygenxml.com/">awardNumber2</awardNumber>
+            <awardTitle xml:lang="en">awardTitle2</awardTitle>
+        </fundingReference>
+    </fundingReferences>
+    <duaReferences discoverable="true" trackingLevel="ResourceRecord">
+        <duaReference inherited="true">
+            <grantorName xml:lang="en">grantorName0</grantorName>
+            <duaID duaURI="http://www.oxygenxml.com/">duaID0</duaID>
+            <duaTitle xml:lang="en">duaTitle0</duaTitle>
+        </duaReference>
+        <duaReference inherited="true">
+            <grantorName xml:lang="en">grantorName1</grantorName>
+            <duaID duaURI="http://www.oxygenxml.com/">duaID1</duaID>
+            <duaTitle xml:lang="en">duaTitle1</duaTitle>
+        </duaReference>
+        <duaReference inherited="true">
+            <grantorName xml:lang="en">grantorName2</grantorName>
+            <duaID duaURI="http://www.oxygenxml.com/">duaID2</duaID>
+            <duaTitle xml:lang="en">duaTitle2</duaTitle>
+        </duaReference>
+    </duaReferences>
+    <itemDates discoverable="true" trackingLevel="ResourceRecord">
+        <startDate inherited="true">0000-01-01</startDate>
+        <endDate inherited="true">0000-01-01</endDate>
+        <retirementDate inherited="true">0000-01-01</retirementDate>
+        <otherDate dateType="Accepted" dateInformation="dateInformation0" inherited="true">0000-01-01</otherDate>
+        <otherDate dateType="Accepted" dateInformation="dateInformation1" inherited="true">0000-01-01</otherDate>
+        <otherDate dateType="Accepted" dateInformation="dateInformation2" inherited="true">0000-01-01</otherDate>
+    </itemDates>
+    <schemaVersion inherited="true" discoverable="true" trackingLevel="InternalUseOnly">1.1</schemaVersion>
+</resource>

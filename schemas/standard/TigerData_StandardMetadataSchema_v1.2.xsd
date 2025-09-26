@@ -36,6 +36,7 @@
             - Set maxOccurs to 3 for alternativeNameIdentifier in userType
             - Created shortUserType and applied within provenanceSubfields
                 - Only includes options for netID, PUID, and orcid as sub-elements
+            - Set maxOccurs to 10 for department, projectDirectoryPath, duaReference, eventNote
 -->
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
@@ -1916,7 +1917,7 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="duaReference" minOccurs="1" maxOccurs="100"/>
+                <xs:element ref="duaReference" minOccurs="1" maxOccurs="10"/>
             </xs:sequence>
             <xs:attribute ref="discoverable" fixed="true"/>
             <xs:attribute ref="trackingLevel" fixed="ResourceRecord"/>
@@ -2108,7 +2109,7 @@
                     <xs:documentation xml:lang="en">Princeton University is in the Eastern Time Zone (UTC-05:00 during Eastern Standard Time and UTC-04:00 during Eastern Daylight Time)</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="eventNote" minOccurs="0" maxOccurs="100">
+            <xs:element name="eventNote" minOccurs="0" maxOccurs="10">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">A supplementary record of noteworthy details for a given provenance event</xs:documentation>
                     <xs:documentation xml:lang="en">Intended to be retained in a running log of all noteworthy events</xs:documentation>
@@ -2243,7 +2244,7 @@
                 </xs:annotation>
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="department" minOccurs="1" maxOccurs="100">
+                        <xs:element name="department" minOccurs="1" maxOccurs="10">
                             <xs:annotation>
                                 <xs:documentation xml:lang="en">The primary Princeton University department(s) affiliated with the project</xs:documentation>
                                 <xs:documentation xml:lang="en">Use the canonical name for each recorded department</xs:documentation>
@@ -2276,7 +2277,7 @@
                 </xs:annotation>
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="projectDirectoryPath" type="pathType" minOccurs="0" maxOccurs="100">
+                        <xs:element name="projectDirectoryPath" type="pathType" minOccurs="0" maxOccurs="10">
                             <xs:annotation>
                                 <xs:documentation xml:lang="en">A current setting for projectDirectory (omitted until approved)</xs:documentation>
                                 <xs:documentation xml:lang="en">After approval, this value should be updated to match the approved value (in rare cases, the current setting may later deviate from the approved value)</xs:documentation>

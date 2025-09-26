@@ -36,7 +36,8 @@
             - Set maxOccurs to 3 for alternativeNameIdentifier in userType
             - Created shortUserType and applied within provenanceSubfields
                 - Only includes options for netID, PUID, and orcid as sub-elements
-            - Set maxOccurs to 10 for department, projectDirectoryPath, duaReference, eventNote
+            - Set maxOccurs to 10 for department, projectDirectoryPath, duaReference, and eventNote
+            - Set default for projectVisibility to Restricted
 -->
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
@@ -2351,7 +2352,7 @@
                     <xs:attribute ref="trackingLevel" fixed="InternalUseOnly"/>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="projectVisibility" minOccurs="1" maxOccurs="1">
+            <xs:element name="projectVisibility" minOccurs="1" maxOccurs="1" default="Restricted">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The level of openness to allow for the project record</xs:documentation>
                 </xs:annotation>

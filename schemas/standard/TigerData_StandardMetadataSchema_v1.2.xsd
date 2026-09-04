@@ -34,6 +34,12 @@
 <!-- Version 1.2 Change Log:
         2026-09-04:
             - Updated doiType so the RegEx pattern is stricter and cleaner for the DOIs we expect
+            - Set maxOccurs to 10 for language, fundingReference, license, otherDate, and globusConnection
+            - Several updates for the HPC connection option
+              - Deleted hpc and hpcType
+              - Created hpcEnable under accessPoints
+              - Created yesNoMaybeType and applied it consistently to all requestedValue sub-elements under accessPoints
+              - Updated annotations for all affected elements
         
         2025-09-26:
             - Set maxOccurs to 3 for alternativeNameIdentifier in userType
@@ -1352,25 +1358,27 @@
         </xs:restriction>
     </xs:simpleType>
     
-    <xs:simpleType name="hpcType">
+    <xs:simpleType name="yesNoMaybeType">
         <xs:annotation>
-            <xs:documentation xml:lang="en">Standard type that defines the controlled vocabulary for the hpc field</xs:documentation>
+            <xs:documentation xml:lang="en">Standard type that defines the controlled vocabulary for request fields that allow uncertainty</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="No" xml:lang="en">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The project is not expected to connect to high performance computing resources</xs:documentation>
+                    <xs:documentation xml:lang="en">The requester does not need the option (typically, the default)</xs:documentation>
+                    <xs:documentation xml:lang="en">Usually, when approved, applied as a false setting</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="Yes" xml:lang="en">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The project is expected to connect to high performance computing resources</xs:documentation>
+                    <xs:documentation xml:lang="en">The requester needs the option</xs:documentation>
+                    <xs:documentation xml:lang="en">Usually, when approved, applied as a true setting</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="Maybe" xml:lang="en">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The submitter is unsure whether the project will need to connect to high performance computing resources</xs:documentation>
-                    <xs:documentation xml:lang="en">More conversation may be required to clarify needs</xs:documentation>
+                    <xs:documentation xml:lang="en">The requester is unsure whether they will need the option</xs:documentation>
+                    <xs:documentation xml:lang="en">More conversation may be required to clarify before approval</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
         </xs:restriction>
@@ -1687,7 +1695,7 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="language" minOccurs="1" maxOccurs="100"/>
+                <xs:element ref="language" minOccurs="1" maxOccurs="10"/>
             </xs:sequence>
             <xs:attribute ref="discoverable" fixed="true"/>
             <xs:attribute ref="trackingLevel" fixed="ResourceRecord"/>
@@ -1780,7 +1788,7 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="fundingReference" minOccurs="1" maxOccurs="100"/>
+                <xs:element ref="fundingReference" minOccurs="1" maxOccurs="10"/>
             </xs:sequence>
             <xs:attribute ref="discoverable" fixed="true"/>
             <xs:attribute ref="trackingLevel" fixed="ResourceRecord"/>
@@ -1866,7 +1874,7 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="license" minOccurs="1" maxOccurs="100"/>
+                <xs:element ref="license" minOccurs="1" maxOccurs="10"/>
             </xs:sequence>
             <xs:attribute ref="discoverable" fixed="true"/>
             <xs:attribute ref="trackingLevel" fixed="ResourceRecord"/>
@@ -2025,7 +2033,7 @@
                 <xs:element ref="endDate" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="retirementDate" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="publicationDate" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="otherDate" minOccurs="0" maxOccurs="100"/>
+                <xs:element ref="otherDate" minOccurs="0" maxOccurs="10"/>
             </xs:sequence>
             <xs:attribute ref="discoverable" fixed="true"/>
             <xs:attribute ref="trackingLevel" fixed="ResourceRecord"/>
@@ -2043,7 +2051,7 @@
                 <xs:element ref="startDate" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="endDate" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="retirementDate" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="otherDate" minOccurs="0" maxOccurs="100"/>
+                <xs:element ref="otherDate" minOccurs="0" maxOccurs="10"/>
             </xs:sequence>
             <xs:attribute ref="discoverable" fixed="true"/>
             <xs:attribute ref="trackingLevel" fixed="ResourceRecord"/>
@@ -2417,34 +2425,45 @@
                     </xs:simpleContent>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="hpc" minOccurs="1" maxOccurs="1" default="No">
-                <xs:annotation>
-                    <xs:documentation xml:lang="en">Whether the project is expected to connect to high performance computing resources (default is No)</xs:documentation>
-                    <xs:documentation xml:lang="en">This value must be Yes for a project to be mounted to any HPC cluster</xs:documentation>
-                    <xs:documentation xml:lang="en">If this value is No, then smbEnable is likely needed</xs:documentation>
-                    <xs:documentation xml:lang="en">If this value is Maybe, then a System Administrator should follow up with the Data Sponsor to clarify needs</xs:documentation>
-                </xs:annotation>
-                <xs:complexType>
-                    <xs:simpleContent>
-                        <xs:extension base="hpcType">
-                            <xs:attribute ref="inherited" default="true"/>
-                            <xs:attribute ref="discoverable" fixed="false"/>
-                            <xs:attribute ref="trackingLevel" fixed="InternalUseOnly"/>
-                        </xs:extension>
-                    </xs:simpleContent>
-                </xs:complexType>
-            </xs:element>
             <xs:element name="accessPoints" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">Records requests/approvals and settings for SMB shares and Globus endpoints</xs:documentation>
-                    <xs:documentation xml:lang="en">If this element is present, then it should contain at least one sub-element</xs:documentation>
+                    <xs:documentation xml:lang="en">Records requests/approvals and settings for HPC systems, SMB shares, and Globus endpoints</xs:documentation>
+                    <xs:documentation xml:lang="en">If this element is present, then it should contain all 3 sub-elements</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                     <xs:sequence>
+                        <xs:element name="hpcEnable" minOccurs="1" maxOccurs="1">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en">Whether a project is enabled for access on HPC systems (via NFS)</xs:documentation>
+                                <xs:documentation xml:lang="en">By default, projects do not get set up for access on HPC systems, but if both SMB and Globus are disabled, then HPC enabling may be necessary</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="hpcEnableSetting" type="xs:boolean" maxOccurs="1" default="false">
+                                        <xs:annotation>
+                                            <xs:documentation xml:lang="en">The current setting for hpcEnable (false by default)</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="requestedValue" type="yesNoMaybeType" maxOccurs="1" default="No">
+                                        <xs:annotation>
+                                            <xs:documentation xml:lang="en">The requested value for hpcEnable (No by default)</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="approvedValue" type="xs:boolean" maxOccurs="1" default="false">
+                                        <xs:annotation>
+                                            <xs:documentation xml:lang="en">The approved value for smbEnable (false by default)</xs:documentation>
+                                            <xs:documentation xml:lang="en">The requested value takes yes/no/maybe values, but the approved value must be true/false</xs:documentation>
+                                            <xs:documentation xml:lang="en">If approvedValue is true, then hpcEnableSetting and the approved attribute should also be set to true</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                </xs:sequence>
+                                <xs:attribute ref="approved" default="false"/>
+                            </xs:complexType>
+                        </xs:element>
                         <xs:element name="smbEnable" minOccurs="1" maxOccurs="1">
                             <xs:annotation>
                                 <xs:documentation xml:lang="en">Whether a project has an SMB share enabled</xs:documentation>
-                                <xs:documentation xml:lang="en">By default, projects do not get an SMB share, but if the hpc value is No, then smbEnable is likely needed</xs:documentation>
+                                <xs:documentation xml:lang="en">By default, projects do not get an SMB share, but if HPC access is disabled, then smbEnable is likely needed</xs:documentation>
                                 <xs:documentation xml:lang="en">If an SMB share is approved and set, then the SMB path should be included in projectDirectoryPath</xs:documentation>
                             </xs:annotation>
                             <xs:complexType>
@@ -2454,14 +2473,15 @@
                                             <xs:documentation xml:lang="en">The current setting for smbEnable (false by default)</xs:documentation>
                                         </xs:annotation>
                                     </xs:element>
-                                    <xs:element name="requestedValue" type="xs:boolean" maxOccurs="1" default="false">
+                                    <xs:element name="requestedValue" type="yesNoMaybeType" maxOccurs="1" default="No">
                                         <xs:annotation>
-                                            <xs:documentation xml:lang="en">The requested value for smbEnable (false by default)</xs:documentation>
+                                            <xs:documentation xml:lang="en">The requested value for smbEnable (No by default)</xs:documentation>
                                         </xs:annotation>
                                     </xs:element>
                                     <xs:element name="approvedValue" type="xs:boolean" maxOccurs="1" default="false">
                                         <xs:annotation>
                                             <xs:documentation xml:lang="en">The approved value for smbEnable (false by default)</xs:documentation>
+                                            <xs:documentation xml:lang="en">The requested value takes yes/no/maybe values, but the approved value must be true/false</xs:documentation>
                                             <xs:documentation xml:lang="en">If approvedValue is true, then smbEnableSetting and the approved attribute should also be set to true</xs:documentation>
                                         </xs:annotation>
                                     </xs:element>
@@ -2482,14 +2502,15 @@
                                             <xs:documentation xml:lang="en">The current setting for globusEnable (false by default)</xs:documentation>
                                         </xs:annotation>
                                     </xs:element>
-                                    <xs:element name="requestedValue" type="xs:boolean" maxOccurs="1" default="false">
+                                    <xs:element name="requestedValue" type="yesNoMaybeType" maxOccurs="1" default="No">
                                         <xs:annotation>
-                                            <xs:documentation xml:lang="en">The requested value for globusEnable (false by default)</xs:documentation>
+                                            <xs:documentation xml:lang="en">The requested value for globusEnable (No by default)</xs:documentation>
                                         </xs:annotation>
                                     </xs:element>
                                     <xs:element name="approvedValue" type="xs:boolean" maxOccurs="1" default="false">
                                         <xs:annotation>
                                             <xs:documentation xml:lang="en">The approved value for globusEnable (false by default)</xs:documentation>
+                                            <xs:documentation xml:lang="en">The requested value takes yes/no/maybe values, but the approved value must be true/false</xs:documentation>
                                             <xs:documentation xml:lang="en">If approvedValue is true, then globusEnableSetting and the approved attribute should also be set to true</xs:documentation>
                                         </xs:annotation>
                                     </xs:element>
@@ -2497,7 +2518,7 @@
                                 <xs:attribute ref="approved" default="false"/>
                             </xs:complexType>
                         </xs:element>
-                        <xs:element name="globusCollection" minOccurs="0" maxOccurs="100">
+                        <xs:element name="globusCollection" minOccurs="0" maxOccurs="10">
                             <xs:annotation>
                                 <xs:documentation xml:lang="en">Details for an enabled Globus collection for the project</xs:documentation>
                                 <xs:documentation xml:lang="en">If globusEnableSetting is true, then at least one globusCollection value set should be given</xs:documentation>

@@ -2,7 +2,7 @@
 
 <!-- Version Notes:
         - Version 1.2 of the TigerData Standard Metadata Schema
-        - Updated on 2025-09-26 by Matt Chandler
+        - Updated on 2026-09-04 by Matt Chandler
 -->
 <!-- References:
         - As noted in documentation fields below, several elements are derived from DataCite:
@@ -32,6 +32,9 @@
 -->
 
 <!-- Version 1.2 Change Log:
+        2026-09-04:
+            - Updated doiType so the RegEx pattern is stricter and cleaner for the DOIs we expect
+        
         2025-09-26:
             - Set maxOccurs to 3 for alternativeNameIdentifier in userType
             - Created shortUserType and applied within provenanceSubfields
@@ -57,7 +60,7 @@
             <xs:documentation>https://www.iso.org/standard/81599.html</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
-            <xs:pattern value="10\.\d{4,9}\/[\S]+[^-_!:;,.?/\\\s]"/>
+            <xs:pattern value="10\.\d{4,9}\/[-A-z0-9]+"/>
         </xs:restriction>
     </xs:simpleType>
     

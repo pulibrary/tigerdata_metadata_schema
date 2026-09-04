@@ -2463,7 +2463,7 @@
                         <xs:element name="smbEnable" minOccurs="1" maxOccurs="1">
                             <xs:annotation>
                                 <xs:documentation xml:lang="en">Whether a project has an SMB share enabled</xs:documentation>
-                                <xs:documentation xml:lang="en">By default, projects do not get an SMB share, but if the hpc value is No, then smbEnable is likely needed</xs:documentation>
+                                <xs:documentation xml:lang="en">By default, projects do not get an SMB share, but if HPC access is disabled, then smbEnable is likely needed</xs:documentation>
                                 <xs:documentation xml:lang="en">If an SMB share is approved and set, then the SMB path should be included in projectDirectoryPath</xs:documentation>
                             </xs:annotation>
                             <xs:complexType>

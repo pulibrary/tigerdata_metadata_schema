@@ -32,6 +32,10 @@
 -->
 
 <!-- Version 1.2 Change Log:
+        2026-09-08:
+            - Updated more documentation following the addition of data security
+            - Changed the discoverable attribute for dataSecurity to be default false (not fixed)
+        
         2026-09-04:
             - Updated doiType so the RegEx pattern is stricter and cleaner for the DOIs we expect
             - Set maxOccurs to 10 for language, fundingReference, license, otherDate, and globusConnection
@@ -2397,7 +2401,8 @@
             </xs:element>
             <xs:element name="projectVisibility" minOccurs="1" maxOccurs="1" default="Restricted">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The level of openness to allow for the project record</xs:documentation>
+                    <xs:documentation xml:lang="en">The level of openness to allow for the project record (Restricted by default)</xs:documentation>
+                    <xs:documentation xml:lang="en">If data security is set to Level 2 or higher, then project visibility should be set to Restricted</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                     <xs:simpleContent>
@@ -2461,6 +2466,7 @@
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The appropriate data security classification level for the project contents (by default, Level 1 - Internal)</xs:documentation>
                     <xs:documentation>See https://protectingourinfo.princeton.edu/classify</xs:documentation>
+                    <xs:documentation xml:lang="en">If data security is set to Level 2 or higher, then project visibility should be set to Restricted</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                     <xs:sequence>
@@ -2483,7 +2489,7 @@
                     </xs:sequence>
                     <xs:attribute ref="approved" default="false"/>
                     <xs:attribute ref="inherited" fixed="true"/>
-                    <xs:attribute ref="discoverable" fixed="false"/>
+                    <xs:attribute ref="discoverable" default="false"/>
                     <xs:attribute ref="trackingLevel" fixed="InternalUseOnly"/>
                 </xs:complexType>
             </xs:element>

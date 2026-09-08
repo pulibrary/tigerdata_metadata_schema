@@ -35,6 +35,7 @@
         2026-09-08:
             - Updated more documentation following the addition of data security
             - Changed the discoverable attribute for dataSecurity to be default false (not fixed)
+            - Added storageSystem attribute to pathType
         
         2026-09-04:
             - Updated doiType so the RegEx pattern is stricter and cleaner for the DOIs we expect
@@ -1255,6 +1256,12 @@
                 <xs:attribute name="protocol" type="protocolType" default="NFS">
                     <xs:annotation>
                         <xs:documentation xml:lang="en">The storage connection protocol that defines how the path is written</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="storageSystem" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">The name of the storage system to which the path applies</xs:documentation>
+                        <xs:documentation xml:lang="en">Used to differentiate standard TigerData projects (in-band) from out-of-band systems (e.g., '/projects' or 'Della /scratch/gpfs')</xs:documentation>
                     </xs:annotation>
                 </xs:attribute>
             </xs:extension>

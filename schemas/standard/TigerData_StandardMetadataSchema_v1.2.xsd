@@ -32,6 +32,10 @@
 -->
 
 <!-- Version 1.2 Change Log:
+        2026-09-08:
+            - Updated more documentation following the addition of data security
+            - Changed the discoverable attribute for dataSecurity to be default false (not fixed)
+        
         2026-09-04:
             - Updated doiType so the RegEx pattern is stricter and cleaner for the DOIs we expect
             - Set maxOccurs to 10 for language, fundingReference, license, otherDate, and globusConnection
@@ -40,6 +44,7 @@
               - Created hpcEnable under accessPoints
               - Created yesNoMaybeType and applied it consistently to all requestedValue sub-elements under accessPoints
               - Updated annotations for all affected elements
+            - Added dataSecurity and securityLevelType
         
         2025-09-26:
             - Set maxOccurs to 3 for alternativeNameIdentifier in userType
@@ -1358,6 +1363,37 @@
         </xs:restriction>
     </xs:simpleType>
     
+    <xs:simpleType name="securityLevelType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Standard type that defines the controlled vocabulary for data security classification levels</xs:documentation>
+            <xs:documentation>See https://protectingourinfo.princeton.edu/classify</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Level 0 - Public" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Intended to be freely shared or disclosed inside and outside of Princeton University</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Level 1 - Internal" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Intended to be used only by Princeton University staff, faculty or students, and not for public disclosure (typically, the default)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Level 2 - Confidential" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Requires careful handling and protection due to contractual, regulatory, proprietary, or privacy considerations</xs:documentation>
+                    <xs:documentation xml:lang="en">Requires TigerData Secure</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Level 3 - Restricted" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Subject to specific data security regulations and/or privacy protections, e.g. HIPAA</xs:documentation>
+                    <xs:documentation xml:lang="en">Requires TigerData Secure</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
     <xs:simpleType name="yesNoMaybeType">
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard type that defines the controlled vocabulary for request fields that allow uncertainty</xs:documentation>
@@ -2365,7 +2401,8 @@
             </xs:element>
             <xs:element name="projectVisibility" minOccurs="1" maxOccurs="1" default="Restricted">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The level of openness to allow for the project record</xs:documentation>
+                    <xs:documentation xml:lang="en">The level of openness to allow for the project record (Restricted by default)</xs:documentation>
+                    <xs:documentation xml:lang="en">If data security is set to Level 2 or higher, then project visibility should be set to Restricted</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                     <xs:simpleContent>
@@ -2423,6 +2460,37 @@
                             <xs:attribute ref="trackingLevel" fixed="InternalUseOnly"/>
                         </xs:extension>
                     </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="dataSecurity" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">The appropriate data security classification level for the project contents (by default, Level 1 - Internal)</xs:documentation>
+                    <xs:documentation>See https://protectingourinfo.princeton.edu/classify</xs:documentation>
+                    <xs:documentation xml:lang="en">If data security is set to Level 2 or higher, then project visibility should be set to Restricted</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="dataSecuritySetting" type="securityLevelType" maxOccurs="1">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en">The current setting for data security</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="requestedValue" type="securityLevelType" maxOccurs="1" default="Level 1 - Internal">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en">The requested value for data security</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="approvedValue" type="securityLevelType" maxOccurs="1">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en">The approved value for data security</xs:documentation>
+                                <xs:documentation xml:lang="en">If an approvedValue is given, then the approved attribute should also be set to true</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                    <xs:attribute ref="approved" default="false"/>
+                    <xs:attribute ref="inherited" fixed="true"/>
+                    <xs:attribute ref="discoverable" default="false"/>
+                    <xs:attribute ref="trackingLevel" fixed="InternalUseOnly"/>
                 </xs:complexType>
             </xs:element>
             <xs:element name="accessPoints" minOccurs="0" maxOccurs="1">

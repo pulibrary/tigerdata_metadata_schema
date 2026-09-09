@@ -2,7 +2,7 @@
 
 <!-- Version Notes:
         - Version 1.2 of the TigerData Standard Metadata Schema
-        - Updated on 2026-09-04 by Matt Chandler
+        - Updated on 2026-09-09 by Matt Chandler
 -->
 <!-- References:
         - As noted in documentation fields below, several elements are derived from DataCite:
@@ -32,6 +32,9 @@
 -->
 
 <!-- Version 1.2 Change Log:
+        2026-09-09:
+            - Added storageSystem field under storageAndAccess, with the storageSystemType type
+        
         2026-09-08:
             - Updated more documentation following the addition of data security
             - Changed the discoverable attribute for dataSecurity to be default false (not fixed)
@@ -1427,6 +1430,44 @@
         </xs:restriction>
     </xs:simpleType>
     
+    <xs:simpleType name="storageSystemType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Standard type that defines the controlled vocabulary for storageSystem</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="TigerData" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">The storage system is TigerData (for all in-band projects)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="/projects" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">The storage system is /projects (out-of-band)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Della /scratch/gpfs" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">The storage system is /scratch/gpfs on the Della cluster (out-of-band)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Tiger /scratch/gpfs" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">The storage system is /scratch/gpfs on the Tiger cluster (out-of-band)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Stellar /scratch/gpfs" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">The storage system is /scratch/gpfs on the Stellar cluster (out-of-band)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="StellarAI /scratch/gpfs" xml:lang="en">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">The storage system is /scratch/gpfs on the StellarAI cluster (out-of-band)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    
     <xs:simpleType name="projectPurposeType">
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard type that defines the controlled vocabulary for the projectPurpose field</xs:documentation>
@@ -2499,6 +2540,12 @@
                     <xs:attribute ref="discoverable" default="false"/>
                     <xs:attribute ref="trackingLevel" fixed="InternalUseOnly"/>
                 </xs:complexType>
+            </xs:element>
+            <xs:element name="storageSystem" type="storageSystemType" minOccurs="0" maxOccurs="1" default="TigerData">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">The name of the storage system to which the path applies</xs:documentation>
+                    <xs:documentation xml:lang="en">Used to differentiate standard TigerData projects (in-band) from out-of-band systems (e.g., '/projects' or 'Della /scratch/gpfs')</xs:documentation>
+                </xs:annotation>
             </xs:element>
             <xs:element name="accessPoints" minOccurs="0" maxOccurs="1">
                 <xs:annotation>

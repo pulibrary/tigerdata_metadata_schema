@@ -34,6 +34,8 @@
 <!-- Version 1.2 Change Log:
         2026-09-09:
             - Added storageSystem field under storageAndAccess, with the storageSystemType type
+            - Renamed dataSecurity to securityLevel
+            - Removed storageSystem attribute from pathType
         
         2026-09-08:
             - Updated more documentation following the addition of data security
@@ -1261,12 +1263,6 @@
                         <xs:documentation xml:lang="en">The storage connection protocol that defines how the path is written</xs:documentation>
                     </xs:annotation>
                 </xs:attribute>
-                <xs:attribute name="storageSystem" type="xs:string">
-                    <xs:annotation>
-                        <xs:documentation xml:lang="en">The name of the storage system to which the path applies</xs:documentation>
-                        <xs:documentation xml:lang="en">Used to differentiate standard TigerData projects (in-band) from out-of-band systems (e.g., '/projects' or 'Della /scratch/gpfs')</xs:documentation>
-                    </xs:annotation>
-                </xs:attribute>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
@@ -2450,7 +2446,7 @@
             <xs:element name="projectVisibility" minOccurs="1" maxOccurs="1" default="Restricted">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The level of openness to allow for the project record (Restricted by default)</xs:documentation>
-                    <xs:documentation xml:lang="en">If data security is set to Level 2 or higher, then project visibility should be set to Restricted</xs:documentation>
+                    <xs:documentation xml:lang="en">If the data security classification level is set to Level 2 or higher, then project visibility should be set to Restricted</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                     <xs:simpleContent>
@@ -2510,11 +2506,11 @@
                     </xs:simpleContent>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="dataSecurity" minOccurs="1" maxOccurs="1">
+            <xs:element name="securityLevel" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The appropriate data security classification level for the project contents (by default, Level 1 - Internal)</xs:documentation>
                     <xs:documentation>See https://protectingourinfo.princeton.edu/classify</xs:documentation>
-                    <xs:documentation xml:lang="en">If data security is set to Level 2 or higher, then project visibility should be set to Restricted</xs:documentation>
+                    <xs:documentation xml:lang="en">If the security level is set to 2 or higher, then project visibility should be set to Restricted</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                     <xs:sequence>

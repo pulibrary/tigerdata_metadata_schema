@@ -35,6 +35,7 @@
         2026-09-10:
             - Removed the default for requestedValue under securityLevel
             - Refined the documentation for securityLevel and related elements/attributes
+            - Refined the structure of storageSystem
         
         2026-09-09:
             - Added storageSystem field under storageAndAccess, with the storageSystemType type
@@ -2542,11 +2543,20 @@
                     <xs:attribute ref="trackingLevel" fixed="InternalUseOnly"/>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="storageSystem" type="storageSystemType" minOccurs="0" maxOccurs="1" default="TigerData">
+            <xs:element name="storageSystem" minOccurs="0" maxOccurs="1" default="TigerData">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The name of the storage system to which the path applies</xs:documentation>
                     <xs:documentation xml:lang="en">Used to differentiate standard TigerData projects (in-band) from out-of-band systems (e.g., '/projects' or 'Della /scratch/gpfs')</xs:documentation>
                 </xs:annotation>
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="storageSystemType">
+                            <xs:attribute ref="inherited" default="false"/>
+                            <xs:attribute ref="discoverable" fixed="false"/>
+                            <xs:attribute ref="trackingLevel" fixed="InternalUseOnly"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
             </xs:element>
             <xs:element name="accessPoints" minOccurs="0" maxOccurs="1">
                 <xs:annotation>

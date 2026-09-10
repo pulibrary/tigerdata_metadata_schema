@@ -41,11 +41,12 @@
         <approvedValue>Eco</approvedValue>
     </storagePerformance>
     <numberOfFiles inherited="false" discoverable="false" trackingLevel="InternalUseOnly">100k - 1mil</numberOfFiles>
-    <dataSecurity approved="true" inherited="true" discoverable="false" trackingLevel="InternalUseOnly">
-        <dataSecuritySetting>Level 1 - Internal</dataSecuritySetting>
+    <securityLevel approved="true" inherited="true" discoverable="false" trackingLevel="InternalUseOnly">
+        <securityLevelSetting>Level 1 - Internal</securityLevelSetting>
         <requestedValue>Level 1 - Internal</requestedValue>
         <approvedValue>Level 1 - Internal</approvedValue>
-    </dataSecurity>
+    </securityLevel>
+    <storageSystem inherited="false" discoverable="false" trackingLevel="InternalUseOnly">TigerData</storageSystem>
     <accessPoints inherited="false" discoverable="false" trackingLevel="InternalUseOnly">
         <hpcEnable approved="true">
             <hpcEnableSetting>false</hpcEnableSetting>

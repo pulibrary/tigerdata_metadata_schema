@@ -2,7 +2,7 @@
 
 <!-- Version Notes:
         - Version 1.2 of the TigerData Standard Metadata Schema
-        - Updated on 2026-09-09 by Matt Chandler
+        - Updated on 2026-09-10 by Matt Chandler
 -->
 <!-- References:
         - As noted in documentation fields below, several elements are derived from DataCite:
@@ -32,6 +32,10 @@
 -->
 
 <!-- Version 1.2 Change Log:
+        2026-09-10:
+            - Removed the default for requestedValue under securityLevel
+            - Refined the documentation for securityLevel and related elements/attributes
+        
         2026-09-09:
             - Added storageSystem field under storageAndAccess, with the storageSystemType type
             - Renamed dataSecurity to securityLevel
@@ -1372,7 +1376,8 @@
     <xs:simpleType name="securityLevelType">
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard type that defines the controlled vocabulary for data security classification levels</xs:documentation>
-            <xs:documentation>See https://protectingourinfo.princeton.edu/classify</xs:documentation>
+            <xs:documentation>https://protectingourinfo.princeton.edu/classify</xs:documentation>
+            <xs:documentation xml:lang="en">Level 4 is beyond the scope of TigerData</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="Level 0 - Public" xml:lang="en">
@@ -1382,7 +1387,7 @@
             </xs:enumeration>
             <xs:enumeration value="Level 1 - Internal" xml:lang="en">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">Intended to be used only by Princeton University staff, faculty or students, and not for public disclosure (typically, the default)</xs:documentation>
+                    <xs:documentation xml:lang="en">Intended to be used only by Princeton University staff, faculty or students, and not for public disclosure</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="Level 2 - Confidential" xml:lang="en">
@@ -1393,7 +1398,7 @@
             </xs:enumeration>
             <xs:enumeration value="Level 3 - Restricted" xml:lang="en">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">Subject to specific data security regulations and/or privacy protections, e.g. HIPAA</xs:documentation>
+                    <xs:documentation xml:lang="en">Subject to restrictive data security regulations and/or privacy protections, e.g. HIPAA</xs:documentation>
                     <xs:documentation xml:lang="en">Requires TigerData Secure</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
@@ -2446,7 +2451,7 @@
             <xs:element name="projectVisibility" minOccurs="1" maxOccurs="1" default="Restricted">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The level of openness to allow for the project record (Restricted by default)</xs:documentation>
-                    <xs:documentation xml:lang="en">If the data security classification level is set to Level 2 or higher, then project visibility should be set to Restricted</xs:documentation>
+                    <xs:documentation xml:lang="en">If securityLevel is set to 2 or higher, then project visibility should be set to Restricted</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                     <xs:simpleContent>
@@ -2508,25 +2513,25 @@
             </xs:element>
             <xs:element name="securityLevel" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The appropriate data security classification level for the project contents (by default, Level 1 - Internal)</xs:documentation>
-                    <xs:documentation>See https://protectingourinfo.princeton.edu/classify</xs:documentation>
+                    <xs:documentation xml:lang="en">The appropriate data security classification level for the project contents</xs:documentation>
+                    <xs:documentation>https://protectingourinfo.princeton.edu/classify</xs:documentation>
                     <xs:documentation xml:lang="en">If the security level is set to 2 or higher, then project visibility should be set to Restricted</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="dataSecuritySetting" type="securityLevelType" maxOccurs="1">
+                        <xs:element name="securityLevelSetting" type="securityLevelType" maxOccurs="1">
                             <xs:annotation>
-                                <xs:documentation xml:lang="en">The current setting for data security</xs:documentation>
+                                <xs:documentation xml:lang="en">The current setting for security level</xs:documentation>
                             </xs:annotation>
                         </xs:element>
-                        <xs:element name="requestedValue" type="securityLevelType" maxOccurs="1" default="Level 1 - Internal">
+                        <xs:element name="requestedValue" type="securityLevelType" maxOccurs="1">
                             <xs:annotation>
-                                <xs:documentation xml:lang="en">The requested value for data security</xs:documentation>
+                                <xs:documentation xml:lang="en">The requested value for security level</xs:documentation>
                             </xs:annotation>
                         </xs:element>
                         <xs:element name="approvedValue" type="securityLevelType" maxOccurs="1">
                             <xs:annotation>
-                                <xs:documentation xml:lang="en">The approved value for data security</xs:documentation>
+                                <xs:documentation xml:lang="en">The approved value for security level</xs:documentation>
                                 <xs:documentation xml:lang="en">If an approvedValue is given, then the approved attribute should also be set to true</xs:documentation>
                             </xs:annotation>
                         </xs:element>

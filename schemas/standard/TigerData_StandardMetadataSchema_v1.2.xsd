@@ -2,7 +2,7 @@
 
 <!-- Version Notes:
         - Version 1.2 of the TigerData Standard Metadata Schema
-        - Updated on 2026-09-10 by Matt Chandler
+        - Updated on 2026-09-11 by Matt Chandler
 -->
 <!-- References:
         - As noted in documentation fields below, several elements are derived from DataCite:
@@ -32,6 +32,12 @@
 -->
 
 <!-- Version 1.2 Change Log:
+        2026-09-11:
+            - Further refinements for realistic auto-generated examples
+               - Tightened up uuidType pattern
+               - Restricted the values for size in storageQuantityType
+               - Limited the text lengths within duaReference, relation, extendedMetadataSchema, and keyword
+        
         2026-09-10:
             - Removed the default for requestedValue under securityLevel
             - Refined the documentation for securityLevel and related elements/attributes
@@ -184,7 +190,7 @@
     
     <xs:complexType name="shortTextType">
         <xs:annotation>
-            <xs:documentation xml:lang="en">Standard type uesed for short text values (e.g., itemResourceType and keyword)</xs:documentation>
+            <xs:documentation xml:lang="en">Standard type uesed for short text values in elements (e.g., itemResourceType and keyword)</xs:documentation>
         </xs:annotation>
         <xs:simpleContent>
             <xs:extension base="shortTextLimitType">
@@ -229,11 +235,11 @@
     <xs:simpleType name="uuidType">
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard type used for values meant to be Universally Unique Identifiers (e.g., in globusUUID)</xs:documentation>
-            <xs:documentation xml:lang="en">Restricts to alphanumeric characters and minus-dashes, with a length ranging from 32 to 36</xs:documentation>
+            <xs:documentation xml:lang="en">Restricts to hexadecimal characters and minus-dashes, with a length ranging from 32 to 36</xs:documentation>
             <xs:documentation xml:lang="en">The most common value is expected to be hexadecimal in 8-4-4-4-12 format, but this type specification is simplified for XML, and therefore more permissive</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
-            <xs:pattern value="[\w-]{32,36}"/>
+            <xs:pattern value="[0-9a-f\-]{32,36}"/>
         </xs:restriction>
     </xs:simpleType>
     
@@ -289,6 +295,16 @@
     
     <!-- Attribute Types -->
         <!-- Simple types that apply only to attribute values -->
+    
+    <xs:simpleType name="shortAttribute">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Standard type that limits strings as attribute values (as opposed to element values), but also allows empty strings</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="0"/>
+            <xs:maxLength value="60"/>
+        </xs:restriction>
+    </xs:simpleType>
     
     <xs:simpleType name="trackingLevelType">
         <xs:annotation>
@@ -1283,11 +1299,17 @@
             <xs:documentation xml:lang="en">Standard type used for storage quantity values</xs:documentation>
         </xs:annotation>
         <xs:sequence minOccurs="0" maxOccurs="1">
-            <xs:element name="size" type="xs:decimal" minOccurs="1" maxOccurs="1">
+            <xs:element name="size" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The numeric size of the storage quantity</xs:documentation>
                     <xs:documentation xml:lang="en">The practical limits for floating point values set by Mediaflux are the range [4.9E-324,1.7976931348623157E308]</xs:documentation>
                 </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:double">
+                        <xs:minExclusive value="0"/>
+                        <xs:maxInclusive value="10000000000000"/>
+                    </xs:restriction>
+                </xs:simpleType>
             </xs:element>
             <xs:element name="unit" type="byteUnitType" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
@@ -1942,7 +1964,7 @@
                             <xs:documentation xml:lang="en">Specifies the short, standardized version of the license name</xs:documentation>
                         </xs:annotation>
                     </xs:attribute>
-                    <xs:attribute name="licenseIDSchema" type="xs:string" fixed="SPDX">
+                    <xs:attribute name="licenseIDSchema" type="titleLimitType" fixed="SPDX">
                         <xs:annotation>
                             <xs:documentation xml:lang="en">Specifies the schema used for licenseID</xs:documentation>
                         </xs:annotation>
@@ -1992,7 +2014,7 @@
                     </xs:annotation>
                     <xs:complexType>
                         <xs:simpleContent>
-                            <xs:extension base="textLimitType">
+                            <xs:extension base="titleType">
                                 <xs:attribute name="duaURI" type="xs:anyURI" use="optional">
                                     <xs:annotation>
                                         <xs:documentation xml:lang="en">Records the URI for the DUA</xs:documentation>
@@ -2808,7 +2830,7 @@
                             <xs:complexType>
                                 <xs:simpleContent>
                                     <xs:extension base="shortTextType">
-                                        <xs:attribute name="subjectSchema" type="textLimitType" use="optional">
+                                        <xs:attribute name="subjectSchema" type="titleLimitType" use="optional">
                                             <xs:annotation>
                                                 <xs:documentation xml:lang="en">The name of the subject schema or classification code or authority, if applicable</xs:documentation>
                                             </xs:annotation>
@@ -2823,7 +2845,7 @@
                                                 <xs:documentation xml:lang="en">The URI of the subject term, if applicable</xs:documentation>
                                             </xs:annotation>
                                         </xs:attribute>
-                                        <xs:attribute name="classificationCode" type="textLimitType" use="optional">
+                                        <xs:attribute name="classificationCode" type="shortAttribute" use="optional">
                                             <xs:annotation>
                                                 <xs:documentation xml:lang="en">The classification code used for the subject term in the subject schema, if applicable</xs:documentation>
                                             </xs:annotation>
@@ -2858,7 +2880,7 @@
                                     <xs:extension base="textLimitType">
                                         <xs:attribute name="relatedIDType" type="relatedIDTypeType" default="DOI"/>
                                         <xs:attribute name="relationType" type="relationTypeType" use="required"/>
-                                        <xs:attribute name="relatedMetadataSchema" type="textLimitType" use="optional">
+                                        <xs:attribute name="relatedMetadataSchema" type="titleLimitType" use="optional">
                                             <xs:annotation>
                                                 <xs:documentation xml:lang="en">The name of the related metadata schema, if applicable</xs:documentation>
                                                 <xs:documentation xml:lang="en">Use only with HasMetadata and IsMetadataFor relation types</xs:documentation>
@@ -2870,7 +2892,7 @@
                                                 <xs:documentation xml:lang="en">Use only with HasMetadata and IsMetadataFor relation types</xs:documentation>
                                             </xs:annotation>
                                         </xs:attribute>
-                                        <xs:attribute name="relatedMetadataSchemaType" type="textLimitType" use="optional">
+                                        <xs:attribute name="relatedMetadataSchemaType" type="shortAttribute" use="optional">
                                             <xs:annotation>
                                                 <xs:documentation xml:lang="en">The type of the related metadata schema, if applicable (e.g. XSD, DDT, Turtle)</xs:documentation>
                                                 <xs:documentation xml:lang="en">Use only with HasMetadata and IsMetadataFor relation types</xs:documentation>
@@ -2902,7 +2924,7 @@
                             </xs:annotation>
                             <xs:complexType>
                                 <xs:simpleContent>
-                                    <xs:extension base="textLimitType">
+                                    <xs:extension base="titleType">
                                         <xs:attribute ref="inherited" default="false"/>
                                     </xs:extension>
                                 </xs:simpleContent>

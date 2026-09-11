@@ -38,6 +38,9 @@
                - Restricted the values for size in storageQuantityType
                - Limited the text lengths within duaReference, relation, extendedMetadataSchema, keyword, and resourceID
                - Created shortAttributeType and applied in various places, where appropriate
+               - Limited repeats for keywords and extendedMetadataSchemas to 10
+               - Limited Globus connection repeats to 5
+               - Applied titleLimitType to relation
         
         2026-09-10:
             - Removed the default for requestedValue under securityLevel
@@ -2680,7 +2683,7 @@
                                 <xs:attribute ref="approved" default="false"/>
                             </xs:complexType>
                         </xs:element>
-                        <xs:element name="globusCollection" minOccurs="0" maxOccurs="10">
+                        <xs:element name="globusCollection" minOccurs="0" maxOccurs="5">
                             <xs:annotation>
                                 <xs:documentation xml:lang="en">Details for an enabled Globus collection for the project</xs:documentation>
                                 <xs:documentation xml:lang="en">If globusEnableSetting is true, then at least one globusCollection value set should be given</xs:documentation>
@@ -2821,7 +2824,7 @@
                 </xs:annotation>
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="keyword" minOccurs="1" maxOccurs="100">
+                        <xs:element name="keyword" minOccurs="1" maxOccurs="10">
                             <xs:annotation>
                                 <xs:documentation xml:lang="en">Tag for a subject heading, content type, or other keyword (given as a string)</xs:documentation>
                                 <xs:documentation xml:lang="en">May apply to either Projects and Items</xs:documentation>
@@ -2878,7 +2881,7 @@
                             </xs:annotation>
                             <xs:complexType>
                                 <xs:simpleContent>
-                                    <xs:extension base="textLimitType">
+                                    <xs:extension base="titleLimitType">
                                         <xs:attribute name="relatedIDType" type="relatedIDTypeType" default="DOI"/>
                                         <xs:attribute name="relationType" type="relationTypeType" use="required"/>
                                         <xs:attribute name="relatedMetadataSchema" type="titleLimitType" use="optional">
@@ -2918,7 +2921,7 @@
                 </xs:annotation>
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="extendedMetadataSchema" minOccurs="1" maxOccurs="100">
+                        <xs:element name="extendedMetadataSchema" minOccurs="1" maxOccurs="10">
                             <xs:annotation>
                                 <xs:documentation xml:lang="en">An indication of which TigerData supported metadata schemas should apply to a resource (given as a string)</xs:documentation>
                                 <xs:documentation xml:lang="en">May apply to either Projects or Items</xs:documentation>

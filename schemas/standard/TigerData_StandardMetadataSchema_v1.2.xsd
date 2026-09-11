@@ -36,7 +36,8 @@
             - Further refinements for realistic auto-generated examples
                - Tightened up uuidType pattern
                - Restricted the values for size in storageQuantityType
-               - Limited the text lengths within duaReference, relation, extendedMetadataSchema, and keyword
+               - Limited the text lengths within duaReference, relation, extendedMetadataSchema, keyword, and resourceID
+               - Created shortAttributeType and applied in various places, where appropriate
         
         2026-09-10:
             - Removed the default for requestedValue under securityLevel
@@ -296,7 +297,7 @@
     <!-- Attribute Types -->
         <!-- Simple types that apply only to attribute values -->
     
-    <xs:simpleType name="shortAttribute">
+    <xs:simpleType name="shortAttributeType">
         <xs:annotation>
             <xs:documentation xml:lang="en">Standard type that limits strings as attribute values (as opposed to element values), but also allows empty strings</xs:documentation>
         </xs:annotation>
@@ -1187,8 +1188,8 @@
                 </xs:annotation>
                 <xs:complexType>
                     <xs:simpleContent>
-                        <xs:extension base="xs:string">
-                            <xs:attribute name="nameIdentifierSchema" type="titleLimitType" use="required">
+                        <xs:extension base="titleLimitType">
+                            <xs:attribute name="nameIdentifierSchema" type="shortAttributeType" use="required">
                                 <xs:annotation>
                                     <xs:documentation xml:lang="en">The name of the schema to which the name identifier belongs (required when an alternative name identifier is given).</xs:documentation>
                                 </xs:annotation>
@@ -1838,7 +1839,7 @@
                     </xs:annotation>
                     <xs:complexType>
                         <xs:simpleContent>
-                            <xs:extension base="textLimitType">
+                            <xs:extension base="titleType">
                                 <xs:attribute name="funderIDType" default="ROR">
                                     <xs:annotation>
                                         <xs:documentation xml:lang="en">Records the type of identifier used for funderID</xs:documentation>
@@ -1868,7 +1869,7 @@
                     </xs:annotation>
                     <xs:complexType>
                         <xs:simpleContent>
-                            <xs:extension base="textLimitType">
+                            <xs:extension base="titleLimitType">
                                 <xs:attribute name="awardURI" type="xs:anyURI" use="optional">
                                     <xs:annotation>
                                         <xs:documentation xml:lang="en">Records the URI for the awardNumber</xs:documentation>
@@ -2845,7 +2846,7 @@
                                                 <xs:documentation xml:lang="en">The URI of the subject term, if applicable</xs:documentation>
                                             </xs:annotation>
                                         </xs:attribute>
-                                        <xs:attribute name="classificationCode" type="shortAttribute" use="optional">
+                                        <xs:attribute name="classificationCode" type="shortAttributeType" use="optional">
                                             <xs:annotation>
                                                 <xs:documentation xml:lang="en">The classification code used for the subject term in the subject schema, if applicable</xs:documentation>
                                             </xs:annotation>
@@ -2892,7 +2893,7 @@
                                                 <xs:documentation xml:lang="en">Use only with HasMetadata and IsMetadataFor relation types</xs:documentation>
                                             </xs:annotation>
                                         </xs:attribute>
-                                        <xs:attribute name="relatedMetadataSchemaType" type="shortAttribute" use="optional">
+                                        <xs:attribute name="relatedMetadataSchemaType" type="shortAttributeType" use="optional">
                                             <xs:annotation>
                                                 <xs:documentation xml:lang="en">The type of the related metadata schema, if applicable (e.g. XSD, DDT, Turtle)</xs:documentation>
                                                 <xs:documentation xml:lang="en">Use only with HasMetadata and IsMetadataFor relation types</xs:documentation>
@@ -3116,7 +3117,7 @@
                     </xs:restriction>
                 </xs:simpleType>
             </xs:attribute>
-            <xs:attribute name="resourceID" use="required">
+            <xs:attribute name="resourceID" type="titleLimitType" use="required">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The unique identifier for the resource within TigerData systems (required)</xs:documentation>
                     <xs:documentation xml:lang="en">If the resourceClass is Project, then the resourceID should be a DOI; if Item, then the resourceID should be a Mediaflux AssetID (MFAID)</xs:documentation>
